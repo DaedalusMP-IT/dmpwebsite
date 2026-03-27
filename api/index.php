@@ -1,7 +1,5 @@
 <?php
 
-define('LARAVEL_START', microtime(true));
-
 // Use /tmp for writable paths in serverless environment
 $tmpPath = '/tmp/storage';
 if (!is_dir($tmpPath)) {
