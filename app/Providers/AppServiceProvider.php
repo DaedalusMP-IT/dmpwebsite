@@ -11,10 +11,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        // Use /tmp for storage in serverless environments (Vercel)
-        if (isset($_ENV['APP_STORAGE'])) {
-            $this->app->useStoragePath($_ENV['APP_STORAGE']);
-        }
+        //
     }
 
     /**
