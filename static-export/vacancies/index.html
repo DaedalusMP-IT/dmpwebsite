@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="csrf-token" content="wtMRQeyPil4wd91DqND7VepaCR4SReXGRh7G8FAe">
+    <title>Vacancies - DAEDALUS</title>
+    
+    <!-- Tailwind CSS CDN (временно для разработки) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Custom styles */
+        .btn-primary {
+            background-color: #9333ea;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #7e22ce;
+        }
+    </style>
+    
+    </head>
+<body class="antialiased">
+    
+    <header class="bg-gray-900 text-white">
+    <nav class="container mx-auto px-4 py-4">
+        <div class="flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="http://127.0.0.1:8000" class="text-2xl font-bold">
+                    DAEDALUS
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-6">
+                <a href="http://127.0.0.1:8000" class="hover:text-purple-400 transition ">
+                    Home
+                </a>
+                <a href="http://127.0.0.1:8000/design" class="hover:text-purple-400 transition ">
+                    Design
+                </a>
+                <a href="http://127.0.0.1:8000/automation" class="hover:text-purple-400 transition ">
+                    Automation
+                </a>
+                <a href="http://127.0.0.1:8000/arvr" class="hover:text-purple-400 transition ">
+                    AR/VR Training
+                </a>
+                <a href="http://127.0.0.1:8000/projects" class="hover:text-purple-400 transition ">
+                    Projects
+                </a>
+                <a href="http://127.0.0.1:8000/services" class="hover:text-purple-400 transition ">
+                    Licenses
+                </a>
+                <a href="http://127.0.0.1:8000/vacancies" class="hover:text-purple-400 transition text-purple-400">
+                    Vacancies
+                </a>
+                <a href="http://127.0.0.1:8000/news" class="hover:text-purple-400 transition ">
+                    News
+                </a>
+                <a href="http://127.0.0.1:8000/contacts" class="hover:text-purple-400 transition ">
+                    Contacts
+                </a>
+            </div>
+            
+            <!-- Language Switcher -->
+            <div class="hidden md:flex space-x-2">
+                <a href="http://127.0.0.1:8000/language/en" class="px-3 py-1 rounded bg-purple-600">EN</a>
+                <a href="http://127.0.0.1:8000/language/ru" class="px-3 py-1 rounded hover:bg-gray-800">РУС</a>
+                <a href="http://127.0.0.1:8000/language/kk" class="px-3 py-1 rounded hover:bg-gray-800">ҚАЗ</a>
+            </div>
+            
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="md:hidden">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
+            <a href="http://127.0.0.1:8000" class="block py-2 hover:text-purple-400">Home</a>
+            <a href="http://127.0.0.1:8000/design" class="block py-2 hover:text-purple-400">Design</a>
+            <a href="http://127.0.0.1:8000/automation" class="block py-2 hover:text-purple-400">Automation</a>
+            <a href="http://127.0.0.1:8000/arvr" class="block py-2 hover:text-purple-400">AR/VR Training</a>
+            <a href="http://127.0.0.1:8000/projects" class="block py-2 hover:text-purple-400">Projects</a>
+            <a href="http://127.0.0.1:8000/services" class="block py-2 hover:text-purple-400">Licenses</a>
+            <a href="http://127.0.0.1:8000/vacancies" class="block py-2 hover:text-purple-400">Vacancies</a>
+            <a href="http://127.0.0.1:8000/news" class="block py-2 hover:text-purple-400">News</a>
+            <a href="http://127.0.0.1:8000/contacts" class="block py-2 hover:text-purple-400">Contacts</a>
+            
+            <!-- Mobile Language Switcher -->
+            <div class="flex space-x-2 pt-4">
+                <a href="http://127.0.0.1:8000/language/en" class="px-3 py-1 rounded bg-purple-600">EN</a>
+                <a href="http://127.0.0.1:8000/language/ru" class="px-3 py-1 rounded hover:bg-gray-800">РУС</a>
+                <a href="http://127.0.0.1:8000/language/kk" class="px-3 py-1 rounded hover:bg-gray-800">ҚАЗ</a>
+            </div>
+        </div>
+    </nav>
+</header>
+    
+    <main>
+        <style>
+    .vacancies-page {
+        font-family: 'Involve', sans-serif;
+        background: #10022B;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+    }
+    
+    /* Декоративные световые эффекты */
+    .glow-effect-1 {
+        position: absolute;
+        width: 389px;
+        height: 437px;
+        left: -60px;
+        top: 1358px;
+        background: #F8F3FC;
+        filter: blur(350px);
+        z-index: 0;
+    }
+    
+    .glow-effect-2 {
+        position: absolute;
+        width: 389px;
+        height: 437px;
+        right: 0;
+        top: 916px;
+        background: #F8F3FC;
+        filter: blur(350px);
+        z-index: 0;
+    }
+    
+    .hero-section {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        max-height: 800px;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+    }
+    
+    .hero-bg-image {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url('/images/image.png') center/cover;
+    }
+    
+    .hero-overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, #15023C 77.25%, rgba(58, 5, 162, 0) 100%);
+        z-index: 1;
+    }
+    
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 1150px;
+        margin: 0 auto;
+        padding: 0 20px 80px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hero-title {
+        font-weight: 600;
+        font-size: 54px;
+        line-height: 72px;
+        color: #F8F3FC;
+        margin-bottom: 10px;
+    }
+    
+    .hero-subtitle {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 21px;
+        color: #F8F3FC;
+        margin-bottom: 40px;
+        max-width: 547px;
+        text-align: center;
+    }
+    
+    .hero-button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 22px 65px;
+        background: #810EC7;
+        border-radius: 12px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 21px;
+        color: #F8F3FC;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+    
+    .hero-button:hover {
+        background: #9a1ee8;
+    }
+    
+    .content-wrapper {
+        max-width: 1150px;
+        margin: 0 auto;
+        padding: 0 20px;
+    }
+    
+    .section-title {
+        font-weight: 600;
+        font-size: 54px;
+        line-height: 72px;
+        color: #F8F3FC;
+        margin-bottom: 20px;
+        margin-top: 100px;
+    }
+    
+    .section-text {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 21px;
+        color: #F8F3FC;
+        max-width: 565px;
+        margin-bottom: 60px;
+    }
+    
+    .team-photos {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        margin-top: 60px;
+    }
+
+    .team-photo {
+        border-radius: 20px;
+        height: 320px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .team-photo:nth-child(1) {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .team-photo:nth-child(2) {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .team-photo:nth-child(3) {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    @media (max-width: 768px) {
+        .team-photos {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    .interview-section {
+        margin-top: 100px;
+        position: relative;
+    }
+    
+    .interview-image {
+        position: absolute;
+        left: 0;
+        top: 156px;
+        width: 435px;
+        height: 389px;
+        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        border-radius: 20px;
+    }
+    
+    .interview-steps {
+        margin-left: auto;
+        width: fit-content;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 80px;
+    }
+    
+    .interview-step {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .step-number {
+        font-weight: 700;
+        font-size: 80px;
+        line-height: 106px;
+        color: #F8F3FC;
+        width: 45px;
+        flex-shrink: 0;
+    }
+    
+    .step-box {
+        display: flex;
+        align-items: center;
+        padding: 28px 35px;
+        width: 565px;
+        background: rgba(248, 243, 252, 0.1);
+        border: 1px solid rgba(248, 243, 252, 0.2);
+        backdrop-filter: blur(101.28px);
+        border-radius: 12px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 21px;
+        color: #F8F3FC;
+    }
+    
+    .vacancies-list-section {
+        margin-top: 120px;
+        margin-bottom: 80px;
+    }
+    
+    .vacancy-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 45px 30px;
+        background: rgba(248, 243, 252, 0.1);
+        border: 1px solid rgba(248, 243, 252, 0.2);
+        backdrop-filter: blur(101.28px);
+        border-radius: 20px;
+        margin-bottom: 17px;
+    }
+    
+    .vacancy-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 707px;
+    }
+    
+    .vacancy-title {
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 24px;
+        color: #F8F3FC;
+    }
+    
+    .vacancy-description {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 21px;
+        color: #F8F3FC;
+    }
+    
+    .vacancy-button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 22px 43px;
+        background: #810EC7;
+        border-radius: 12px;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 21px;
+        color: #F8F3FC;
+        border: none;
+        cursor: pointer;
+        transition: background 0.3s;
+        white-space: nowrap;
+    }
+    
+    .vacancy-button:hover {
+        background: #9a1ee8;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        .interview-image {
+            position: relative;
+            left: 0;
+            top: 0;
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 435px;
+        }
+        
+        .interview-steps {
+            margin-left: 0;
+        }
+    }
+    
+    @media (max-width: 768px) {
+        .glow-effect-1,
+        .glow-effect-2 {
+            display: none;
+        }
+
+        .hero-section {
+            height: auto;
+            min-height: 500px;
+            padding: 0;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .hero-content {
+            padding: 0 20px 50px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 28px;
+            line-height: 36px;
+            margin-bottom: 20px;
+        }
+
+        .hero-subtitle {
+            display: block;
+            font-size: 13px;
+            line-height: 18px;
+            max-width: 300px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .hero-button {
+            width: 100%;
+            max-width: 335px;
+            padding: 16px 32px;
+            font-size: 14px;
+        }
+
+        .content-wrapper {
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            line-height: 32px;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section-text {
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 30px;
+            max-width: 100%;
+            text-align: center;
+        }
+
+        .team-photos {
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .team-photo {
+            width: 100% !important;
+            height: 200px;
+        }
+
+        .interview-section {
+            margin-top: 60px;
+        }
+
+        .interview-image {
+            display: none;
+        }
+
+        .interview-steps {
+            margin-top: 40px;
+            gap: 20px;
+        }
+
+        .interview-step {
+            flex-direction: row;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .step-number {
+            font-size: 48px;
+            line-height: 60px;
+            width: auto;
+            flex-shrink: 0;
+        }
+        
+        .step-box {
+            width: 100%;
+            padding: 20px;
+            font-size: 14px;
+            line-height: 20px;
+        }
+
+        .vacancies-list-section {
+            margin-top: 60px;
+            margin-bottom: 60px;
+        }
+        
+        .vacancy-card {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 24px;
+        }
+
+        .vacancy-info {
+            width: 100%;
+        }
+
+        .vacancy-title {
+            font-size: 16px;
+            line-height: 22px;
+        }
+
+        .vacancy-description {
+            font-size: 14px;
+            line-height: 20px;
+        }
+        
+        .vacancy-button {
+            width: 100%;
+            font-size: 14px;
+            padding: 16px 24px;
+        }
+    }
+
+</style>
+
+<div class="vacancies-page">
+    <div class="glow-effect-1"></div>
+    <div class="glow-effect-2"></div>
+    
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="hero-bg-image"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">Вакансии</h1>
+            <p class="hero-subtitle">Присоединяйся к нашей команде и стань частью профессионалов</p>
+            <button class="hero-button" onclick="document.getElementById('vacancies-list').scrollIntoView({behavior: 'smooth'})">
+                Оставить заявку
+            </button>
+        </div>
+    </div>
+    
+    <!-- Team Section -->
+    <div class="content-wrapper">
+        <h2 class="section-title">Познакомьтесь с нашей командой</h2>
+        <div class="team-photos">
+            <div class="team-photo"></div>
+            <div class="team-photo"></div>
+            <div class="team-photo"></div>
+        </div>
+    </div>
+    
+    <!-- Interview Process Section -->
+    <div class="content-wrapper">
+        <div class="interview-section">
+            <h2 class="section-title">Как проходит собеседование</h2>
+            
+            <div class="interview-image"></div>
+            
+            <div class="interview-steps">
+                <div class="interview-step">
+                    <div class="step-number">1</div>
+                    <div class="step-box">Предварительное собеседование</div>
+                </div>
+                
+                <div class="interview-step">
+                    <div class="step-number">2</div>
+                    <div class="step-box">Собеседование в реальной жизни и знакомство с командой</div>
+                </div>
+                
+                <div class="interview-step">
+                    <div class="step-number">3</div>
+                    <div class="step-box">Приглашние на работу</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Vacancies List Section -->
+    <div class="content-wrapper">
+        <div class="vacancies-list-section" id="vacancies-list">
+            <h2 class="section-title">Мы всегда рады талантливым людям</h2>
+            
+            <div class="vacancy-card">
+                <div class="vacancy-info">
+                    <div class="vacancy-title">Full Stack Developer</div>
+                    <div class="vacancy-description">Требуется опыт работы с Laravel, Vue.js, React. Разработка веб-приложений и интеграция с внешними сервисами.</div>
+                </div>
+                <button class="vacancy-button">Apply</button>
+            </div>
+            
+            <div class="vacancy-card">
+                <div class="vacancy-info">
+                    <div class="vacancy-title">AR/VR Developer</div>
+                    <div class="vacancy-description">Опыт разработки приложений дополненной и виртуальной реальности. Работа с Unity, Unreal Engine и современными VR-платформами.</div>
+                </div>
+                <button class="vacancy-button">Apply</button>
+            </div>
+            
+            <div class="vacancy-card">
+                <div class="vacancy-info">
+                    <div class="vacancy-title">Project Manager</div>
+                    <div class="vacancy-description">Управление проектами в сфере автоматизации и промышленного строительства. Опыт работы с командами от 5 человек.</div>
+                </div>
+                <button class="vacancy-button">Apply</button>
+            </div>
+        </div>
+    </div>
+</div>
+    </main>
+    
+            <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Company Info -->
+            <div>
+                <h3 class="text-xl font-bold mb-4">DAEDALUS</h3>
+                <p class="text-gray-400 text-sm">
+                    Проектируем по вашим будущим сооружениям и производимых изделиям к каждой детали!
+                </p>
+            </div>
+            
+            <!-- Quick Links -->
+            <div>
+                <h4 class="font-semibold mb-4">Главная</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="http://127.0.0.1:8000/vacancies" class="hover:text-purple-400">Открытые вакансии</a></li>
+                    <li><a href="http://127.0.0.1:8000/news" class="hover:text-purple-400">Новости</a></li>
+                    <li><a href="http://127.0.0.1:8000/contacts" class="hover:text-purple-400">Контакты</a></li>
+                </ul>
+            </div>
+            
+            <!-- Services -->
+            <div>
+                <h4 class="font-semibold mb-4">Услуги</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="http://127.0.0.1:8000/design" class="hover:text-purple-400">Проектирование</a></li>
+                    <li><a href="http://127.0.0.1:8000/automation" class="hover:text-purple-400">Автоматизация</a></li>
+                    <li><a href="http://127.0.0.1:8000/arvr" class="hover:text-purple-400">AR/VR обучение</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact -->
+            <div>
+                <h4 class="font-semibold mb-4">Контакты</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li>8 (776) 623 11 77</li>
+                    <li>info@daedalus.kz</li>
+                    <li>г. Алматы, мкр. Достык, ул. Фарида Шарипова, д. 134А</li>
+                </ul>
+                
+                <!-- Social Icons -->
+                <div class="flex space-x-3 mt-4">
+                    <a href="#" class="hover:text-purple-400">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/></svg>
+                    </a>
+                    <a href="#" class="hover:text-purple-400">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                    </a>
+                    <a href="#" class="hover:text-purple-400">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Language Switcher Mobile -->
+        <div class="flex justify-center space-x-4 mt-8 pt-8 border-t border-gray-800">
+            <button class="text-sm hover:text-purple-400">EN</button>
+            <button class="text-sm text-purple-400">РУС</button>
+            <button class="text-sm hover:text-purple-400">ҚАЗ</button>
+        </div>
+    </div>
+</footer>
+        
+    <!-- Modal for success message -->
+    <div id="thankYouModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 max-w-md mx-4">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold mb-4">Спасибо!</h2>
+                <p class="mb-6">Ваш запрос был успешно отправлен. Мы свяжемся с вами в ближайшее время.</p>
+                <button onclick="closeModal()" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg">
+                    OK
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // Close modal function
+        function closeModal() {
+            document.getElementById('thankYouModal').classList.add('hidden');
+        }
+        
+        // Close modal on outside click
+        document.getElementById('thankYouModal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+    
+    </body>
+</html>
