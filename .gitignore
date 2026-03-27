@@ -4,7 +4,7 @@
 /public/storage
 /storage/*.key
 /storage/pail
-# vendor and public/build are included for Vercel deployment
+/vendor
 .env
 .env.backup
 .env.production
