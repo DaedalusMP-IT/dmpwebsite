@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ __('messages.automation.title') }} - DAEDALUS</title>
+    <title>BIM Внедрение - DAEDALUS</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body style="background: #10022B; margin: 0; padding: 0; font-family: 'Involve', sans-serif; position: relative; overflow-x: hidden; width: 100%;">
@@ -611,60 +611,60 @@
         <div class="hero-background"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">Автоматизация, на которую<br>можно рассчитывать!</h1>
-            <p class="hero-description">Проектирование и строительство АСУТП, монтаж структурированных сетей, системы безопасности и электроснабжения.</p>
+            <h1 class="hero-title">BIM Внедрение</h1>
+            <p class="hero-description">Цифровое проектирование и информационное моделирование зданий и промышленных объектов на базе BIM-технологий.</p>
             <a href="#form" class="hero-button">Оставить заявку</a>
         </div>
     </section>
 
     <!-- Services Section -->
     <section class="content-wrapper services-section">
-        <h2 class="section-title">Капитальное строительство «Под ключ» АСУТП любой сложности</h2>
+        <h2 class="section-title">Полный цикл BIM-внедрения для вашего объекта</h2>
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-info">
-                    <h3 class="service-title">Сопровождение внедренных систем АСУ ТП</h3>
-                    <p class="service-description">Полное техническое сопровождение автоматизированных систем управления технологическими процессами после внедрения</p>
+                    <h3 class="service-title">Разработка BIM-модели объекта</h3>
+                    <p class="service-description">Создание детальной информационной модели здания или промышленного объекта с полной параметризацией всех элементов</p>
                 </div>
                 <div class="service-arrow"></div>
             </div>
 
             <div class="service-card">
                 <div class="service-info">
-                    <h3 class="service-title">Поставка производственного оборудования</h3>
-                    <p class="service-description">Комплексная поставка высококачественного производственного оборудования для промышленных предприятий</p>
+                    <h3 class="service-title">Координация и проверка на коллизии</h3>
+                    <p class="service-description">Сведение моделей всех разделов проекта и автоматическое выявление пересечений конструкций до начала строительства</p>
                 </div>
                 <div class="service-arrow"></div>
             </div>
 
             <div class="service-card">
                 <div class="service-info">
-                    <h3 class="service-title">Проектирование и строительство линий связи</h3>
-                    <p class="service-description">Разработка и реализация проектов для создания современных коммуникационных линий связи</p>
+                    <h3 class="service-title">4D и 5D моделирование</h3>
+                    <p class="service-description">Привязка графика строительства и сметной документации к BIM-модели для точного планирования сроков и бюджета</p>
                 </div>
                 <div class="service-arrow"></div>
             </div>
 
             <div class="service-card">
                 <div class="service-info">
-                    <h3 class="service-title">Построение модели электрических коммуникаций, оборудование и шкафов в 3D</h3>
-                    <p class="service-description">Создание точных трехмерных моделей электрических систем и распределительных шкафов</p>
+                    <h3 class="service-title">Разработка стандарта BIM для предприятия</h3>
+                    <p class="service-description">Создание корпоративных требований к информационному моделированию, шаблонов и регламентов для устойчивого внедрения BIM</p>
                 </div>
                 <div class="service-arrow"></div>
             </div>
 
             <div class="service-card">
                 <div class="service-info">
-                    <h3 class="service-title">Монтаж и пусконаладка систем безопасности и электроснабжения</h3>
-                    <p class="service-description">Профессиональная установка и настройка систем безопасности и электроснабжения объектов</p>
+                    <h3 class="service-title">Обучение и сопровождение команды</h3>
+                    <p class="service-description">Подготовка специалистов заказчика к работе с BIM-инструментами, онлайн и офлайн обучение, поддержка на всех этапах проекта</p>
                 </div>
                 <div class="service-arrow"></div>
             </div>
 
             <div class="service-card">
                 <div class="service-info">
-                    <h3 class="service-title">Монтаж и наладка структурированных сетей связи (СКС)</h3>
-                    <p class="service-description">Проектирование и монтаж структурированных кабельных систем для передачи данных</p>
+                    <h3 class="service-title">Передача исполнительной BIM-модели</h3>
+                    <p class="service-description">Формирование и передача заказчику актуализированной модели «как построено» для последующей эксплуатации объекта</p>
                 </div>
                 <div class="service-arrow"></div>
             </div>

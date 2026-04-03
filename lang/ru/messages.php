@@ -4,7 +4,7 @@ return [
     // Navigation
     'nav.home' => 'Главная',
     'nav.design' => 'Проектирование',
-    'nav.automation' => 'Автоматизация',
+    'nav.automation' => 'BIM Внедрение',
     'nav.arvr' => 'AR/VR обучение',
     'nav.projects' => 'Проекты',
     'nav.licenses' => 'Лицензии',
