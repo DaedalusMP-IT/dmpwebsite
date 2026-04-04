@@ -62,6 +62,21 @@
             position: relative;
         }
         
+        /* Header fix */
+        header {
+            position: relative;
+            z-index: 9999 !important;
+        }
+
+        #mobile-menu {
+            z-index: 9998 !important;
+        }
+
+        #mobile-menu-button {
+            position: relative;
+            z-index: 9999 !important;
+        }
+
         /* Декоративные световые эффекты */
         .glow-effect-1 {
             position: absolute;
@@ -99,7 +114,6 @@
             max-height: 800px;
             position: relative;
             background: transparent;
-            overflow: hidden;
             display: flex;
             align-items: flex-end;
         }
@@ -412,7 +426,7 @@
             padding: 0 148px;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             justify-content: center;
         }
 
@@ -423,6 +437,7 @@
             line-height: 80px;
             color: #F8F3FC;
             margin-bottom: 60px;
+            text-align: center;
         }
 
         .construction-grid {
@@ -465,8 +480,9 @@
             position: relative;
             width: 100%;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 80px;
+            gap: 40px;
         }
 
         .circular-progress {
@@ -474,12 +490,15 @@
             width: 250px;
             height: 250px;
             flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .circular-progress svg {
-            transform: rotate(-90deg);
             width: 100%;
             height: 100%;
+            display: block;
         }
 
         .circular-progress circle {
@@ -512,10 +531,10 @@
         }
 
         .construction-info {
-            flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            align-items: center;
+            text-align: center;
         }
 
         .construction-stage-title {
@@ -1039,6 +1058,7 @@
                 width: 100%;
                 max-width: 100%;
                 padding: 0 20px;
+                align-items: center;
             }
 
             .construction-title {
@@ -1091,6 +1111,7 @@
             .circular-progress {
                 width: 200px;
                 height: 200px;
+                margin: 0 auto;
             }
 
             .circular-progress circle {
@@ -1192,7 +1213,7 @@
             }
 
             .contact-info-section {
-                width: 100%;
+                display: none;
             }
 
             .contact-info-title {
@@ -1264,6 +1285,18 @@
     </style>
 </head>
 <body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var btn = document.getElementById('mobile-menu-button');
+            var menu = document.getElementById('mobile-menu');
+            if (btn && menu) {
+                btn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    menu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
     <div class="glow-effect-1"></div>
     <div class="glow-effect-2"></div>
     
@@ -1335,17 +1368,17 @@
                 <h2 class="directions-title">{{ __('messages.home.directions.title') }}</h2>
                 
                 <div class="directions-grid">
-                    <a href="/automation" class="direction-card">
-                        <h3 class="direction-card-title">{{ __('messages.home.direction.automation.title') }}</h3>
-                        <p class="direction-card-description">
-                            {{ __('messages.home.direction.automation.desc') }}
-                        </p>
-                    </a>
-
                     <a href="/design" class="direction-card">
                         <h3 class="direction-card-title">{{ __('messages.home.direction.design.title') }}</h3>
                         <p class="direction-card-description">
                             {{ __('messages.home.direction.design.desc') }}
+                        </p>
+                    </a>
+
+                    <a href="/automation" class="direction-card">
+                        <h3 class="direction-card-title">{{ __('messages.home.direction.automation.title') }}</h3>
+                        <p class="direction-card-description">
+                            {{ __('messages.home.direction.automation.desc') }}
                         </p>
                     </a>
 
@@ -1366,7 +1399,7 @@
                 <div class="construction-card">
                     <!-- Большой круг -->
                     <div class="circular-progress">
-                        <svg viewBox="0 0 250 250" style="transform: rotate(-90deg); width:250px; height:250px;">
+                        <svg viewBox="0 0 250 250" style="transform: rotate(-90deg); width:100%; height:100%;">
                             <circle cx="125" cy="125" r="108" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="12"/>
                             <circle id="progress-circle" cx="125" cy="125" r="108" fill="none" stroke="#7C3AED" stroke-width="12"
                                 stroke-linecap="round"

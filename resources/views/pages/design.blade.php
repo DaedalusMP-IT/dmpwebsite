@@ -127,7 +127,7 @@
         line-height: 48px;
         color: #F8F3FC;
         margin-bottom: 50px;
-        margin-top: 100px;
+        margin-top: 0;
     }
     
     /* Services Grid */
@@ -135,7 +135,7 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
-        margin-top: 70px;
+        margin-top: 0;
     }
     
     .service-card {
@@ -455,15 +455,15 @@
         }
 
         .hero-section {
-            height: auto;
-            min-height: 500px;
+            height: 70vh;
+            min-height: 70vh;
             padding: 0;
             display: flex;
             align-items: flex-end;
         }
 
         .hero-content {
-            padding: 0 20px 50px;
+            padding: 0 20px 60px;
             text-align: center;
             display: flex;
             flex-direction: column;

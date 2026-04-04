@@ -388,14 +388,14 @@
         }
 
         .hero-section {
-            height: auto;
-            min-height: 500px;
+            height: 70vh;
+            min-height: 70vh;
             display: flex;
             align-items: flex-end;
         }
 
         .hero-content {
-            padding: 0 20px 50px;
+            padding: 0 20px 60px;
             width: 100%;
             text-align: center;
             display: flex;

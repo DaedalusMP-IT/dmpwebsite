@@ -36,6 +36,7 @@
     </style>
     
     @stack('styles')
+    @yield('styles')
 </head>
 <body class="antialiased">
     

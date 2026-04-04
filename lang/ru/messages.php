@@ -23,9 +23,9 @@ return [
     // Home Page
     'home.title' => 'DAEDALUS - Главная',
     'home.hero.description' => 'Daedalus - это команда профессионалов, специализирующихся на разработке передовых технологических решений для бизнеса. Мы создаем системы автоматизации, проектируем инновационные решения и внедряем AR/VR технологии.',
-    'home.directions.title' => 'Направления работы',
-    'home.direction.automation.title' => 'Автоматизация',
-    'home.direction.automation.desc' => 'Комплексная автоматизация бизнес-процессов, оптимизация производства и внедрение систем управления',
+    'home.directions.title' => 'Направления работ',
+    'home.direction.automation.title' => 'BIM',
+    'home.direction.automation.desc' => 'Цифровое проектирование и информационное моделирование зданий и промышленных объектов на базе BIM-технологий',
     'home.direction.design.title' => 'Проектирование',
     'home.direction.design.desc' => 'Разработка проектной документации, 3D-моделирование и техническое проектирование объектов',
     'home.direction.arvr.title' => 'AR/VR',
