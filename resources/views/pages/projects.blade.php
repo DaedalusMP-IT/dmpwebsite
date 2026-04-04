@@ -26,6 +26,7 @@
     .projects-page {
         font-family: 'Involve', sans-serif;
         background: #10022B;
+        color: #F8F3FC;
         min-height: 100vh;
         position: relative;
         overflow-x: hidden;
@@ -181,11 +182,11 @@
         font-weight: 400;
         font-size: 14px;
         line-height: 20px;
-        color: rgba(248, 243, 252, 0.7);
+        color: rgba(248, 243, 252, 0.7) !important;
     }
 
     .project-detail strong {
-        color: #F8F3FC;
+        color: #F8F3FC !important;
         font-weight: 600;
     }
 
@@ -266,8 +267,8 @@
                 </div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
-                    <h3 class="project-name">"ГОРНОРУДНАЯ КОМПАНИЯ “САРЫ АРКА"</h3>
-                    <p class="project-description">
+                    <h3 class=”project-name”>”ГОРНОРУДНАЯ КОМПАНИЯ “САРЫ АРКА”</h3>
+                    <p class=”project-description”>
                         • Строительство гидрометаллургического завода попроизводству сульфата никеля<br>
                         • Проектирование технологической схемы<br>
                         • Подбор оборудования<br>
@@ -280,10 +281,10 @@
                         • Прохождение государственной экспертизы<br>
                         • Получение разрешения на строительство
                     </p>
-                    <div class="project-details">
-                        <div class="project-detail"><strong>Площадь:</strong> 50 000 м²</div>
-                        <div class="project-detail"><strong>Срок реализации:</strong> 18 месяцев</div>
-                        <div class="project-detail"><strong>Год:</strong> 2025</div>
+                    <div class=”project-details”>
+                        <div class=”project-detail”><strong>Классификация объекта:</strong> Гидрометаллургический завод по производству сульфата никеля</div>
+                        <div class=”project-detail”><strong>Срок реализации:</strong> 9 месяцев</div>
+                        <div class=”project-detail”><strong>Год:</strong> 2024-2025</div>
                     </div>
                 </div>
             </div>
@@ -311,9 +312,9 @@
                         • Получение разрешения на строительство
                     </p>
                     <div class="project-details">
-                        <div class="project-detail"><strong>Площадь:</strong> 50 000 м²</div>
-                        <div class="project-detail"><strong>Срок реализации:</strong> 18 месяцев</div>
-                        <div class="project-detail"><strong>Год:</strong> 2025</div>
+                        <div class="project-detail"><strong>Классификация объекта:</strong> Опреснительный завод на берегу Каспийского моря</div>
+                        <div class="project-detail"><strong>Срок реализации:</strong> 10 месяцев</div>
+                        <div class="project-detail"><strong>Год:</strong> 2023-2024</div>
                     </div>
                 </div>
             </div>
@@ -328,7 +329,7 @@
                 </div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
-                    <h3 class="project-name">АО "MB Project Partners"</h3> 
+                    <h3 class="project-name">АО "MB Project Partners"</h3>
                     <p class="project-description">
                         • Строительство Фиброцементного завода в г. Алматы<br>
                         • Выдача заданий на изыскания<br>
@@ -341,9 +342,9 @@
                         • Получение разрешения на строительство
                     </p>
                     <div class="project-details">
-                        <div class="project-detail"><strong>Площадь:</strong> 50 000 м²</div>
-                        <div class="project-detail"><strong>Срок реализации:</strong> 18 месяцев</div>
-                        <div class="project-detail"><strong>Год:</strong> 2025</div>
+                        <div class="project-detail"><strong>Классификация объекта:</strong> Фиброцементный завод</div>
+                        <div class="project-detail"><strong>Срок реализации:</strong> 4 месяца</div>
+                        <div class="project-detail"><strong>Год:</strong> 2023</div>
                     </div>
                 </div>
             </div>
@@ -358,8 +359,8 @@
                 </div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
-                    <h3 class="project-name">TOO “CARAVAN RESOURCES GROUP”</h3> 
-                    <p class="project-description">
+                    <h3 class=”project-name”>TOO “CARAVAN RESOURCES GROUP”</h3>
+                    <p class=”project-description”>
                         • Строительство горно-перерабатывающего комплекса
                         Алмалы-2 по технологии кучного выщелачивания вторичных
                         руд производительностью до 30 тыс.тонн катодной меди в год
@@ -368,44 +369,17 @@
                         • Детальное проектирование BIM<br>
                         • Компоновка объектов и технологического оборудования<br>
                         • Разработка 3D чертежа<br>
-                        • Прохождение государственной экспертизы с получениемположительного заключения<br>
+                        • Прохождение государственной экспертизы с получением положительного заключения<br>
                         • Смета
                     </p>
-                    <div class="project-details">
-                        <div class="project-detail"><strong>Площадь:</strong> 50 000 м²</div>
-                        <div class="project-detail"><strong>Срок реализации:</strong> 18 месяцев</div>
-                        <div class="project-detail"><strong>Год:</strong> 2025</div>
+                    <div class=”project-details”>
+                        <div class=”project-detail”><strong>Классификация объекта:</strong> Кучное выщелачивание вторичных руд для получения катодной меди</div>
+                        <div class=”project-detail”><strong>Срок реализации:</strong> 6 месяцев</div>
+                        <div class=”project-detail”><strong>Год:</strong> 2023-2024</div>
                     </div>
                 </div>
             </div>
 
-            <div class="project-card">
-                <div class="project-images">
-                    <div class="project-image-wrapper">
-                        <div class="project-image"></div>
-                        <div class="project-image"></div>
-                        <div class="project-image"></div>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <p class="project-category">Промышленное строительство</p>
-                    <h3 class="project-name">ТОО “РИДДЕР-ПОЛИМЕТАЛЛ“</h3> 
-                    <p class="project-description">
-                        • Выполнение работ по разработке технико-экономического обоснования (ТЭО)<br>
-                        • Проект “Строительство обогатительной фабрики по переработке полиметаллической руды месторождения «Стрежанское»<br>
-                        • Разработка технико-экономического обоснования и инвестиции в проект<br>
-                        • DCF модель для проекта по строительству<br>
-                        • Финансовая экономическая модель предприятия, вычисление CAPEX & OPEX<br>
-                        • Разработка Эскизного проекта<br>
-                        • Предварительная посадка завода в 3D Генплан на месторождений «Стрежанское»
-                    </p>
-                    <div class="project-details">
-                        <div class="project-detail"><strong>Площадь:</strong> 50 000 м²</div>
-                        <div class="project-detail"><strong>Срок реализации:</strong> 18 месяцев</div>
-                        <div class="project-detail"><strong>Год:</strong> 2025</div>
-                    </div>
-                </div>
-            </div>
 
              <div class="project-card">
                 <div class="project-images">
@@ -417,8 +391,8 @@
                 </div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
-                    <h3 class="project-name">ТОО “RESOURCES CAPITAL GROUP“</h3> 
-                    <p class="project-description">
+                    <h3 class=”project-name”>ТОО “RESOURCES CAPITAL GROUP”</h3>
+                    <p class=”project-description”>
                         • Выполнение работ по разработке технико-экономического обоснования (ТЭО)<br>
                         • Финансово-экономическая модель проекта, оценка CAPEX / OPEX и эффективности<br>
                         • Горная, геологическая и гидрогеологическая части (параметры разработки месторождения, геологические и гидрогеологические условия)<br>
@@ -428,10 +402,10 @@
                         • Экологическая оценка и природоохранные мероприятия<br>
                         • Организация строительства, календарное планирование и анализ рисков<br>
                     </p>
-                    <div class="project-details">
-                        <div class="project-detail"><strong>Площадь:</strong> 50 000 м²</div>
-                        <div class="project-detail"><strong>Срок реализации:</strong> 18 месяцев</div>
-                        <div class="project-detail"><strong>Год:</strong> 2025</div>
+                    <div class=”project-details”>
+                        <div class=”project-detail”><strong>Классификация объекта:</strong> Обогащение и металлургия вольфрамовых руд</div>
+                        <div class=”project-detail”><strong>Срок реализации:</strong> 12 месяцев</div>
+                        <div class=”project-detail”><strong>Год:</strong> 2024-2025</div>
                     </div>
                 </div>
             </div>
@@ -446,7 +420,7 @@
                 </div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
-                    <h3 class="project-name">АО «АЛЮМИНИЙ КАЗАХСТАНА»</h3> 
+                    <h3 class="project-name">АО «АЛЮМИНИЙ КАЗАХСТАНА»</h3>
                     <p class="project-description">
                         • Выполнение работ по адаптации проекта «Строительство участка продукционной фильтрации и вертикальных печей кальцинации на ПАЗ», г. Павлодар<br>
                         • Проектирование полной технологической схемы производства<br>
@@ -456,9 +430,9 @@
                         • Прохождение государственной экспертизы
                     </p>
                     <div class="project-details">
-                        <div class="project-detail"><strong>Площадь:</strong> 50 000 м²</div>
-                        <div class="project-detail"><strong>Срок реализации:</strong> 18 месяцев</div>
-                        <div class="project-detail"><strong>Год:</strong> 2025</div>
+                        <div class="project-detail"><strong>Классификация объекта:</strong> Строительство участка продукционной фильтрации и вертикальных печей кальцинации</div>
+                        <div class="project-detail"><strong>Срок реализации:</strong> 12 месяцев</div>
+                        <div class="project-detail"><strong>Год:</strong> 2026</div>
                     </div>
                 </div>
             </div>
@@ -473,9 +447,9 @@
                 </div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
-                    <h3 class="project-name">АО «ТРАНСНАЦИОНАЛЬНАЯ КОМПАНИЯ «КАЗХРОМ»</h3> 
-                    <p class="project-description">
-                        • Выполнение работ по адаптации проекта “Утилизационная электростанция ферросплавных газов 
+                    <h3 class=”project-name”>АО «ТРАНСНАЦИОНАЛЬНАЯ КОМПАНИЯ «КАЗХРОМ»</h3>
+                    <p class=”project-description”>
+                        • Выполнение работ по адаптации проекта “Утилизационная электростанция ферросплавных газов
                         плавильного цеха № 4 Актюбинского завода ферросплавов, Республики Казахстан” <br>
                         • Адаптация проектной документации Китайской инженерной корпорации «Тяньчэн» к требованиям нормативно-технической базы РК<br>
                         • Подготовка экспертного заключения о соответствии проектных решений действующим нормативам РК<br>
@@ -483,10 +457,10 @@
                         • Разработка и выпуск рабочей (строительной) документации<br>
                         • Сопровождение проекта при прохождении государственной экспертизы
                     </p>
-                    <div class="project-details">
-                        <div class="project-detail"><strong>Площадь:</strong> 50 000 м²</div>
-                        <div class="project-detail"><strong>Срок реализации:</strong> 18 месяцев</div>
-                        <div class="project-detail"><strong>Год:</strong> 2025</div>
+                    <div class=”project-details”>
+                        <div class=”project-detail”><strong>Классификация объекта:</strong> Утилизационная электростанция ферросплавных газов</div>
+                        <div class=”project-detail”><strong>Срок реализации:</strong> 12 месяцев</div>
+                        <div class=”project-detail”><strong>Год:</strong> 2026</div>
                     </div>
                 </div>
             </div>

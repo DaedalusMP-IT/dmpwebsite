@@ -181,16 +181,16 @@
 
     .services-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 20px;
         width: 1150px;
     }
 
     .service-card {
         position: relative;
-        height: 370px;
+        height: 280px;
         border-radius: 20px;
-        padding: 40px;
+        padding: 50px 50px;
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -201,7 +201,7 @@
     }
 
     .service-card:hover {
-        height: 520px;
+        height: 380px;
     }
 
     .service-card:nth-child(1) {
@@ -639,14 +639,6 @@
 
             <div class="service-card">
                 <div class="service-info">
-                    <h3 class="service-title">4D и 5D моделирование</h3>
-                    <p class="service-description">Привязка графика строительства и сметной документации к BIM-модели для точного планирования сроков и бюджета</p>
-                </div>
-                <div class="service-arrow"></div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-info">
                     <h3 class="service-title">Разработка стандарта BIM для предприятия</h3>
                     <p class="service-description">Создание корпоративных требований к информационному моделированию, шаблонов и регламентов для устойчивого внедрения BIM</p>
                 </div>
@@ -661,13 +653,6 @@
                 <div class="service-arrow"></div>
             </div>
 
-            <div class="service-card">
-                <div class="service-info">
-                    <h3 class="service-title">Передача исполнительной BIM-модели</h3>
-                    <p class="service-description">Формирование и передача заказчику актуализированной модели «как построено» для последующей эксплуатации объекта</p>
-                </div>
-                <div class="service-arrow"></div>
-            </div>
         </div>
     </section>
 

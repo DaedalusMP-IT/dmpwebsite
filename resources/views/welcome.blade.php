@@ -1361,27 +1361,53 @@
         <!-- Construction Stages Section -->
         <section class="construction-section">
             <div class="construction-container">
-                <h2 class="construction-title">Этапы проектирования и строительства</h2>
-                
-                <div class="construction-grid" id="construction-grid">
-                    <div class="construction-card" id="single-construction-card">
-                        <div class="circular-progress">
-                            <svg viewBox="0 0 200 200">
-                                <circle class="bg-circle" cx="100" cy="100" r="90"></circle>
-                                <circle class="progress-circle" cx="100" cy="100" r="90"></circle>
-                            </svg>
-                            <div class="percentage-text" id="stage-percentage">0%</div>
-                        </div>
-                        <div class="construction-info">
-                            <h3 class="construction-stage-title" id="stage-title">ТЭО - ФЭМ</h3>
-                            <p class="construction-stage-description" id="stage-description">
-                                Технико-экономическое обоснование и финансово-экономическая модель проекта. Анализ целесообразности и эффективности инвестиций
-                            </p>
-                            <p class="construction-stage-time" id="stage-time">1-30 дней</p>
-                        </div>
+                <h2 class="construction-title">Этапы проектирования<br><span style="font-weight: 400;">проектно-инженерных работ</span></h2>
+                <div style="display: flex; flex-direction: column; gap: 32px; margin-top: 50px;">
+
+                    <div style="display: flex; align-items: center; gap: 30px;">
+                        <svg width="80" height="80" viewBox="0 0 80 80" style="flex-shrink:0;">
+                            <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(248,243,252,0.15)" stroke-width="6"/>
+                            <circle cx="40" cy="40" r="34" fill="none" stroke="#7C3AED" stroke-width="6"
+                                stroke-dasharray="213.6" stroke-dashoffset="181.6"
+                                stroke-linecap="round" transform="rotate(-90 40 40)"/>
+                            <text x="40" y="45" text-anchor="middle" fill="#F8F3FC" font-size="14" font-family="Involve,sans-serif" font-weight="600">15%</text>
+                        </svg>
+                        <span style="font-size: 20px; color: #F8F3FC; font-family: 'Involve', sans-serif; font-weight: 400;">ТЭО - ФЭМ</span>
                     </div>
-                    
-                    <div class="stage-indicator" id="stage-indicator"></div>
+
+                    <div style="display: flex; align-items: center; gap: 30px;">
+                        <svg width="80" height="80" viewBox="0 0 80 80" style="flex-shrink:0;">
+                            <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(248,243,252,0.15)" stroke-width="6"/>
+                            <circle cx="40" cy="40" r="34" fill="none" stroke="#7C3AED" stroke-width="6"
+                                stroke-dasharray="213.6" stroke-dashoffset="106.8"
+                                stroke-linecap="round" transform="rotate(-90 40 40)"/>
+                            <text x="40" y="45" text-anchor="middle" fill="#F8F3FC" font-size="14" font-family="Involve,sans-serif" font-weight="600">50%</text>
+                        </svg>
+                        <span style="font-size: 20px; color: #F8F3FC; font-family: 'Involve', sans-serif; font-weight: 400;">Цифровое ПРОЕКТИРОВАНИЕ BIM</span>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 30px;">
+                        <svg width="80" height="80" viewBox="0 0 80 80" style="flex-shrink:0;">
+                            <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(248,243,252,0.15)" stroke-width="6"/>
+                            <circle cx="40" cy="40" r="34" fill="none" stroke="#7C3AED" stroke-width="6"
+                                stroke-dasharray="213.6" stroke-dashoffset="42.7"
+                                stroke-linecap="round" transform="rotate(-90 40 40)"/>
+                            <text x="40" y="45" text-anchor="middle" fill="#F8F3FC" font-size="14" font-family="Involve,sans-serif" font-weight="600">80%</text>
+                        </svg>
+                        <span style="font-size: 20px; color: #F8F3FC; font-family: 'Involve', sans-serif; font-weight: 400;">Рабочий проект</span>
+                    </div>
+
+                    <div style="display: flex; align-items: center; gap: 30px;">
+                        <svg width="80" height="80" viewBox="0 0 80 80" style="flex-shrink:0;">
+                            <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(248,243,252,0.15)" stroke-width="6"/>
+                            <circle cx="40" cy="40" r="34" fill="none" stroke="#7C3AED" stroke-width="6"
+                                stroke-dasharray="213.6" stroke-dashoffset="0"
+                                stroke-linecap="round" transform="rotate(-90 40 40)"/>
+                            <text x="40" y="45" text-anchor="middle" fill="#F8F3FC" font-size="14" font-family="Involve,sans-serif" font-weight="600">100%</text>
+                        </svg>
+                        <span style="font-size: 20px; color: #F8F3FC; font-family: 'Involve', sans-serif; font-weight: 400;">Прохождение экспертизы</span>
+                    </div>
+
                 </div>
             </div>
         </section>
@@ -1406,8 +1432,8 @@
                         <div class="project-bg"></div>
                         <div class="project-overlay">
                             <div class="project-info">
-                                <div class="project-overlay-title">РИДДЕР-ПОЛИМЕТАЛЛ</div>
-                                <div class="project-overlay-description">Обогатительная фабрика по переработке полиметаллической руды</div>
+                                <div class="project-overlay-title">RESOURCES CAPITAL GROUP</div>
+                                <div class="project-overlay-description">Горно-обогатительный комбинат на месторождении Акмая в Карагандинской обл.</div>
                             </div>
                         </div>
                     </div>
@@ -1418,16 +1444,6 @@
                             <div class="project-info">
                                 <div class="project-overlay-title">AK SU KMG</div>
                                 <div class="project-overlay-description">Новый опреснительный завод на берегу Каспийского моря</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <div class="project-bg"></div>
-                        <div class="project-overlay">
-                            <div class="project-info">
-                                <div class="project-overlay-title">RESOURCES CAPITAL GROUP</div>
-                                <div class="project-overlay-description">Горно-обогатительный комбинат на месторождении Акмая в Карагандинской обл.</div>
                             </div>
                         </div>
                     </div>

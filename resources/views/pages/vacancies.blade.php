@@ -498,24 +498,48 @@
             
             <div class="vacancy-card">
                 <div class="vacancy-info">
-                    <div class="vacancy-title">Full Stack Developer</div>
-                    <div class="vacancy-description">Требуется опыт работы с Laravel, Vue.js, React. Разработка веб-приложений и интеграция с внешними сервисами.</div>
+                    <div class="vacancy-title">Инженер-проектировщик раздела ОВ</div>
+                    <div class="vacancy-description">Разработка проектной и рабочей документации систем отопления, вентиляции и кондиционирования. Проведение теплотехнических расчётов, подбор оборудования, прохождение экспертизы.</div>
                 </div>
                 <button class="vacancy-button">{{ __('messages.apply') }}</button>
             </div>
-            
+
             <div class="vacancy-card">
                 <div class="vacancy-info">
-                    <div class="vacancy-title">AR/VR Developer</div>
-                    <div class="vacancy-description">Опыт разработки приложений дополненной и виртуальной реальности. Работа с Unity, Unreal Engine и современными VR-платформами.</div>
+                    <div class="vacancy-title">Инженер-проектировщик раздела ВК</div>
+                    <div class="vacancy-description">Проектирование систем водоснабжения и водоотведения промышленных и гражданских объектов. Разработка схем, гидравлические расчёты, подбор насосного оборудования.</div>
                 </div>
                 <button class="vacancy-button">{{ __('messages.apply') }}</button>
             </div>
-            
+
             <div class="vacancy-card">
                 <div class="vacancy-info">
-                    <div class="vacancy-title">Project Manager</div>
-                    <div class="vacancy-description">Управление проектами в сфере автоматизации и промышленного строительства. Опыт работы с командами от 5 человек.</div>
+                    <div class="vacancy-title">Инженер-проектировщик раздела ТХ</div>
+                    <div class="vacancy-description">Разработка технологических решений для промышленных объектов. Компоновка оборудования, разработка технологических схем, спецификаций и регламентов.</div>
+                </div>
+                <button class="vacancy-button">{{ __('messages.apply') }}</button>
+            </div>
+
+            <div class="vacancy-card">
+                <div class="vacancy-info">
+                    <div class="vacancy-title">Инженер-проектировщик раздела КЖ</div>
+                    <div class="vacancy-description">Проектирование железобетонных конструкций зданий и сооружений. Расчёт несущих конструкций, разработка армирования, сопровождение при экспертизе.</div>
+                </div>
+                <button class="vacancy-button">{{ __('messages.apply') }}</button>
+            </div>
+
+            <div class="vacancy-card">
+                <div class="vacancy-info">
+                    <div class="vacancy-title">Инженер-проектировщик раздела КМ</div>
+                    <div class="vacancy-description">Проектирование металлических конструкций. Расчёт несущих элементов, разработка КМ и КМД, работа с Tekla Structures или аналогами.</div>
+                </div>
+                <button class="vacancy-button">{{ __('messages.apply') }}</button>
+            </div>
+
+            <div class="vacancy-card">
+                <div class="vacancy-info">
+                    <div class="vacancy-title">Инженер-проектировщик раздела ЭО</div>
+                    <div class="vacancy-description">Разработка проектной документации по электроснабжению и электрооборудованию. Расчёт нагрузок, проектирование щитового оборудования, кабельных трасс, систем заземления.</div>
                 </div>
                 <button class="vacancy-button">{{ __('messages.apply') }}</button>
             </div>

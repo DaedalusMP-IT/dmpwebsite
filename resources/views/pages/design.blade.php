@@ -729,8 +729,8 @@
                     <div class="project-bg"></div>
                     <div class="project-overlay">
                         <div class="project-info">
-                            <div class="project-title">РИДДЕР-ПОЛИМЕТАЛЛ</div>
-                            <div class="project-description">Обогатительная фабрика по переработке полиметаллической руды</div>
+                            <div class="project-title">RESOURCES CAPITAL GROUP</div>
+                            <div class="project-description">Горно-обогатительный комбинат на месторождении Акмая в Карагандинской обл.</div>
                         </div>
                     </div>
                 </div>
@@ -741,16 +741,6 @@
                         <div class="project-info">
                             <div class="project-title">AK SU KMG</div>
                             <div class="project-description">Новый опреснительный завод на берегу Каспийского моря</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-bg"></div>
-                    <div class="project-overlay">
-                        <div class="project-info">
-                            <div class="project-title">RESOURCES CAPITAL GROUP</div>
-                            <div class="project-description">Горно-обогатительный комбинат на месторождении Акмая в Карагандинской обл.</div>
                         </div>
                     </div>
                 </div>
