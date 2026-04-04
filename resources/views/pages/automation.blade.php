@@ -176,7 +176,8 @@
         line-height: 48px;
         color: #F8F3FC;
         margin-bottom: 60px;
-        width: 962px;
+        max-width: 962px;
+        width: 100%;
     }
 
     .services-grid {
@@ -188,7 +189,7 @@
 
     .service-card {
         position: relative;
-        height: 280px;
+        height: 370px;
         border-radius: 20px;
         padding: 50px 50px;
         display: flex;
@@ -201,7 +202,7 @@
     }
 
     .service-card:hover {
-        height: 380px;
+        height: 520px;
     }
 
     .service-card:nth-child(1) {
@@ -564,7 +565,8 @@
             height: 60px;
         }
 
-        .submit-button {
+        .submit-button,
+        .form-button {
             width: 100%;
             font-size: 14px;
             padding: 16px 32px;
@@ -592,9 +594,14 @@
         }
 
         .hero-button,
-        .submit-button {
+        .submit-button,
+        .form-button {
             padding: 10px 20px;
             font-size: 12px;
+        }
+
+        .form-input {
+            width: 100%;
         }
     }
 </style>

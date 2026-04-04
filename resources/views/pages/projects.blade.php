@@ -2,27 +2,8 @@
 
 @section('title', 'Проекты - DAEDALUS')
 
-@push('styles')
+@section('content')
 <style>
-    @font-face {
-        font-family: 'Involve';
-        src: url('/fonts/Involve-Regular.woff2') format('woff2');
-        font-weight: 400;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: 'Involve';
-        src: url('/fonts/Involve-SemiBold.woff2') format('woff2');
-        font-weight: 600;
-        font-style: normal;
-    }
-    @font-face {
-        font-family: 'Involve';
-        src: url('/fonts/Involve-Bold.woff2') format('woff2');
-        font-weight: 700;
-        font-style: normal;
-    }
-
     .projects-page {
         font-family: 'Involve', sans-serif;
         background: #10022B;
@@ -32,8 +13,7 @@
         overflow-x: hidden;
         padding: 120px 0 80px;
     }
-    
-    /* Декоративные световые эффекты */
+
     .glow-effect-1 {
         position: absolute;
         width: 389px;
@@ -44,7 +24,7 @@
         filter: blur(350px);
         z-index: 0;
     }
-    
+
     .glow-effect-2 {
         position: absolute;
         width: 389px;
@@ -119,25 +99,13 @@
         filter: blur(80px);
     }
 
-    .project-card:nth-child(1) .project-images::before {
-        background: rgba(124, 58, 237, 0.6);
-    }
-
-    .project-card:nth-child(2) .project-images::before {
-        background: rgba(168, 85, 247, 0.6);
-    }
-
-    .project-card:nth-child(3) .project-images::before {
-        background: rgba(236, 72, 153, 0.6);
-    }
-
-    .project-card:nth-child(4) .project-images::before {
-        background: rgba(59, 130, 246, 0.6);
-    }
-
-    .project-card:nth-child(5) .project-images::before {
-        background: rgba(124, 58, 237, 0.6);
-    }
+    .project-card:nth-child(1) .project-images::before { background: rgba(124, 58, 237, 0.6); }
+    .project-card:nth-child(2) .project-images::before { background: rgba(168, 85, 247, 0.6); }
+    .project-card:nth-child(3) .project-images::before { background: rgba(236, 72, 153, 0.6); }
+    .project-card:nth-child(4) .project-images::before { background: rgba(59, 130, 246, 0.6); }
+    .project-card:nth-child(5) .project-images::before { background: rgba(124, 58, 237, 0.6); }
+    .project-card:nth-child(6) .project-images::before { background: rgba(168, 85, 247, 0.6); }
+    .project-card:nth-child(7) .project-images::before { background: rgba(236, 72, 153, 0.6); }
 
     .project-info {
         padding: 30px;
@@ -182,94 +150,78 @@
         font-weight: 400;
         font-size: 14px;
         line-height: 20px;
-        color: rgba(248, 243, 252, 0.7) !important;
+        color: rgba(248, 243, 252, 0.7);
     }
 
     .project-detail strong {
-        color: #F8F3FC !important;
+        color: #F8F3FC;
         font-weight: 600;
     }
 
     @media (max-width: 968px) {
-        .projects-container {
-            padding: 40px 20px 80px;
+        .projects-page {
+            padding: 80px 0 60px;
         }
-
+        .projects-title {
+            font-size: 32px;
+            line-height: 40px;
+            margin-bottom: 40px;
+        }
         .projects-list {
             grid-template-columns: 1fr;
             gap: 24px;
         }
-
-        .projects-title {
-            font-size: 32px;
-            line-height: 40px;
-        }
-
         .project-name {
             font-size: 18px;
             line-height: 24px;
         }
-
-        .project-category {
-            font-size: 12px;
-        }
-
         .project-description {
-            font-size: 13px;
+            font-size: 14px;
             line-height: 20px;
         }
-
-        .project-detail {
-            font-size: 12px;
+        .project-images {
+            height: 200px;
         }
     }
 
     @media (max-width: 480px) {
         .projects-title {
-            font-size: 28px;
-            line-height: 36px;
+            font-size: 26px;
+            line-height: 34px;
         }
-
         .project-info {
             padding: 20px;
         }
-
         .project-name {
             font-size: 16px;
             line-height: 22px;
         }
-
         .project-description {
-            font-size: 12px;
+            font-size: 13px;
             line-height: 18px;
         }
-    }
+        .project-detail {
+            font-size: 12px;
+        }
     }
 </style>
-@endpush
 
-@section('content')
 <div class="projects-page">
     <div class="glow-effect-1"></div>
     <div class="glow-effect-2"></div>
-    
+
     <div class="projects-container">
         <h1 class="projects-title">{{ __('messages.projects.title') }}</h1>
-        
+
         <div class="projects-list">
-             <div class="project-card">
-                <div class="project-images">
-                    <div class="project-image-wrapper">
-                        <div class="project-image"></div>
-                        <div class="project-image"></div>
-                        <div class="project-image"></div>
-                    </div>
-                </div>
+
+            <div class="project-card">
+                <div class="project-images"></div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
-                    <h3 class=”project-name”>”ГОРНОРУДНАЯ КОМПАНИЯ “САРЫ АРКА”</h3>
-                    <p class=”project-description”>
-                        • Строительство гидрометаллургического завода попроизводству сульфата никеля<br>
+                    <h3 class="project-name">"ГОРНОРУДНАЯ КОМПАНИЯ "САРЫ АРКА"</h3>
+                    <p class="project-description">
+                        • Строительство гидрометаллургического завода по производству сульфата никеля<br>
                         • Проектирование технологической схемы<br>
                         • Подбор оборудования<br>
                         • Выдача заданий на изыскания<br>
@@ -281,22 +233,39 @@
                         • Прохождение государственной экспертизы<br>
                         • Получение разрешения на строительство
                     </p>
-                    <div class=”project-details”>
-                        <div class=”project-detail”><strong>Классификация объекта:</strong> Гидрометаллургический завод по производству сульфата никеля</div>
-                        <div class=”project-detail”><strong>Срок реализации:</strong> 9 месяцев</div>
-                        <div class=”project-detail”><strong>Год:</strong> 2024-2025</div>
+                    <div class="project-details">
+                        <div class="project-detail"><strong>Классификация объекта:</strong> Гидрометаллургический завод по производству сульфата никеля</div>
+                        <div class="project-detail"><strong>Срок реализации:</strong> 9 месяцев</div>
+                        <div class="project-detail"><strong>Год:</strong> 2024-2025</div>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-images">
-                    <div class="project-image-wrapper">
-                        <div class="project-image"></div>
-                        <div class="project-image"></div>
-                        <div class="project-image"></div>
+                <div class="project-images"></div>
+                <div class="project-info">
+                    <p class="project-category">Промышленное строительство</p>
+                    <h3 class="project-name">ТОО "RESOURCES CAPITAL GROUP"</h3>
+                    <p class="project-description">
+                        • Выполнение работ по разработке технико-экономического обоснования (ТЭО)<br>
+                        • Финансово-экономическая модель проекта, оценка CAPEX / OPEX и эффективности<br>
+                        • Горная, геологическая и гидрогеологическая части<br>
+                        • Технологическая часть (технологические схемы добычи и переработки сырья)<br>
+                        • Генеральный план, транспортная инфраструктура и инженерные сети<br>
+                        • Автоматизация, КИПиА и системы управления<br>
+                        • Экологическая оценка и природоохранные мероприятия<br>
+                        • Организация строительства, календарное планирование и анализ рисков
+                    </p>
+                    <div class="project-details">
+                        <div class="project-detail"><strong>Классификация объекта:</strong> Обогащение и металлургия вольфрамовых руд</div>
+                        <div class="project-detail"><strong>Срок реализации:</strong> 12 месяцев</div>
+                        <div class="project-detail"><strong>Год:</strong> 2024-2025</div>
                     </div>
                 </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-images"></div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
                     <h3 class="project-name">"AK SU KMG"</h3>
@@ -320,13 +289,7 @@
             </div>
 
             <div class="project-card">
-                <div class="project-images">
-                    <div class="project-image-wrapper">
-                        <div class="project-image"></div>
-                        <div class="project-image"></div>
-                        <div class="project-image"></div>
-                    </div>
-                </div>
+                <div class="project-images"></div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
                     <h3 class="project-name">АО "MB Project Partners"</h3>
@@ -349,22 +312,13 @@
                 </div>
             </div>
 
-             <div class="project-card">
-                <div class="project-images">
-                    <div class="project-image-wrapper">
-                        <div class="project-image"></div>
-                        <div class="project-image"></div>
-                        <div class="project-image"></div>
-                    </div>
-                </div>
+            <div class="project-card">
+                <div class="project-images"></div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
-                    <h3 class=”project-name”>TOO “CARAVAN RESOURCES GROUP”</h3>
-                    <p class=”project-description”>
-                        • Строительство горно-перерабатывающего комплекса
-                        Алмалы-2 по технологии кучного выщелачивания вторичных
-                        руд производительностью до 30 тыс.тонн катодной меди в год
-                        в Шетском районе Карагандинской области<br>
+                    <h3 class="project-name">TOO "CARAVAN RESOURCES GROUP"</h3>
+                    <p class="project-description">
+                        • Строительство горно-перерабатывающего комплекса Алмалы-2 по технологии кучного выщелачивания вторичных руд производительностью до 30 тыс.тонн катодной меди в год в Шетском районе Карагандинской области<br>
                         • Модернизация технологической схемы<br>
                         • Детальное проектирование BIM<br>
                         • Компоновка объектов и технологического оборудования<br>
@@ -372,52 +326,16 @@
                         • Прохождение государственной экспертизы с получением положительного заключения<br>
                         • Смета
                     </p>
-                    <div class=”project-details”>
-                        <div class=”project-detail”><strong>Классификация объекта:</strong> Кучное выщелачивание вторичных руд для получения катодной меди</div>
-                        <div class=”project-detail”><strong>Срок реализации:</strong> 6 месяцев</div>
-                        <div class=”project-detail”><strong>Год:</strong> 2023-2024</div>
-                    </div>
-                </div>
-            </div>
-
-
-             <div class="project-card">
-                <div class="project-images">
-                    <div class="project-image-wrapper">
-                        <div class="project-image"></div>
-                        <div class="project-image"></div>
-                        <div class="project-image"></div>
-                    </div>
-                </div>
-                <div class="project-info">
-                    <p class="project-category">Промышленное строительство</p>
-                    <h3 class=”project-name”>ТОО “RESOURCES CAPITAL GROUP”</h3>
-                    <p class=”project-description”>
-                        • Выполнение работ по разработке технико-экономического обоснования (ТЭО)<br>
-                        • Финансово-экономическая модель проекта, оценка CAPEX / OPEX и эффективности<br>
-                        • Горная, геологическая и гидрогеологическая части (параметры разработки месторождения, геологические и гидрогеологические условия)<br>
-                        • Технологическая часть (технологические схемы добычи и переработки сырья)<br>
-                        • Генеральный план, транспортная инфраструктура и инженерные сети<br>
-                        • Автоматизация, КИПиА и системы управления<br>
-                        • Экологическая оценка и природоохранные мероприятия<br>
-                        • Организация строительства, календарное планирование и анализ рисков<br>
-                    </p>
-                    <div class=”project-details”>
-                        <div class=”project-detail”><strong>Классификация объекта:</strong> Обогащение и металлургия вольфрамовых руд</div>
-                        <div class=”project-detail”><strong>Срок реализации:</strong> 12 месяцев</div>
-                        <div class=”project-detail”><strong>Год:</strong> 2024-2025</div>
+                    <div class="project-details">
+                        <div class="project-detail"><strong>Классификация объекта:</strong> Кучное выщелачивание вторичных руд для получения катодной меди</div>
+                        <div class="project-detail"><strong>Срок реализации:</strong> 6 месяцев</div>
+                        <div class="project-detail"><strong>Год:</strong> 2023-2024</div>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-images">
-                    <div class="project-image-wrapper">
-                        <div class="project-image"></div>
-                        <div class="project-image"></div>
-                        <div class="project-image"></div>
-                    </div>
-                </div>
+                <div class="project-images"></div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
                     <h3 class="project-name">АО «АЛЮМИНИЙ КАЗАХСТАНА»</h3>
@@ -438,52 +356,27 @@
             </div>
 
             <div class="project-card">
-                <div class="project-images">
-                    <div class="project-image-wrapper">
-                        <div class="project-image"></div>
-                        <div class="project-image"></div>
-                        <div class="project-image"></div>
-                    </div>
-                </div>
+                <div class="project-images"></div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
-                    <h3 class=”project-name”>АО «ТРАНСНАЦИОНАЛЬНАЯ КОМПАНИЯ «КАЗХРОМ»</h3>
-                    <p class=”project-description”>
-                        • Выполнение работ по адаптации проекта “Утилизационная электростанция ферросплавных газов
-                        плавильного цеха № 4 Актюбинского завода ферросплавов, Республики Казахстан” <br>
+                    <h3 class="project-name">АО «ТРАНСНАЦИОНАЛЬНАЯ КОМПАНИЯ «КАЗХРОМ»</h3>
+                    <p class="project-description">
+                        • Выполнение работ по адаптации проекта "Утилизационная электростанция ферросплавных газов плавильного цеха № 4 Актюбинского завода ферросплавов, Республики Казахстан"<br>
                         • Адаптация проектной документации Китайской инженерной корпорации «Тяньчэн» к требованиям нормативно-технической базы РК<br>
                         • Подготовка экспертного заключения о соответствии проектных решений действующим нормативам РК<br>
-                        • Разработка, формирование и комплектация комплектов проектной и рабочей документации (альбомов)<br>
+                        • Разработка, формирование и комплектация комплектов проектной и рабочей документации<br>
                         • Разработка и выпуск рабочей (строительной) документации<br>
                         • Сопровождение проекта при прохождении государственной экспертизы
                     </p>
-                    <div class=”project-details”>
-                        <div class=”project-detail”><strong>Классификация объекта:</strong> Утилизационная электростанция ферросплавных газов</div>
-                        <div class=”project-detail”><strong>Срок реализации:</strong> 12 месяцев</div>
-                        <div class=”project-detail”><strong>Год:</strong> 2026</div>
+                    <div class="project-details">
+                        <div class="project-detail"><strong>Классификация объекта:</strong> Утилизационная электростанция ферросплавных газов</div>
+                        <div class="project-detail"><strong>Срок реализации:</strong> 12 месяцев</div>
+                        <div class="project-detail"><strong>Год:</strong> 2026</div>
                     </div>
                 </div>
             </div>
 
-
         </div>
     </div>
 </div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const projectCards = document.querySelectorAll('.project-card');
-    
-    projectCards.forEach((card, index) => {
-        const wrapper = card.querySelector('.project-image-wrapper');
-        const images = card.querySelectorAll('.project-image');
-        let currentIndex = 0;
-        
-        setInterval(() => {
-            currentIndex = (currentIndex + 1) % images.length;
-            wrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }, 3000);
-    });
-});
-</script>
 @endsection

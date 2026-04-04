@@ -508,6 +508,7 @@
             font-weight: 700;
             font-size: 64px;
             color: #F8F3FC;
+            transition: opacity 0.4s ease;
         }
 
         .construction-info {
@@ -1036,7 +1037,7 @@
 
             .construction-container {
                 width: 100%;
-                max-width: 500px;
+                max-width: 100%;
                 padding: 0 20px;
             }
 
@@ -1362,55 +1363,79 @@
         <section class="construction-section">
             <div class="construction-container">
                 <h2 class="construction-title">Этапы проектирования<br><span style="font-weight: 400;">проектно-инженерных работ</span></h2>
-                <div style="display: flex; flex-direction: column; gap: 32px; margin-top: 50px;">
-
-                    <div style="display: flex; align-items: center; gap: 30px;">
-                        <svg width="80" height="80" viewBox="0 0 80 80" style="flex-shrink:0;">
-                            <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(248,243,252,0.15)" stroke-width="6"/>
-                            <circle cx="40" cy="40" r="34" fill="none" stroke="#7C3AED" stroke-width="6"
-                                stroke-dasharray="213.6" stroke-dashoffset="181.6"
-                                stroke-linecap="round" transform="rotate(-90 40 40)"/>
-                            <text x="40" y="45" text-anchor="middle" fill="#F8F3FC" font-size="14" font-family="Involve,sans-serif" font-weight="600">15%</text>
+                <div class="construction-card">
+                    <!-- Большой круг -->
+                    <div class="circular-progress">
+                        <svg viewBox="0 0 250 250" style="transform: rotate(-90deg); width:250px; height:250px;">
+                            <circle cx="125" cy="125" r="108" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="12"/>
+                            <circle id="progress-circle" cx="125" cy="125" r="108" fill="none" stroke="#7C3AED" stroke-width="12"
+                                stroke-linecap="round"
+                                stroke-dasharray="678.6"
+                                stroke-dashoffset="678.6"
+                                style="transition: stroke-dashoffset 1.2s ease;"/>
                         </svg>
-                        <span style="font-size: 20px; color: #F8F3FC; font-family: 'Involve', sans-serif; font-weight: 400;">ТЭО - ФЭМ</span>
+                        <div class="percentage-text" id="percent-text">0%</div>
                     </div>
 
-                    <div style="display: flex; align-items: center; gap: 30px;">
-                        <svg width="80" height="80" viewBox="0 0 80 80" style="flex-shrink:0;">
-                            <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(248,243,252,0.15)" stroke-width="6"/>
-                            <circle cx="40" cy="40" r="34" fill="none" stroke="#7C3AED" stroke-width="6"
-                                stroke-dasharray="213.6" stroke-dashoffset="106.8"
-                                stroke-linecap="round" transform="rotate(-90 40 40)"/>
-                            <text x="40" y="45" text-anchor="middle" fill="#F8F3FC" font-size="14" font-family="Involve,sans-serif" font-weight="600">50%</text>
-                        </svg>
-                        <span style="font-size: 20px; color: #F8F3FC; font-family: 'Involve', sans-serif; font-weight: 400;">Цифровое ПРОЕКТИРОВАНИЕ BIM</span>
+                    <!-- Текст справа -->
+                    <div class="construction-info">
+                        <div id="stage-name" class="construction-stage-title">ТЭО - ФЭМ</div>
+                        <div class="stage-indicator" id="stage-dots">
+                            <div class="stage-dot active"></div>
+                            <div class="stage-dot"></div>
+                            <div class="stage-dot"></div>
+                            <div class="stage-dot"></div>
+                        </div>
                     </div>
-
-                    <div style="display: flex; align-items: center; gap: 30px;">
-                        <svg width="80" height="80" viewBox="0 0 80 80" style="flex-shrink:0;">
-                            <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(248,243,252,0.15)" stroke-width="6"/>
-                            <circle cx="40" cy="40" r="34" fill="none" stroke="#7C3AED" stroke-width="6"
-                                stroke-dasharray="213.6" stroke-dashoffset="42.7"
-                                stroke-linecap="round" transform="rotate(-90 40 40)"/>
-                            <text x="40" y="45" text-anchor="middle" fill="#F8F3FC" font-size="14" font-family="Involve,sans-serif" font-weight="600">80%</text>
-                        </svg>
-                        <span style="font-size: 20px; color: #F8F3FC; font-family: 'Involve', sans-serif; font-weight: 400;">Рабочий проект</span>
-                    </div>
-
-                    <div style="display: flex; align-items: center; gap: 30px;">
-                        <svg width="80" height="80" viewBox="0 0 80 80" style="flex-shrink:0;">
-                            <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(248,243,252,0.15)" stroke-width="6"/>
-                            <circle cx="40" cy="40" r="34" fill="none" stroke="#7C3AED" stroke-width="6"
-                                stroke-dasharray="213.6" stroke-dashoffset="0"
-                                stroke-linecap="round" transform="rotate(-90 40 40)"/>
-                            <text x="40" y="45" text-anchor="middle" fill="#F8F3FC" font-size="14" font-family="Involve,sans-serif" font-weight="600">100%</text>
-                        </svg>
-                        <span style="font-size: 20px; color: #F8F3FC; font-family: 'Involve', sans-serif; font-weight: 400;">Прохождение экспертизы</span>
-                    </div>
-
                 </div>
             </div>
         </section>
+
+        <script>
+        (function() {
+            var stages = [
+                { name: 'ТЭО - ФЭМ',                    pct: 25  },
+                { name: 'Цифровое проектирование BIM',   pct: 50  },
+                { name: 'Рабочий проект',                pct: 80  },
+                { name: 'Прохождение экспертизы',        pct: 100 },
+            ];
+            var current = 0;
+            var circumference = 678.6;
+
+            var circle   = document.getElementById('progress-circle');
+            var pctText  = document.getElementById('percent-text');
+            var stageName= document.getElementById('stage-name');
+            var dots     = document.querySelectorAll('.stage-dot');
+
+            function setStage(i) {
+                var s = stages[i];
+                var offset = circumference - (s.pct / 100) * circumference;
+
+                circle.style.strokeDashoffset = circumference; // сброс
+                pctText.style.opacity = '0';
+                stageName.style.opacity = '0';
+
+                setTimeout(function() {
+                    circle.style.strokeDashoffset = offset;
+                    pctText.textContent = s.pct + '%';
+                    stageName.textContent = s.name;
+                    pctText.style.opacity = '1';
+                    stageName.style.opacity = '1';
+                }, 100);
+
+                dots.forEach(function(d, idx) {
+                    d.classList.toggle('active', idx === i);
+                });
+            }
+
+            setStage(0);
+
+            setInterval(function() {
+                current = (current + 1) % stages.length;
+                setStage(current);
+            }, 3000);
+        })();
+        </script>
 
         <!-- Projects Section -->
         <section class="projects-section" id="projects">
