@@ -46,6 +46,30 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Involve', sans-serif;
+        }
+
+        /* === Глобальная типографика === */
+        h1 { font-size: 54px; line-height: 1.2; font-weight: 700; }
+        h2 { font-size: 42px; line-height: 1.25; font-weight: 700; }
+        h3 { font-size: 24px; line-height: 1.3; font-weight: 700; }
+        h4 { font-size: 18px; line-height: 1.4; font-weight: 600; }
+        p  { font-size: 16px; line-height: 1.6; font-weight: 400; }
+
+        @media (max-width: 968px) {
+            h1 { font-size: 32px; }
+            h2 { font-size: 26px; }
+            h3 { font-size: 20px; }
+            h4 { font-size: 16px; }
+            p  { font-size: 14px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+            h3 { font-size: 18px; }
+            h4 { font-size: 15px; }
+            p  { font-size: 13px; }
         }
 
         html {
@@ -175,7 +199,7 @@
 
         .hero-subtitle {
             max-width: 600px;
-            color: rgba(255, 255, 255, 0.60);
+            color: #ffffff;
             font-size: 22px;
             font-family: 'Involve', sans-serif;
             font-weight: 300;
@@ -349,6 +373,8 @@
             background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            background-size: cover;
+            background-position: center;
         }
 
         /* Directions Section */
@@ -386,13 +412,13 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
+            background-size: cover;
+            background-position: center;
             text-decoration: none;
             display: block;
         }
 
         .direction-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.08);
             border-color: rgba(124, 58, 237, 0.5);
         }
 
@@ -406,7 +432,7 @@
         .direction-card-description {
             font-size: 18px;
             font-weight: 300;
-            color: rgba(255, 255, 255, 0.6);
+            color: #ffffff;
             line-height: 1.6;
         }
 
@@ -712,6 +738,8 @@
             background: transparent;
             position: relative;
             padding: 160px 0 80px;
+            z-index: 10;
+            overflow: visible;
         }
 
         .contact-container {
@@ -727,6 +755,7 @@
 
         .contact-form-wrapper {
             max-width: 565px;
+            overflow: visible;
         }
 
         .contact-main-title {
@@ -849,6 +878,80 @@
         .form-input::placeholder {
             color: #F8F3FC;
             opacity: 0.8;
+        }
+
+        .custom-select {
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .custom-select-trigger {
+            width: 100%;
+            height: 70px;
+            background: rgba(248, 243, 252, 0.1);
+            border: 1px solid rgba(248, 243, 252, 0.2);
+            border-radius: 12px;
+            padding: 0 25px;
+            font-family: 'Involve', sans-serif;
+            font-size: 16px;
+            color: rgba(248, 243, 252, 0.8);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+            user-select: none;
+        }
+
+        .custom-select-trigger.selected {
+            color: #F8F3FC;
+        }
+
+        .custom-select-trigger svg {
+            flex-shrink: 0;
+            transition: transform 0.2s ease;
+        }
+
+        .custom-select.open .custom-select-trigger svg {
+            transform: rotate(180deg);
+        }
+
+        .custom-select-dropdown {
+            display: none;
+            position: absolute;
+            bottom: calc(100% + 4px);
+            top: auto;
+            left: 0;
+            right: 0;
+            background: #1a0445;
+            border: 1px solid rgba(248, 243, 252, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            z-index: 99999;
+            box-shadow: 0 -8px 32px rgba(0,0,0,0.5);
+        }
+
+        .custom-select.open .custom-select-dropdown {
+            display: block;
+        }
+
+        .custom-select-option {
+            padding: 14px 25px;
+            font-family: 'Involve', sans-serif;
+            font-size: 16px;
+            color: #F8F3FC;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .custom-select-option:hover {
+            background: rgba(124, 58, 237, 0.3);
+        }
+
+        .custom-select-option.active {
+            background: rgba(124, 58, 237, 0.2);
+            color: #c084fc;
         }
 
         .form-input:focus {
@@ -1192,8 +1295,23 @@
                 width: 100%;
                 max-width: 335px;
                 height: 55px;
-                font-size: 14px;
+                font-size: 16px;
                 margin-bottom: 15px;
+            }
+
+            .custom-select {
+                max-width: 335px;
+                width: 100%;
+            }
+
+            .custom-select-trigger {
+                height: 55px;
+                font-size: 16px;
+            }
+
+            .custom-select-dropdown {
+                position: absolute;
+                z-index: 999999;
             }
 
             .form-textarea {
@@ -1305,13 +1423,19 @@
     <div class="page-container">
         <!-- Hero Section -->
         <section class="hero-section">
-            <div class="hero-gradient-1"></div>
-            <div class="hero-gradient-2"></div>
-            <div class="hero-fade-bottom"></div>
-            
-            <div class="hero-content">
+            <!-- Video Background -->
+            <video
+                autoplay muted loop playsinline
+                style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;pointer-events:none;z-index:0;"
+            >
+                <source src="/public/hero_video.mp4" type="video/mp4">
+            </video>
+            <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1;"></div>
+            <div class="hero-fade-bottom" style="z-index:2;"></div>
+
+            <div class="hero-content" style="z-index:3;">
                 <h1 class="hero-title">Завод под ключ</h1>
-                <p class="hero-subtitle">Пройдитесь по вашему будущему сооружению и прикоснитесь к каждой детали!</p>
+                <p class="hero-subtitle">Пройдитесь по вашему будущему сооружению<br>и прикоснитесь к каждой детали!</p>
                 
                 <div class="hero-buttons">
                     <a href="#contact" class="btn-primary">{{ __('messages.contact_us') }}</a>
@@ -1325,10 +1449,10 @@
             <div class="company-info-text">
                 <h2 class="company-info-title">Кто мы</h2>
                 <p class="company-info-description">
-                    Daedalus — организация, специализирующаяся в области предоставления услуг для промышленных предприятий. Команда состоит из высококвалифицированных специалистов, обладающих глубокими знаниями и опытом в области горнодобывающей промышленности, технологических процессов и инженерии.
+                    Daedalus Mind Projects — организация, специализирующаяся в области предоставления услуг для промышленных предприятий. Команда состоит из высококвалифицированных специалистов, обладающих глубокими знаниями и опытом в области горнодобывающей промышленности, технологических процессов и инженерии.
                 </p>
             </div>
-            <div class="company-info-image"></div>
+            <div class="company-info-image" style="background-image: url('/public/about_1.jpg');"></div>
         </section>
 
         <!-- Company Info Section 2: Статистика -->
@@ -1345,10 +1469,10 @@
                     </div>
                 </div>
                 <p class="company-info-description">
-                    Мы успешно реализуем проекты любой сложности, предлагая современные решения в сфере проектирования и высокое качество выполнения работ.
+                    Мы успешно реализуем проекты любой сложности, предлагая современные решения в сфере проектирования и высокое<br>качество выполнения работ.
                 </p>
             </div>
-            <div class="company-info-image"></div>
+            <div class="company-info-image" style="background-image: url('/public/about_2.jpg'); background-size: 105%;"></div>
         </section>
 
         <!-- Company Info Section 3: Наша миссия -->
@@ -1359,7 +1483,7 @@
                     Обеспечивать безупречную эксплуатацию и максимальную рентабельность промышленных объектов. <strong>Мы применяем прогрессивные инженерные решения и стандарты качества, чтобы наши клиенты получали не просто сооружения, а высокотехнологичные активы,</strong> готовые к интеграции в глобальную цифровую экономику и устойчивые к вызовам завтрашнего дня.
                 </p>
             </div>
-            <div class="company-info-image"></div>
+            <div class="company-info-image" style="background-image: url('/public/about_3.jpg');"></div>
         </section>
 
         <!-- Directions Section -->
@@ -1368,21 +1492,21 @@
                 <h2 class="directions-title">{{ __('messages.home.directions.title') }}</h2>
                 
                 <div class="directions-grid">
-                    <a href="/design" class="direction-card">
+                    <a href="/design" class="direction-card" style="background-image: linear-gradient(rgba(16,2,43,0.6), rgba(16,2,43,0.6)), url('/public/direction_design.jpg');">
                         <h3 class="direction-card-title">{{ __('messages.home.direction.design.title') }}</h3>
                         <p class="direction-card-description">
                             {{ __('messages.home.direction.design.desc') }}
                         </p>
                     </a>
 
-                    <a href="/automation" class="direction-card">
+                    <a href="/automation" class="direction-card" style="background-image: linear-gradient(rgba(16,2,43,0.6), rgba(16,2,43,0.6)), url('/public/direction_bim.jpg');">
                         <h3 class="direction-card-title">{{ __('messages.home.direction.automation.title') }}</h3>
                         <p class="direction-card-description">
                             {{ __('messages.home.direction.automation.desc') }}
                         </p>
                     </a>
 
-                    <a href="/arvr" class="direction-card">
+                    <a href="/arvr" class="direction-card" style="background-image: linear-gradient(rgba(16,2,43,0.6), rgba(16,2,43,0.6)), url('/public/direction_arvr.jpg');">
                         <h3 class="direction-card-title">{{ __('messages.home.direction.arvr.title') }}</h3>
                         <p class="direction-card-description">
                             {{ __('messages.home.direction.arvr.desc') }}
@@ -1477,7 +1601,7 @@
 
                 <div class="projects-carousel">
                     <div class="project-card">
-                        <div class="project-bg"></div>
+                        <div class="project-bg" style="background: url('/public/home_project_1.jpg') center/cover no-repeat;"></div>
                         <div class="project-overlay">
                             <div class="project-info">
                                 <div class="project-overlay-title">Caravan Resources Group</div>
@@ -1487,7 +1611,7 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-bg"></div>
+                        <div class="project-bg" style="background: url('/public/home_project_2.jpg') center/cover no-repeat;"></div>
                         <div class="project-overlay">
                             <div class="project-info">
                                 <div class="project-overlay-title">RESOURCES CAPITAL GROUP</div>
@@ -1497,7 +1621,7 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-bg"></div>
+                        <div class="project-bg" style="background: url('/public/home_project_3.jpg') center/cover no-repeat;"></div>
                         <div class="project-overlay">
                             <div class="project-info">
                                 <div class="project-overlay-title">AK SU KMG</div>
@@ -1507,7 +1631,7 @@
                     </div>
 
                     <div class="project-card">
-                        <div class="project-bg"></div>
+                        <div class="project-bg" style="background: url('/public/home_project_4.jpg') center/cover no-repeat;"></div>
                         <div class="project-overlay">
                             <div class="project-info">
                                 <div class="project-overlay-title">АО "MB Project Partners"</div>
@@ -1534,86 +1658,55 @@
             <div class="contact-container">
                 <div class="contact-form-wrapper">
                     <h1 class="contact-main-title">Остались вопросы?</h1>
-                    <p class="contact-subtitle">Наша команда готова ответить вам на любые вопросы, дать больше информации и помочь</p>
+                    <p class="contact-subtitle">Оставьте заявку и мы с вами свяжемся!</p>
                     
                     <form class="contact-form" id="contactForm">
                         <input type="text" name="name" class="form-input" placeholder="Имя" required>
                         <input type="tel" name="phone" class="form-input" placeholder="Телефон" required>
-                        <textarea name="message" class="form-textarea" placeholder="Сообщение" required></textarea>
                         <button type="button" onclick="submitFeedback()" class="form-submit">Оставить заявку</button>
                     </form>
                 </div>
                 
-                <div class="contact-info-section">
-                    <h2 class="contact-info-title">Наши контакты</h2>
-                    
-                    <div class="contact-item">
+                        <div class="contact-info-section">
+                            <h2 class="contact-info-title">Наши контакты</h2>
+                                        
+                            <div class="contact-item">
                         <div class="contact-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                            </svg>
+                            <img src="/public/phone-icon.png" alt="Phone" style="width: 24px; height: 24px;">
                         </div>
                         <a href="tel:+77766231177" class="contact-text">8 (776) 623 11 77</a>
                     </div>
 
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
+                            <img src="/public/mail-icon.png" alt="Email" style="width: 24px; height: 24px;">
                         </div>
                         <a href="mailto:info@daedalus.kz" class="contact-text">info@daedalus.kz</a>
                     </div>
 
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
+                            <img src="/public/map-icon.png" alt="Location" style="width: 24px; height: 24px;">
                         </div>
-                        <a href="https://maps.google.com/?q=Алматы,+ул.+Фарида+Шарипова+134А" target="_blank" class="contact-text">Казахстан, 050000, г. Алматы, Ауэзовский район, мкр. Достык,<br>ул. Фарида Шарипова, д. 134А</a>
+                        <a href="https://www.google.com/maps/place/43%C2%B012'48.8%22N+76%C2%B049'50.1%22E/@43.213543,76.829912,18z/data=!3m1!4b1!4m4!3m3!8m2!3d43.213543!4d76.830581?entry=ttu&g_ep=EgoyMDI2MDQwNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="contact-text">
+                            Казахстан, 050000, г. Алматы, Ауэзовский район, мкр. Достык,<br>ул. Фарида Шарипова, д. 134А
+                        </a>
                     </div>
                     
-                    <div class="social-links">
-                        <a href="#" class="social-icon" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                            </svg>
+                    <div class="social-links-container" style="display: flex; gap: 15px; margin-top: 20px;">
+                        <a href="https://www.instagram.com/daedalus.qaz/" target="_blank" class="social-icon">
+                            <img src="/public/instagram_icon.png" alt="Instagram" style="width: 24px; height: 24px; object-fit: contain;"> 
                         </a>
-                        <a href="#" class="social-icon" aria-label="WhatsApp">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-                            </svg>
+                        <a href="https://wa.me/77766231177" target="_blank" class="social-icon">
+                            <img src="/public/whatsapp_icon.png" alt="WhatsApp" style="width: 24px; height: 24px; object-fit: contain;"> 
                         </a>
-                        <a href="#" class="social-icon" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                            </svg>
+                        <a href="https://t.me/makhambet_s" target="_blank" class="social-icon">
+                            <img src="/public/telegram_icon.png" alt="Telegram" style="width: 24px; height: 24px; object-fit: contain;"> 
                         </a>
-                        <a href="#" class="social-icon" aria-label="Twitter">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" fill="#F8F3FC"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-icon" aria-label="Telegram">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M21 5L2 12.5l7 3.5l8.5-6.5l-5.5 8l9.5 4.5z"/>
-                            </svg>
-                        </a>
-                        <a href="#" class="social-icon" aria-label="YouTube">
-                            <svg viewBox="0 0 24 24">
-                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
-                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#F8F3FC"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+                    </div> 
+                </div> 
+            </div> 
+        </section> 
     </div>
 
     @include('components.footer')
@@ -1822,6 +1915,71 @@
             } catch (error) {
                 console.error('Error:', error);
                 alert('Произошла ошибка. Пожалуйста, попробуйте позже.');
+            }
+        });
+    </script>
+
+    <script>
+        var _activeDropdown = null;
+        var _activeTrigger = null;
+
+        function toggleServiceSelect() {
+            var trigger = document.querySelector('#serviceSelect .custom-select-trigger');
+            var dropdown = document.querySelector('#serviceSelect .custom-select-dropdown');
+            if (_activeDropdown === dropdown) {
+                closeAllDropdowns();
+                return;
+            }
+            closeAllDropdowns();
+            openDropdown(trigger, dropdown);
+        }
+
+        function openDropdown(trigger, dropdown) {
+            document.body.appendChild(dropdown);
+            var rect = trigger.getBoundingClientRect();
+            var spaceBelow = window.innerHeight - rect.bottom;
+            var dropHeight = Math.min(dropdown.scrollHeight, 250);
+            dropdown.style.position = 'fixed';
+            dropdown.style.display = 'block';
+            dropdown.style.width = rect.width + 'px';
+            dropdown.style.left = rect.left + 'px';
+            dropdown.style.zIndex = '999999';
+            if (spaceBelow < dropHeight + 10) {
+                dropdown.style.bottom = (window.innerHeight - rect.top + 4) + 'px';
+                dropdown.style.top = 'auto';
+            } else {
+                dropdown.style.top = (rect.bottom + 4) + 'px';
+                dropdown.style.bottom = 'auto';
+            }
+            trigger.querySelector('svg').style.transform = 'rotate(180deg)';
+            _activeDropdown = dropdown;
+            _activeTrigger = trigger;
+        }
+
+        function closeAllDropdowns() {
+            if (_activeDropdown) {
+                _activeDropdown.style.display = 'none';
+                if (_activeTrigger) _activeTrigger.querySelector('svg').style.transform = '';
+                _activeDropdown = null;
+                _activeTrigger = null;
+            }
+        }
+
+        function selectService(value, el) {
+            document.getElementById('serviceValue').value = value;
+            document.getElementById('serviceTriggerText').textContent = value;
+            var trigger = document.querySelector('#serviceSelect .custom-select-trigger');
+            trigger.classList.add('selected');
+            document.querySelectorAll('#serviceSelect .custom-select-option').forEach(function(opt) {
+                opt.classList.remove('active');
+            });
+            el.classList.add('active');
+            closeAllDropdowns();
+        }
+
+        document.addEventListener('click', function(e) {
+            if (_activeTrigger && !_activeTrigger.contains(e.target) && _activeDropdown && !_activeDropdown.contains(e.target)) {
+                closeAllDropdowns();
             }
         });
     </script>

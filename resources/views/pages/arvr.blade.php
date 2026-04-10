@@ -58,25 +58,11 @@
         height: 100%;
         top: 0;
         left: 0;
+        background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/public/hero_arvr.jpg') center/cover no-repeat;
     }
 
-    .hero-background::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: url('/images/pexels-photo-3945661-enhanced.png') center/cover no-repeat;
-        z-index: 0;
-    }
-
-    .hero-background::after {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(180deg, #15023C 77.25%, rgba(58, 5, 162, 0) 100%);
-        z-index: 1;
-    }
+    .hero-background::before { display: none; }
+    .hero-background::after { display: none; }
 
     .hero-content {
         position: relative;
@@ -185,23 +171,23 @@
     }
 
     .service-card:nth-child(1) {
-        background: linear-gradient(135deg, rgba(255, 0, 150, 0.5) 0%, rgba(147, 51, 234, 0.4) 100%);
+        background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/public/arvr_service_1.jpg') center/cover no-repeat;
     }
 
     .service-card:nth-child(2) {
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.5) 0%, rgba(37, 99, 235, 0.4) 100%);
+        background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/public/arvr_service_2.jpg') center/cover no-repeat;
     }
 
     .service-card:nth-child(3) {
-        background: linear-gradient(135deg, rgba(168, 85, 247, 0.5) 0%, rgba(147, 51, 234, 0.4) 100%);
+        background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/public/arvr_service_3.jpg') center/cover no-repeat;
     }
 
     .service-card:nth-child(4) {
-        background: linear-gradient(135deg, rgba(236, 72, 153, 0.5) 0%, rgba(219, 39, 119, 0.4) 100%);
+        background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/public/arvr_service_4.jpg') center/cover no-repeat;
     }
 
     .service-card:nth-child(5) {
-        background: linear-gradient(135deg, rgba(34, 211, 238, 0.5) 0%, rgba(6, 182, 212, 0.4) 100%);
+        background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/public/arvr_service_5.jpg') center/cover no-repeat;
     }
 
     .service-info {
@@ -317,6 +303,23 @@
         box-sizing: border-box;
     }
 
+    .custom-select { position: relative; width: 100%; margin-bottom: 20px; }
+    .custom-select-trigger { width: 100%; height: 70px; background: rgba(248,243,252,0.1); border: 1px solid rgba(248,243,252,0.2); border-radius: 12px; padding: 0 25px; font-family: 'Involve', sans-serif; font-size: 16px; color: rgba(248,243,252,0.7); cursor: pointer; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box; user-select: none; }
+    .custom-select-trigger.selected { color: #F8F3FC; }
+    .custom-select-trigger svg { flex-shrink: 0; transition: transform 0.2s; }
+    .custom-select.open .custom-select-trigger svg { transform: rotate(180deg); }
+    .custom-select-dropdown { display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: #1a0445; border: 1px solid rgba(248,243,252,0.2); border-radius: 12px; overflow: hidden; z-index: 99999; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+    .custom-select.open .custom-select-dropdown { display: block; }
+    .custom-select-option { padding: 14px 25px; font-family: 'Involve', sans-serif; font-size: 16px; color: #F8F3FC; cursor: pointer; transition: background 0.15s; }
+    .custom-select-option:hover { background: rgba(124,58,237,0.3); }
+    .custom-select-option.active { background: rgba(124,58,237,0.2); color: #c084fc; }
+    .application-section { overflow: visible !important; }
+
+    select.form-input option {
+        background: #10022B;
+        color: #F8F3FC;
+    }
+
     .form-input::placeholder {
         color: #F8F3FC;
         opacity: 0.7;
@@ -346,7 +349,7 @@
     .application-image {
         width: 579px;
         height: 275px;
-        background: url('/images/3d_icon_of_arvr_glasses_without_background_c601te4mlj5rj0hu5bfo_1-enhanced-2.png') center/contain no-repeat;
+        background: url('/public/form_logo.png') center/250px no-repeat;
     }
 
     /* Responsive Design */
@@ -478,22 +481,7 @@
             margin-top: 60px;
             margin-bottom: 60px;
             position: relative;
-            overflow: hidden;
-        }
-
-        .application-section::before {
-            content: '';
-            position: absolute;
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #810EC7 0%, #9a1ee8 100%);
-            filter: blur(80px);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: pulse 4s ease-in-out infinite;
-            z-index: 0;
+            overflow: visible;
         }
 
         @keyframes pulse {
@@ -535,7 +523,7 @@
 
         .form-input {
             width: 100%;
-            font-size: 14px;
+            font-size: 16px;
             height: 60px;
         }
 
@@ -584,8 +572,8 @@
     <section class="hero-section">
         <div class="hero-background"></div>
         <div class="hero-content">
-            <h1 class="hero-title">VR решения для производственных достижений!</h1>
-            <p class="hero-description">Обучение с VR, AR-поддержка технического обслуживания и 3D-моделирование процессов.</p>
+            <h1 class="hero-title">VR решения для производства</h1>
+            <p class="hero-description">Симуляторы, интерактивные 3D-карты и приложения.</p>
             <a href="#application" class="hero-button">Оставить заявку</a>
         </div>
     </section>
@@ -644,6 +632,7 @@
                         <input type="tel" name="phone" class="form-input" placeholder="Телефон" required>
                     </div>
 
+
                     <button type="submit" class="submit-button">Оставить заявку</button>
                 </form>
             </div>
@@ -688,5 +677,41 @@ function submitARVRForm(event) {
         alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже.');
     });
 }
+
+var _dd = null, _dt = null;
+function toggleSelect(id) {
+    var trigger = document.querySelector('#' + id + ' .custom-select-trigger');
+    var dropdown = document.querySelector('#' + id + ' .custom-select-dropdown');
+    if (_dd === dropdown) { closeDD(); return; }
+    closeDD();
+    document.body.appendChild(dropdown);
+    var rect = trigger.getBoundingClientRect();
+    var spaceBelow = window.innerHeight - rect.bottom;
+    var dropH = Math.min(dropdown.scrollHeight || 250, 300);
+    dropdown.style.cssText = 'display:block;position:fixed;width:' + rect.width + 'px;left:' + rect.left + 'px;z-index:999999;';
+    if (spaceBelow < dropH + 10) {
+        dropdown.style.bottom = (window.innerHeight - rect.top + 4) + 'px';
+        dropdown.style.top = 'auto';
+    } else {
+        dropdown.style.top = (rect.bottom + 4) + 'px';
+        dropdown.style.bottom = 'auto';
+    }
+    trigger.querySelector('svg').style.transform = 'rotate(180deg)';
+    _dd = dropdown; _dt = trigger;
+}
+function closeDD() {
+    if (_dd) { _dd.style.display = 'none'; if (_dt) _dt.querySelector('svg').style.transform = ''; _dd = null; _dt = null; }
+}
+function selectOption(selectId, inputId, textId, value, el) {
+    document.getElementById(inputId).value = value;
+    document.getElementById(textId).textContent = value;
+    document.querySelector('#' + selectId + ' .custom-select-trigger').classList.add('selected');
+    document.querySelectorAll('#' + selectId + ' .custom-select-option').forEach(function(o){ o.classList.remove('active'); });
+    el.classList.add('active');
+    closeDD();
+}
+document.addEventListener('click', function(e) {
+    if (_dt && !_dt.contains(e.target) && _dd && !_dd.contains(e.target)) closeDD();
+});
 </script>
 @endsection

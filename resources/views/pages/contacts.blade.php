@@ -35,10 +35,6 @@
         justify-content: center;
     }
     
-    /* Hide footer on contacts page */
-    footer {
-        display: none !important;
-    }
     
     .content-wrapper {
         position: relative;
@@ -265,6 +261,7 @@
 
         .contact-item {
             margin-bottom: 16px;
+            align-items: flex-start;
         }
 
         .social-links {
@@ -310,48 +307,43 @@
         <!-- Contact Form -->
         <div class="form-section">
             <h1 class="form-title">Остались вопросы?</h1>
-            <p class="form-subtitle">Наша команда готова ответить вам на любые вопросы, дать больше информации и помочь</p>
+            <p class="form-subtitle">Оставьте заявку и мы с вами свяжемся!</p>
             
             <form id="contactForm">
                 <input type="text" id="input" name="name" class="form-input" placeholder="Имя" required>
                 <input type="tel" id="input1" name="phone" class="form-input" placeholder="Телефон" required>
-                <textarea id="input2" name="message" class="form-textarea" placeholder="Сообщение" required></textarea>
-                <button type="button" onclick="submitFeedback()" class="submit-button">Оставить сообщение</button>
+<button type="button" onclick="submitFeedback()" class="submit-button">Оставить заявку</button>
             </form>
         </div>
 
         <!-- Contact Information -->
-        <div class="contact-info-section">
-            <h2 class="contact-title">Наши контакты</h2>
-            
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                    </svg>
-                </div>
-                <a href="tel:+77766231177" class="contact-text">8 (776) 623 11 77</a>
-            </div>
+            <div class="contact-info-section">
+                            <h2 class="contact-title">Наши контакты</h2>
+                                        
+                            <div class="contact-item">
+                        <div class="contact-icon">
+                            <img src="/public/phone-icon.png" alt="Phone" style="width: 24px; height: 24px;">
+                        </div>
+                        <a href="tel:+77766231177" class="contact-text">8 (776) 623 11 77</a>
+                    </div>
 
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                        <polyline points="22,6 12,13 2,6"/>
-                    </svg>
-                </div>
-                <a href="mailto:info@daedalus.kz" class="contact-text">info@daedalus.kz</a>
-            </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <img src="/public/mail-icon.png" alt="Email" style="width: 24px; height: 24px;">
+                        </div>
+                        <a href="mailto:info@daedalus.kz" class="contact-text">info@daedalus.kz</a>
+                    </div>
 
-            <div class="contact-item">
-                <div class="contact-icon">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                        <circle cx="12" cy="10" r="3"/>
-                    </svg>
-                </div>
-                <a href="https://maps.google.com/?q=Алматы,+ул.+Фарида+Шарипова+134А" target="_blank" class="contact-text">Казахстан, 050000, г. Алматы, Ауэзовский район, мкр. Достык,<br>ул. Фарида Шарипова, д. 134А</a>
-            </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <img src="/public/map-icon.png" alt="Location" style="width: 24px; height: 24px;">
+                        </div>
+                        <a href="https://www.google.com/maps/place/43%C2%B012'48.8%22N+76%C2%B049'50.1%22E/@43.213543,76.829912,18z/data=!3m1!4b1!4m4!3m3!8m2!3d43.213543!4d76.830581?entry=ttu&g_ep=EgoyMDI2MDQwNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="contact-text">
+                            Казахстан, 050000, г. Алматы, Ауэзовский район, мкр. Достык,<br>ул. Фарида Шарипова, д. 134А
+                        </a>
+                    </div>
+                    
+                
 
             <div class="contact-item" style="margin-top: 20px; flex-direction: column; align-items: flex-start; gap: 4px;">
                 <span class="contact-text" style="opacity: 0.6; font-size: 13px;">Реквизиты</span>
@@ -362,29 +354,17 @@
                 <span class="contact-text">БИК HSBKKZKX</span>
             </div>
             
-            <div class="social-links">
-                <a href="#" class="social-icon" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24">
-                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                    </svg>
-                </a>
-                <a href="#" class="social-icon" aria-label="WhatsApp">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-                    </svg>
-                </a>
-                <a href="#" class="social-icon" aria-label="Facebook">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                    </svg>
-                </a>
-                <a href="#" class="social-icon" aria-label="LinkedIn">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                        <rect x="2" y="9" width="4" height="12"/>
-                </a>
+            <div class="social-links-container" style="display: flex; gap: 15px; margin-top: 20px;">
+                        <a href="https://www.instagram.com/daedalus.qaz/" target="_blank" class="social-icon">
+                            <img src="/public/instagram_icon.png" alt="Instagram" style="width: 34px; height: 34px; object-fit: contain;"> 
+                        </a>
+                        <a href="https://wa.me/77766231177" target="_blank" class="social-icon">
+                            <img src="/public/whatsapp_icon.png" alt="WhatsApp" style="width: 34px; height: 34px; object-fit: contain;"> 
+                        </a>
+                        <a href="https://t.me/makhambet_s" target="_blank" class="social-icon">
+                            <img src="/public/telegram_icon.png" alt="Telegram" style="width: 34px; height: 34px; object-fit: contain;"> 
+                        </a>
+                    </div>
             </div>
         </div>
     </div>

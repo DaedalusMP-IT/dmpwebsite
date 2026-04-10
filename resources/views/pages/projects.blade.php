@@ -87,25 +87,6 @@
         background: rgba(0, 0, 0, 0.2);
     }
 
-    .project-images::before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80%;
-        height: 80%;
-        border-radius: 50%;
-        filter: blur(80px);
-    }
-
-    .project-card:nth-child(1) .project-images::before { background: rgba(124, 58, 237, 0.6); }
-    .project-card:nth-child(2) .project-images::before { background: rgba(168, 85, 247, 0.6); }
-    .project-card:nth-child(3) .project-images::before { background: rgba(236, 72, 153, 0.6); }
-    .project-card:nth-child(4) .project-images::before { background: rgba(59, 130, 246, 0.6); }
-    .project-card:nth-child(5) .project-images::before { background: rgba(124, 58, 237, 0.6); }
-    .project-card:nth-child(6) .project-images::before { background: rgba(168, 85, 247, 0.6); }
-    .project-card:nth-child(7) .project-images::before { background: rgba(236, 72, 153, 0.6); }
 
     .project-info {
         padding: 30px;
@@ -156,6 +137,22 @@
     .project-detail strong {
         color: #F8F3FC;
         font-weight: 600;
+    }
+
+    .project-status {
+        display: inline-block;
+        width: fit-content;
+        align-self: flex-start;
+        background: rgba(124, 58, 237, 0.25);
+        border: 1px solid rgba(124, 58, 237, 0.6);
+        color: #c084fc;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 2px 6px;
+        border-radius: 4px;
+        margin-bottom: 6px;
     }
 
     @media (max-width: 968px) {
@@ -216,7 +213,7 @@
         <div class="projects-list">
 
             <div class="project-card">
-                <div class="project-images"></div>
+                <div class="project-images" style="background: url('/public/project_1.jpg') center/cover no-repeat;"></div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
                     <h3 class="project-name">"ГОРНОРУДНАЯ КОМПАНИЯ "САРЫ АРКА"</h3>
@@ -242,7 +239,7 @@
             </div>
 
             <div class="project-card">
-                <div class="project-images"></div>
+                <div class="project-images" style="background: url('/public/project_2.jpg') center/cover no-repeat;"></div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
                     <h3 class="project-name">ТОО "RESOURCES CAPITAL GROUP"</h3>
@@ -265,7 +262,7 @@
             </div>
 
             <div class="project-card">
-                <div class="project-images"></div>
+                <div class="project-images" style="background: url('/public/project_3.jpg') center/cover no-repeat;"></div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
                     <h3 class="project-name">"AK SU KMG"</h3>
@@ -289,7 +286,7 @@
             </div>
 
             <div class="project-card">
-                <div class="project-images"></div>
+                <div class="project-images" style="background: url('/public/project_4.jpg') center/cover no-repeat;"></div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
                     <h3 class="project-name">АО "MB Project Partners"</h3>
@@ -313,7 +310,7 @@
             </div>
 
             <div class="project-card">
-                <div class="project-images"></div>
+                <div class="project-images" style="background: url('/public/project_5.jpg') center/cover no-repeat;"></div>
                 <div class="project-info">
                     <p class="project-category">Промышленное строительство</p>
                     <h3 class="project-name">TOO "CARAVAN RESOURCES GROUP"</h3>
@@ -334,9 +331,34 @@
                 </div>
             </div>
 
+
+
             <div class="project-card">
-                <div class="project-images"></div>
+                <div class="project-images" style="background: url('/public/project_8.jpg') center/cover no-repeat;"></div>
                 <div class="project-info">
+                    <p class="project-category">Промышленное строительство</p>
+                    <h3 class="project-name">ТОО "РИДДЕР-ПОЛИМЕТАЛЛ"</h3>
+                    <p class="project-description">
+                        • Выполнение работ по разработке технико-экономического обоснования (ТЭО)<br>
+                        • Проект "Строительство обогатительной фабрики по переработке полиметаллической руды месторождения «Стрежанское»"<br>
+                        • Разработка технико-экономического обоснования и инвестиции в проект<br>
+                        • DCF модель для проекта по строительству<br>
+                        • Финансовая экономическая модель предприятия, вычисление CAPEX & OPEX<br>
+                        • Разработка Эскизного проекта<br>
+                        • Предварительная посадка завода в 3D Генплан на месторождении «Стрежанское»
+                    </p>
+                    <div class="project-details">
+                        <div class="project-detail"><strong>Классификация объекта:</strong></div>
+                        <div class="project-detail"><strong>Срок реализации:</strong></div>
+                        <div class="project-detail"><strong>Год:</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-images" style="background: url('/public/project_6.jpg') center/cover no-repeat;"></div>
+                <div class="project-info">
+                    <span class="project-status">В процессе</span>
                     <p class="project-category">Промышленное строительство</p>
                     <h3 class="project-name">АО «АЛЮМИНИЙ КАЗАХСТАНА»</h3>
                     <p class="project-description">
@@ -349,15 +371,14 @@
                     </p>
                     <div class="project-details">
                         <div class="project-detail"><strong>Классификация объекта:</strong> Строительство участка продукционной фильтрации и вертикальных печей кальцинации</div>
-                        <div class="project-detail"><strong>Срок реализации:</strong> 12 месяцев</div>
-                        <div class="project-detail"><strong>Год:</strong> 2026</div>
                     </div>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="project-images"></div>
+                <div class="project-images" style="background: url('/public/project_7.jpg') center/cover no-repeat;"></div>
                 <div class="project-info">
+                    <span class="project-status">В процессе</span>
                     <p class="project-category">Промышленное строительство</p>
                     <h3 class="project-name">АО «ТРАНСНАЦИОНАЛЬНАЯ КОМПАНИЯ «КАЗХРОМ»</h3>
                     <p class="project-description">
@@ -370,8 +391,6 @@
                     </p>
                     <div class="project-details">
                         <div class="project-detail"><strong>Классификация объекта:</strong> Утилизационная электростанция ферросплавных газов</div>
-                        <div class="project-detail"><strong>Срок реализации:</strong> 12 месяцев</div>
-                        <div class="project-detail"><strong>Год:</strong> 2026</div>
                     </div>
                 </div>
             </div>

@@ -49,15 +49,11 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background: url('/images/image.png') center/cover;
+        background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/public/hero_design.jpg') center/cover;
     }
-    
+
     .hero-overlay {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(180deg, #15023C 77.25%, rgba(58, 5, 162, 0) 100%);
-        z-index: 1;
+        display: none;
     }
     
     .hero-content {
@@ -81,6 +77,12 @@
         line-height: 72px;
         color: #F8F3FC;
         margin-bottom: 10px;
+    }
+
+    br.mobile-br { display: none; }
+
+    @media (max-width: 768px) {
+        br.mobile-br { display: block; }
     }
 
     .hero-description {
@@ -157,27 +159,27 @@
     }
     
     .service-card:nth-child(1) {
-        background: linear-gradient(135deg, rgba(255, 0, 150, 0.5) 0%, rgba(147, 51, 234, 0.4) 100%);
+        background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/public/design_service_1.jpg') center/cover no-repeat;
     }
 
     .service-card:nth-child(2) {
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.5) 0%, rgba(37, 99, 235, 0.4) 100%);
+        background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/public/design_service_2.jpg') center/cover no-repeat;
     }
 
     .service-card:nth-child(3) {
-        background: linear-gradient(135deg, rgba(168, 85, 247, 0.5) 0%, rgba(147, 51, 234, 0.4) 100%);
+        background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/public/design_service_3.jpg') center/cover no-repeat;
     }
 
     .service-card:nth-child(4) {
-        background: linear-gradient(135deg, rgba(236, 72, 153, 0.5) 0%, rgba(219, 39, 119, 0.4) 100%);
+        background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/public/design_service_4.jpg') center/cover no-repeat;
     }
 
     .service-card:nth-child(5) {
-        background: linear-gradient(135deg, rgba(34, 211, 238, 0.5) 0%, rgba(6, 182, 212, 0.4) 100%);
+        background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/public/design_service_5.jpg') center/cover no-repeat;
     }
 
     .service-card:nth-child(6) {
-        background: linear-gradient(135deg, rgba(129, 14, 199, 0.5) 0%, rgba(88, 9, 141, 0.4) 100%);
+        background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/public/design_service_6.jpg') center/cover no-repeat;
     }
     
     .service-info {
@@ -398,6 +400,19 @@
     .form-input-app::placeholder {
         color: #F8F3FC;
     }
+
+    .custom-select { position: relative; width: 100%; margin-bottom: 20px; }
+    .custom-select-trigger { width: 100%; height: 70px; background: rgba(248,243,252,0.1); border: 1px solid rgba(248,243,252,0.2); border-radius: 12px; padding: 0 25px; font-family: 'Involve', sans-serif; font-size: 16px; color: rgba(248,243,252,0.7); cursor: pointer; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box; user-select: none; }
+    .custom-select-trigger.selected { color: #F8F3FC; }
+    .custom-select-trigger svg { flex-shrink: 0; transition: transform 0.2s; }
+    .custom-select.open .custom-select-trigger svg { transform: rotate(180deg); }
+    .custom-select-dropdown { display: none; position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: #1a0445; border: 1px solid rgba(248,243,252,0.2); border-radius: 12px; overflow: hidden; z-index: 99999; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+    .custom-select.open .custom-select-dropdown { display: block; }
+    .custom-select-option { padding: 14px 25px; font-family: 'Involve', sans-serif; font-size: 16px; color: #F8F3FC; cursor: pointer; transition: background 0.15s; }
+    .custom-select-option:hover { background: rgba(124,58,237,0.3); }
+    .custom-select-option.active { background: rgba(124,58,237,0.2); color: #c084fc; }
+    .application-section { overflow: visible !important; }
+    .content-wrapper { overflow: visible !important; }
     
     .form-input-app:focus {
         outline: none;
@@ -427,8 +442,7 @@
     .application-image {
         width: 498px;
         height: 433px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 12px;
+        background: url('/public/form_logo.png') center/250px no-repeat;
     }
     
     /* Responsive Design */
@@ -535,23 +549,9 @@
             margin-top: 60px;
             margin-bottom: 60px;
             position: relative;
-            overflow: hidden;
+            overflow: visible;
         }
 
-        .application-section::before {
-            content: '';
-            position: absolute;
-            width: 250px;
-            height: 250px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #810EC7 0%, #9a1ee8 100%);
-            filter: blur(80px);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: pulse 4s ease-in-out infinite;
-            z-index: 0;
-        }
 
         @keyframes pulse {
             0%, 100% {
@@ -597,8 +597,22 @@
         .form-input-app {
             max-width: 100%;
             width: 100%;
-            font-size: 14px;
+            font-size: 16px;
             height: 60px;
+        }
+
+        .custom-select {
+            max-width: 100%;
+        }
+
+        .custom-select-trigger {
+            height: 60px;
+            font-size: 16px;
+        }
+
+        .custom-select-dropdown {
+            position: absolute;
+            z-index: 999999;
         }
 
         .submit-button {
@@ -647,7 +661,7 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">Проектирование</h1>
-            <p class="hero-description">Полный спектр услуг проектирования: от промышленных объектов до систем безопасности и автоматизации.</p>
+            <p class="hero-description">Полный спектр услуг проектирования:<br class="mobile-br"> от промышленных объектов до систем<br class="mobile-br"> безопасности и автоматизации.</p>
             <button class="hero-button" onclick="document.getElementById('application').scrollIntoView({behavior: 'smooth'})">
                 Оставить заявку
             </button>
@@ -716,7 +730,7 @@
 
             <div class="projects-slider">
                 <div class="project-card">
-                    <div class="project-bg"></div>
+                    <div class="project-bg" style="background: url('/public/home_project_1.jpg') center/cover no-repeat;"></div>
                     <div class="project-overlay">
                         <div class="project-info">
                             <div class="project-title">Caravan Resources Group</div>
@@ -726,7 +740,7 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-bg"></div>
+                    <div class="project-bg" style="background: url('/public/home_project_2.jpg') center/cover no-repeat;"></div>
                     <div class="project-overlay">
                         <div class="project-info">
                             <div class="project-title">RESOURCES CAPITAL GROUP</div>
@@ -736,7 +750,7 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-bg"></div>
+                    <div class="project-bg" style="background: url('/public/home_project_3.jpg') center/cover no-repeat;"></div>
                     <div class="project-overlay">
                         <div class="project-info">
                             <div class="project-title">AK SU KMG</div>
@@ -746,7 +760,7 @@
                 </div>
 
                 <div class="project-card">
-                    <div class="project-bg"></div>
+                    <div class="project-bg" style="background: url('/public/home_project_4.jpg') center/cover no-repeat;"></div>
                     <div class="project-overlay">
                         <div class="project-info">
                             <div class="project-title">АО "MB Project Partners"</div>
@@ -822,6 +836,42 @@ document.getElementById('designForm').addEventListener('submit', async function(
         console.error('Error:', error);
         alert('Произошла ошибка при отправке формы');
     }
+});
+
+var _dd = null, _dt = null;
+function toggleSelect(id) {
+    var trigger = document.querySelector('#' + id + ' .custom-select-trigger');
+    var dropdown = document.querySelector('#' + id + ' .custom-select-dropdown');
+    if (_dd === dropdown) { closeDD(); return; }
+    closeDD();
+    document.body.appendChild(dropdown);
+    var rect = trigger.getBoundingClientRect();
+    var spaceBelow = window.innerHeight - rect.bottom;
+    var dropH = Math.min(dropdown.scrollHeight || 250, 300);
+    dropdown.style.cssText = 'display:block;position:fixed;width:' + rect.width + 'px;left:' + rect.left + 'px;z-index:999999;';
+    if (spaceBelow < dropH + 10) {
+        dropdown.style.bottom = (window.innerHeight - rect.top + 4) + 'px';
+        dropdown.style.top = 'auto';
+    } else {
+        dropdown.style.top = (rect.bottom + 4) + 'px';
+        dropdown.style.bottom = 'auto';
+    }
+    trigger.querySelector('svg').style.transform = 'rotate(180deg)';
+    _dd = dropdown; _dt = trigger;
+}
+function closeDD() {
+    if (_dd) { _dd.style.display = 'none'; if (_dt) _dt.querySelector('svg').style.transform = ''; _dd = null; _dt = null; }
+}
+function selectOption(selectId, inputId, textId, value, el) {
+    document.getElementById(inputId).value = value;
+    document.getElementById(textId).textContent = value;
+    document.querySelector('#' + selectId + ' .custom-select-trigger').classList.add('selected');
+    document.querySelectorAll('#' + selectId + ' .custom-select-option').forEach(function(o){ o.classList.remove('active'); });
+    el.classList.add('active');
+    closeDD();
+}
+document.addEventListener('click', function(e) {
+    if (_dt && !_dt.contains(e.target) && _dd && !_dd.contains(e.target)) closeDD();
 });
 </script>
 @endpush

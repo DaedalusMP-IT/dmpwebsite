@@ -104,6 +104,7 @@
         position: relative;
         overflow: hidden;
         background: rgba(0, 0, 0, 0.2);
+        border-radius: 0;
     }
 
     .news-image::before {
@@ -119,23 +120,23 @@
     }
 
     .news-card:nth-child(1) .news-image::before {
-        background: rgba(124, 58, 237, 0.6);
+        background: none;
     }
 
     .news-card:nth-child(2) .news-image::before {
-        background: rgba(168, 85, 247, 0.6);
+        background: none;
     }
 
     .news-card:nth-child(3) .news-image::before {
-        background: rgba(236, 72, 153, 0.6);
+        background: none;
     }
 
     .news-card:nth-child(4) .news-image::before {
-        background: rgba(59, 130, 246, 0.6);
+        background: none;
     }
 
     .news-card:nth-child(5) .news-image::before {
-        background: rgba(34, 211, 238, 0.6);
+        background: none;
     }
 
     .news-card:nth-child(6) .news-image::before {
@@ -218,6 +219,10 @@
             padding: 24px;
         }
 
+        .news-image {
+            border-radius: 16px;
+        }
+
         .news-title {
             font-size: 32px;
             line-height: 40px;
@@ -281,62 +286,48 @@
         
         <div class="news-grid">
             <div class="news-card">
-                <div class="news-image"></div>
+                <div class="news-image" style="background: url('/public/Dzhakishev_News.jpg') center 45%/cover no-repeat;"></div>
                 <div class="news-content">
-                    <p class="news-date">{{ __('messages.news.date_1') }}</p>
-                    <h3 class="news-heading">{{ __('messages.news.title_1') }}</h3>
-                    <p class="news-description">{{ __('messages.news.desc_1') }}</p>
-                    <a href="#" class="news-link">{{ __('messages.read_more') }}</a>
+                    <p class="news-date">23 февр. 2024 г.</p>
+                    <h3 class="news-heading">Команда Daedalus реализовала проект для Мухтара Джакишева</h3>
+                    <p class="news-description">Команда Daedalus Mind Projects выполнила проектирование завода по производству никеля с применением уникальной казахстанской технологии гидрометаллургического передела, впервые разработанной и реализованной в Казахстане.</p>
+                    <a href="https://www.youtube.com/watch?v=_ecIbW9Vu90" target="_blank" class="news-link">Смотреть</a>
                 </div>
             </div>
 
             <div class="news-card">
-                <div class="news-image"></div>
+                <div class="news-image" style="background: url('/public/News_2.jpg') center/cover no-repeat;"></div>
                 <div class="news-content">
-                    <p class="news-date">{{ __('messages.news.date_2') }}</p>
-                    <h3 class="news-heading">{{ __('messages.news.title_2') }}</h3>
-                    <p class="news-description">{{ __('messages.news.desc_2') }}</p>
-                    <a href="#" class="news-link">{{ __('messages.read_more') }}</a>
+                    <h3 class="news-heading">Министр промышленности и новых технологий Таджикистана Шерали Олимович провел встречу с<br>Daedalus Mind Projects</h3>
+                    <p class="news-description">В ходе встречи была достигнута договоренность о значительных инвестициях в горнорудный сектор страны. Наша компания, обладая значительным опытом в исследовании и разработке новых технологий переработки руд, намерена внести существенный вклад в развитие ГМК Таджикистана.</p>
                 </div>
             </div>
 
             <div class="news-card">
-                <div class="news-image"></div>
+                <div class="news-image" style="background: url('/public/News_3.jpg') center/cover no-repeat;"></div>
                 <div class="news-content">
-                    <p class="news-date">{{ __('messages.news.date_3') }}</p>
-                    <h3 class="news-heading">{{ __('messages.news.title_3') }}</h3>
-                    <p class="news-description">{{ __('messages.news.desc_3') }}</p>
-                    <a href="#" class="news-link">{{ __('messages.read_more') }}</a>
+                    <h3 class="news-heading">Был подписан меморандум о сотрудничестве между Горно-Бадахшанской автономной областью Таджикистана и Daedalus Mind Projects</h3>
+                    <p class="news-description">Меморандум предусматривает совместные исследования и разработку месторождений редкоземельных металлов. Реализация этого соглашения позволит исследовать все стратегически важные месторождения страны, что станет значимым шагом в развитии данной отрасли.</p>
                 </div>
             </div>
 
             <div class="news-card">
-                <div class="news-image"></div>
+                <div class="news-image" style="background: url('/public/News_4.jpg') center/cover no-repeat;"></div>
                 <div class="news-content">
-                    <p class="news-date">{{ __('messages.news.date_4') }}</p>
-                    <h3 class="news-heading">{{ __('messages.news.title_4') }}</h3>
-                    <p class="news-description">{{ __('messages.news.desc_4') }}</p>
-                    <a href="#" class="news-link">{{ __('messages.read_more') }}</a>
+                    <p class="news-date">3 февр. 2024 г.</p>
+                    <h3 class="news-heading">Участие Daedalus Mind Projects на Международном цифровом форуме Digital Almaty 2024</h3>
+                    <p class="news-description">Команда на панельной сессии INDUSTRY X: ЦИФРОВАЯ ЭВОЛЮЦИЯ БУДУЩЕГО</p>
+                    <a href="https://www.youtube.com/watch?v=k0ARcS-aI1s" target="_blank" class="news-link">Смотреть</a>
                 </div>
             </div>
 
             <div class="news-card">
-                <div class="news-image"></div>
+                <div class="news-image" style="background: url('/public/News_5.jpg') center/cover no-repeat;"></div>
                 <div class="news-content">
-                    <p class="news-date">{{ __('messages.news.date_5') }}</p>
-                    <h3 class="news-heading">{{ __('messages.news.title_5') }}</h3>
-                    <p class="news-description">{{ __('messages.news.desc_5') }}</p>
-                    <a href="#" class="news-link">{{ __('messages.read_more') }}</a>
-                </div>
-            </div>
-
-            <div class="news-card">
-                <div class="news-image"></div>
-                <div class="news-content">
-                    <p class="news-date">{{ __('messages.news.date_6') }}</p>
-                    <h3 class="news-heading">{{ __('messages.news.title_6') }}</h3>
-                    <p class="news-description">{{ __('messages.news.desc_6') }}</p>
-                    <a href="#" class="news-link">{{ __('messages.read_more') }}</a>
+                    <p class="news-date"></p>
+                    <h3 class="news-heading">Almaty Hub (ex. Techgarden) у нас в гостях</h3>
+                    <p class="news-description">Первое знакомство с Daedalus Mind Projects, специализирующаяся в области технологий переработки полезных ископаемых и проектирования промышленных предприятий. Все подробности в этом Reels по кнопке ниже.</p>
+                    <a href="https://www.instagram.com/p/C6iAmNbiOq4/" target="_blank" class="news-link">Смотреть</a>
                 </div>
             </div>
         </div>

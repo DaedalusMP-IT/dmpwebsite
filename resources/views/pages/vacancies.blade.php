@@ -49,15 +49,11 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        background: url('/images/image.png') center/cover;
+        background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/public/hero_vacancies.jpg') center/cover;
     }
-    
+
     .hero-overlay {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(180deg, #15023C 77.25%, rgba(58, 5, 162, 0) 100%);
-        z-index: 1;
+        display: none;
     }
     
     .hero-content {
@@ -142,22 +138,22 @@
     }
 
     .team-photo {
-        border-radius: 20px;
-        height: 320px;
+        border-radius: 12px;
+        height: 300px;
         background-size: cover;
         background-position: center;
     }
 
     .team-photo:nth-child(1) {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: url('/public/team_1.jpg') center/cover no-repeat;
     }
 
     .team-photo:nth-child(2) {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        background: url('/public/team_2.jpg') center/cover no-repeat;
     }
 
     .team-photo:nth-child(3) {
-        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        background: url('/public/team_3.jpg') center/cover no-repeat;
     }
 
     @media (max-width: 768px) {
@@ -177,7 +173,7 @@
         top: 156px;
         width: 435px;
         height: 389px;
-        background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        background: url('/public/team_4.jpg') center/cover no-repeat;
         border-radius: 20px;
     }
     
@@ -448,9 +444,9 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">Вакансии</h1>
-            <p class="hero-subtitle">Присоединяйся к нашей команде и стань частью профессионалов</p>
+            <p class="hero-subtitle">Присоединяйся к нашей команде и стань частью профессионалов!</p>
             <button class="hero-button" onclick="document.getElementById('vacancies-list').scrollIntoView({behavior: 'smooth'})">
-                Оставить заявку
+                Откликнуться
             </button>
         </div>
     </div>
@@ -475,7 +471,7 @@
             <div class="interview-steps">
                 <div class="interview-step">
                     <div class="step-number">1</div>
-                    <div class="step-box">Предварительное собеседование</div>
+                    <div class="step-box">Онлайн собеседование</div>
                 </div>
                 
                 <div class="interview-step">
@@ -485,7 +481,7 @@
                 
                 <div class="interview-step">
                     <div class="step-number">3</div>
-                    <div class="step-box">Приглашние на работу</div>
+                    <div class="step-box">Приглашение на работу</div>
                 </div>
             </div>
         </div>

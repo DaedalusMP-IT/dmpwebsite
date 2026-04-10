@@ -10,8 +10,28 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
+        @font-face {
+            font-family: 'Involve';
+            src: url('/fonts/Involve-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Involve';
+            src: url('/fonts/Involve-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Involve';
+            src: url('/fonts/Involve-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+
         * {
             box-sizing: border-box;
+            font-family: 'Involve', sans-serif;
         }
 
         html, body {
@@ -19,6 +39,31 @@
             width: 100%;
             margin: 0;
             padding: 0;
+            font-family: 'Involve', sans-serif;
+            font-size: 16px;
+        }
+
+        /* === Глобальная типографика === */
+        h1 { font-size: 54px; line-height: 1.2; font-weight: 700; }
+        h2 { font-size: 42px; line-height: 1.25; font-weight: 700; }
+        h3 { font-size: 24px; line-height: 1.3; font-weight: 700; }
+        h4 { font-size: 18px; line-height: 1.4; font-weight: 600; }
+        p  { font-size: 16px; line-height: 1.6; font-weight: 400; }
+
+        @media (max-width: 968px) {
+            h1 { font-size: 32px; }
+            h2 { font-size: 26px; }
+            h3 { font-size: 20px; }
+            h4 { font-size: 16px; }
+            p  { font-size: 14px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+            h3 { font-size: 18px; }
+            h4 { font-size: 15px; }
+            p  { font-size: 13px; }
         }
 
         /* Custom styles */
@@ -46,9 +91,7 @@
         @yield('content')
     </main>
     
-    @if(!Request::is('contacts'))
-        @include('components.footer')
-    @endif
+    @include('components.footer')
     
     <!-- Modal for success message -->
     <div id="thankYouModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
