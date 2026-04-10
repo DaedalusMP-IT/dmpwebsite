@@ -50,7 +50,6 @@
                 <a href="{{ route('automation') }}" class="{{ request()->routeIs('automation') ? 'text-purple-400' : '' }}">{{ __('messages.nav.automation') }}</a>
                 <a href="{{ route('arvr') }}" class="{{ request()->routeIs('arvr') ? 'text-purple-400' : '' }}">{{ __('messages.nav.arvr') }}</a>
                 <a href="{{ route('projects') }}" class="{{ request()->routeIs('projects') ? 'text-purple-400' : '' }}">{{ __('messages.nav.projects') }}</a>
-                <a href="{{ route('services') }}" class="{{ request()->routeIs('services') ? 'text-purple-400' : '' }}">{{ __('messages.nav.licenses') }}</a>
                 <a href="{{ route('vacancies') }}" class="{{ request()->routeIs('vacancies') ? 'text-purple-400' : '' }}">{{ __('messages.nav.vacancies') }}</a>
                 <a href="{{ route('news') }}" class="{{ request()->routeIs('news') ? 'text-purple-400' : '' }}">{{ __('messages.nav.news') }}</a>
                 <a href="{{ route('contacts') }}" class="{{ request()->routeIs('contacts') ? 'text-purple-400' : '' }}">{{ __('messages.nav.contacts') }}</a>
@@ -78,7 +77,6 @@
             <a href="{{ route('automation') }}" class="block py-2">{{ __('messages.nav.automation') }}</a>
             <a href="{{ route('arvr') }}" class="block py-2">{{ __('messages.nav.arvr') }}</a>
             <a href="{{ route('projects') }}" class="block py-2">{{ __('messages.nav.projects') }}</a>
-            <a href="{{ route('services') }}" class="block py-2">{{ __('messages.nav.licenses') }}</a>
             <a href="{{ route('vacancies') }}" class="block py-2">{{ __('messages.nav.vacancies') }}</a>
             <a href="{{ route('news') }}" class="block py-2">{{ __('messages.nav.news') }}</a>
             <a href="{{ route('contacts') }}" class="block py-2">{{ __('messages.nav.contacts') }}</a>
