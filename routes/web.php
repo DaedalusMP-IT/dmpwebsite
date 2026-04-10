@@ -10,7 +10,6 @@ Route::get('/language/{lang}', [LanguageController::class, 'switch'])->name('lan
 
 // Main pages
 Route::get('/', [PageController::class, 'home'])->name('home');
-Route::get('/services', [PageController::class, 'services'])->name('services');
 Route::get('/design', [PageController::class, 'design'])->name('design');
 Route::get('/automation', [PageController::class, 'automation'])->name('automation');
 Route::get('/arvr', [PageController::class, 'arvr'])->name('arvr');
