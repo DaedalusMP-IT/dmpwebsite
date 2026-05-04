@@ -74,8 +74,8 @@
     .hero-section {
         position: relative;
         width: 100%;
-        height: 100vh;
-        max-height: 800px;
+        height: 70vh;
+        max-height: 700px;
         display: flex;
         align-items: flex-end;
         background: #10022B;

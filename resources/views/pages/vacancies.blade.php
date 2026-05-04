@@ -13,27 +13,7 @@
     }
     
     /* Декоративные световые эффекты */
-    .glow-effect-1 {
-        position: absolute;
-        width: 389px;
-        height: 437px;
-        left: -60px;
-        top: 1358px;
-        background: #F8F3FC;
-        filter: blur(350px);
-        z-index: 0;
-    }
-    
-    .glow-effect-2 {
-        position: absolute;
-        width: 389px;
-        height: 437px;
-        right: 0;
-        top: 916px;
-        background: #F8F3FC;
-        filter: blur(350px);
-        z-index: 0;
-    }
+    .glow-effect-1, .glow-effect-2 { display: none; }
     
     .hero-fade-bottom {
         position: absolute;

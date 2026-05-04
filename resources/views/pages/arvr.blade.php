@@ -34,8 +34,8 @@
     .hero-section {
         position: relative;
         width: 100%;
-        height: 100vh;
-        max-height: 800px;
+        height: 70vh;
+        max-height: 700px;
         overflow: hidden;
         display: flex;
         align-items: flex-end;

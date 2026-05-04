@@ -134,7 +134,7 @@
         /* Hero Section */
         .hero-section {
             width: 100%;
-            height: 100vh;
+            height: 75vh;
             position: relative;
             background: #10022B;
             display: flex;
