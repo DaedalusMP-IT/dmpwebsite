@@ -1071,9 +1071,13 @@
             }
 
             .hero-subtitle {
-                width: 100%;
-                font-size: 18px;
-                line-height: 24px;
+                font-size: 14px;
+                line-height: 20px;
+                padding: 0;
+                margin-left: -20px;
+                margin-right: -20px;
+                width: calc(100% + 40px);
+                max-width: calc(100% + 40px);
             }
 
             .hero-buttons {
@@ -1387,8 +1391,8 @@
             }
 
             .hero-subtitle {
-                font-size: 16px;
-                line-height: 22px;
+                font-size: 13px;
+                line-height: 19px;
             }
 
             .directions-title,
