@@ -134,7 +134,7 @@
         /* Hero Section */
         .hero-section {
             width: 100%;
-            height: 75vh;
+            height: 100vh;
             position: relative;
             background: #10022B;
             display: flex;
@@ -187,10 +187,10 @@
 
         .hero-title {
             color: white;
-            font-size: 72px;
+            font-size: 48px;
             font-family: 'Involve', sans-serif;
             font-weight: 700;
-            line-height: 80px;
+            line-height: 58px;
             word-wrap: break-word;
             margin-bottom: 24px;
             opacity: 0;
@@ -200,7 +200,7 @@
         .hero-subtitle {
             max-width: 600px;
             color: #ffffff;
-            font-size: 22px;
+            font-size: 17px;
             font-family: 'Involve', sans-serif;
             font-weight: 300;
             line-height: 32px;

@@ -74,8 +74,8 @@
     .hero-section {
         position: relative;
         width: 100%;
-        height: 70vh;
-        max-height: 700px;
+        height: 100vh;
+        max-height: 800px;
         display: flex;
         align-items: flex-end;
         background: #10022B;
@@ -118,8 +118,8 @@
 
     .hero-title {
         font-weight: 600;
-        font-size: 54px;
-        line-height: 72px;
+        font-size: 38px;
+        line-height: 50px;
         color: #F8F3FC;
         margin-bottom: 10px;
     }
