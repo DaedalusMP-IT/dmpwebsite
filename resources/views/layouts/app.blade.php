@@ -45,11 +45,11 @@
         }
 
         /* === Глобальная типографика === */
-        h1 { font-size: 54px; line-height: 1.2; font-weight: 700; }
-        h2 { font-size: 42px; line-height: 1.25; font-weight: 700; }
-        h3 { font-size: 24px; line-height: 1.3; font-weight: 700; }
-        h4 { font-size: 18px; line-height: 1.4; font-weight: 600; }
-        p  { font-size: 16px; line-height: 1.6; font-weight: 400; }
+        h1 { font-size: 40px; line-height: 1.2; font-weight: 700; }
+        h2 { font-size: 30px; line-height: 1.25; font-weight: 700; }
+        h3 { font-size: 20px; line-height: 1.3; font-weight: 700; }
+        h4 { font-size: 16px; line-height: 1.4; font-weight: 600; }
+        p  { font-size: 14px; line-height: 1.6; font-weight: 400; }
 
         @media (max-width: 968px) {
             h1 { font-size: 32px; }

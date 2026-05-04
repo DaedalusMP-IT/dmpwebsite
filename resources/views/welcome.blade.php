@@ -324,9 +324,10 @@
 
         /* Company Info Sections */
         .company-info-section {
-            width: 1400px;
+            max-width: 1200px;
+            width: 100%;
             margin: 0 auto;
-            padding: 100px 0;
+            padding: 80px 40px;
             display: flex;
             align-items: center;
             gap: 100px;
@@ -349,14 +350,14 @@
         }
 
         .company-info-title {
-            font-size: 48px;
+            font-size: 36px;
             font-weight: 700;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             color: white;
         }
 
         .company-info-description {
-            font-size: 24px;
+            font-size: 16px;
             font-weight: 300;
             color: rgba(255, 255, 255, 0.7);
             line-height: 1.6;
@@ -385,15 +386,17 @@
         }
 
         .directions-container {
-            width: 1400px;
+            max-width: 1200px;
+            width: 100%;
             margin: 0 auto;
+            padding: 0 40px;
         }
 
         .directions-title {
-            font-size: 72px;
+            font-size: 48px;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
             color: white;
         }
 
@@ -423,14 +426,14 @@
         }
 
         .direction-card-title {
-            font-size: 36px;
+            font-size: 24px;
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             color: white;
         }
 
         .direction-card-description {
-            font-size: 18px;
+            font-size: 15px;
             font-weight: 300;
             color: #ffffff;
             line-height: 1.6;
@@ -447,10 +450,11 @@
         }
 
         .construction-container {
-            width: 1400px;
+            max-width: 1200px;
+            width: 100%;
             height: 100%;
             margin: 0 auto;
-            padding: 0 148px;
+            padding: 0 60px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -602,15 +606,17 @@
         }
 
         .projects-container {
-            width: 1400px;
+            max-width: 1200px;
+            width: 100%;
             margin: 0 auto;
+            padding: 0 40px;
         }
 
         .projects-title {
             font-family: 'Involve', sans-serif;
             font-weight: 600;
-            font-size: 54px;
-            line-height: 72px;
+            font-size: 40px;
+            line-height: 1.3;
             color: #F8F3FC;
             margin-bottom: 40px;
         }
