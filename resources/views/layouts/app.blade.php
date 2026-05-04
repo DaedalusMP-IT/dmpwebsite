@@ -41,6 +41,7 @@
             padding: 0;
             font-family: 'Involve', sans-serif;
             font-size: 16px;
+            background: #10022B;
         }
 
         /* === Глобальная типографика === */
@@ -107,11 +108,6 @@
     </div>
     
     <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-        
         // Close modal function
         function closeModal() {
             document.getElementById('thankYouModal').classList.add('hidden');

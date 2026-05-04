@@ -306,19 +306,20 @@
     <div class="content-wrapper">
         <!-- Contact Form -->
         <div class="form-section">
-            <h1 class="form-title">Остались вопросы?</h1>
-            <p class="form-subtitle">Оставьте заявку и мы с вами свяжемся!</p>
-            
+            <h1 class="form-title">{{ __('messages.contacts.form.title') }}</h1>
+            <p class="form-subtitle">{{ __('messages.contacts.form.subtitle') }}</p>
+
             <form id="contactForm">
-                <input type="text" id="input" name="name" class="form-input" placeholder="Имя" required>
-                <input type="tel" id="input1" name="phone" class="form-input" placeholder="Телефон" required>
-<button type="button" onclick="submitFeedback()" class="submit-button">Оставить заявку</button>
+                <input type="hidden" id="source" value="{{ __('messages.contacts.form.source') }}">
+                <input type="text" id="input" name="name" class="form-input" placeholder="{{ __('messages.contacts.form.name') }}" required>
+                <input type="tel" id="input1" name="phone" class="form-input" placeholder="{{ __('messages.contacts.form.phone') }}" required>
+                <button type="button" onclick="submitFeedback()" class="submit-button">{{ __('messages.form.submit') }}</button>
             </form>
         </div>
 
         <!-- Contact Information -->
             <div class="contact-info-section">
-                            <h2 class="contact-title">Наши контакты</h2>
+                            <h2 class="contact-title">{{ __('messages.contacts.our_contacts') }}</h2>
                                         
                             <div class="contact-item">
                         <div class="contact-icon">
@@ -339,14 +340,14 @@
                             <img src="/public/map-icon.png" alt="Location" style="width: 24px; height: 24px;">
                         </div>
                         <a href="https://www.google.com/maps/place/43%C2%B012'48.8%22N+76%C2%B049'50.1%22E/@43.213543,76.829912,18z/data=!3m1!4b1!4m4!3m3!8m2!3d43.213543!4d76.830581?entry=ttu&g_ep=EgoyMDI2MDQwNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="contact-text">
-                            Казахстан, 050000, г. Алматы, Ауэзовский район, мкр. Достык,<br>ул. Фарида Шарипова, д. 134А
+                            {!! __('messages.contacts.address.full') !!}
                         </a>
                     </div>
                     
                 
 
             <div class="contact-item" style="margin-top: 20px; flex-direction: column; align-items: flex-start; gap: 4px;">
-                <span class="contact-text" style="opacity: 0.6; font-size: 13px;">Реквизиты</span>
+                <span class="contact-text" style="opacity: 0.6; font-size: 13px;">{{ __('messages.contacts.requisites') }}</span>
                 <span class="contact-text">ТОО «Daedalus Mind Projects»</span>
                 <span class="contact-text">БИН 061040010545</span>
                 <span class="contact-text">ИИК KZ36601A861011654481</span>

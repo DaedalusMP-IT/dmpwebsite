@@ -135,10 +135,10 @@
         .hero-section {
             width: 100%;
             height: 100vh;
-            max-height: 800px;
             position: relative;
-            background: transparent;
+            background: #10022B;
             display: flex;
+            overflow: hidden;
             align-items: flex-end;
         }
 
@@ -147,8 +147,8 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 300px;
-            background: linear-gradient(to bottom, transparent, #10022B);
+            height: 30%;
+            background: linear-gradient(to bottom, transparent 0%, rgba(16,2,43,0.6) 40%, #10022B 65%, #10022B 100%);
             z-index: 5;
             pointer-events: none;
         }
@@ -380,7 +380,7 @@
         /* Directions Section */
         .directions-section {
             width: 100%;
-            padding: 150px 0;
+            padding: 100px 0;
             background: transparent;
         }
 
@@ -439,7 +439,8 @@
         /* Construction Stages Section */
         .construction-section {
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
+            padding: 100px 0;
             background: transparent;
             position: relative;
             overflow: hidden;
@@ -595,7 +596,7 @@
         /* Projects Section */
         .projects-section {
             width: 100%;
-            padding: 150px 0;
+            padding: 100px 0;
             background: transparent;
             position: relative;
         }
@@ -737,7 +738,7 @@
             min-height: 778px;
             background: transparent;
             position: relative;
-            padding: 160px 0 80px;
+            padding: 100px 0 80px;
             z-index: 10;
             overflow: visible;
         }
@@ -1422,7 +1423,7 @@
     
     <div class="page-container">
         <!-- Hero Section -->
-        <section class="hero-section">
+        <section class="hero-section" style="overflow:hidden;">
             <!-- Video Background -->
             <video
                 autoplay muted loop playsinline
@@ -1431,26 +1432,27 @@
                 <source src="/public/hero_video.mp4" type="video/mp4">
             </video>
             <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:1;"></div>
-            <div class="hero-fade-bottom" style="z-index:2;"></div>
 
             <div class="hero-content" style="z-index:3;">
-                <h1 class="hero-title">Завод под ключ</h1>
-                <p class="hero-subtitle">Пройдитесь по вашему будущему сооружению<br>и прикоснитесь к каждой детали!</p>
-                
+                <h1 class="hero-title">{{ __('messages.home.hero.title') }}</h1>
+                <p class="hero-subtitle">{!! __('messages.home.hero.subtitle') !!}</p>
+
                 <div class="hero-buttons">
                     <a href="#contact" class="btn-primary">{{ __('messages.contact_us') }}</a>
-                    <a href="#projects" class="btn-secondary">Наши проекты</a>
+                    <a href="#projects" class="btn-secondary">{{ __('messages.home.hero.btn_projects') }}</a>
                 </div>
             </div>
+            <!-- Градиентный блюр внутри hero -->
+            <div style="position:absolute;bottom:0;left:0;width:100%;height:250px;z-index:2;background:linear-gradient(to bottom,transparent 0%,rgba(16,2,43,0.7) 55%,#10022B 100%);pointer-events:none;"></div>
         </section>
+        <!-- Сплошная полоска перекрывает sub-pixel зазор (залезает поверх hero на 3px) -->
+        <div style="position:relative;z-index:20;margin-top:-3px;height:4px;background:#10022B;pointer-events:none;"></div>
 
         <!-- Company Info Section 1: Кто мы -->
         <section class="company-info-section" data-scroll-section>
             <div class="company-info-text">
-                <h2 class="company-info-title">Кто мы</h2>
-                <p class="company-info-description">
-                    Daedalus Mind Projects — организация, специализирующаяся в области предоставления услуг для промышленных предприятий. Команда состоит из высококвалифицированных специалистов, обладающих глубокими знаниями и опытом в области горнодобывающей промышленности, технологических процессов и инженерии.
-                </p>
+                <h2 class="company-info-title">{{ __('messages.home.about.title') }}</h2>
+                <p class="company-info-description">{{ __('messages.home.about.description') }}</p>
             </div>
             <div class="company-info-image" style="background-image: url('/public/about_1.jpg');"></div>
         </section>
@@ -1461,16 +1463,14 @@
                 <div class="stats-grid">
                     <div class="stat-item">
                         <div class="stat-number">10+</div>
-                        <div class="stat-label">Лет опыта</div>
+                        <div class="stat-label">{{ __('messages.home.stats.experience') }}</div>
                     </div>
                     <div class="stat-item">
                         <div class="stat-number">&gt;20</div>
-                        <div class="stat-label">Выполненных проектов</div>
+                        <div class="stat-label">{{ __('messages.home.stats.projects') }}</div>
                     </div>
                 </div>
-                <p class="company-info-description">
-                    Мы успешно реализуем проекты любой сложности, предлагая современные решения в сфере проектирования и высокое<br>качество выполнения работ.
-                </p>
+                <p class="company-info-description">{{ __('messages.home.stats.description') }}</p>
             </div>
             <div class="company-info-image" style="background-image: url('/public/about_2.jpg'); background-size: 105%;"></div>
         </section>
@@ -1478,9 +1478,9 @@
         <!-- Company Info Section 3: Наша миссия -->
         <section class="company-info-section" data-scroll-section>
             <div class="company-info-text">
-                <h2 class="company-info-title">Наша миссия</h2>
+                <h2 class="company-info-title">{{ __('messages.home.mission.title') }}</h2>
                 <p class="company-info-description">
-                    Обеспечивать безупречную эксплуатацию и максимальную рентабельность промышленных объектов. <strong>Мы применяем прогрессивные инженерные решения и стандарты качества, чтобы наши клиенты получали не просто сооружения, а высокотехнологичные активы,</strong> готовые к интеграции в глобальную цифровую экономику и устойчивые к вызовам завтрашнего дня.
+                    {{ __('messages.home.mission.description') }} <strong>{{ __('messages.home.mission.highlight') }}</strong> {{ __('messages.home.mission.description2') }}
                 </p>
             </div>
             <div class="company-info-image" style="background-image: url('/public/about_3.jpg');"></div>
@@ -1519,7 +1519,7 @@
         <!-- Construction Stages Section -->
         <section class="construction-section">
             <div class="construction-container">
-                <h2 class="construction-title">Этапы проектирования<br><span style="font-weight: 400;">проектно-инженерных работ</span></h2>
+                <h2 class="construction-title">{{ __('messages.home.construction.title') }}<br><span style="font-weight: 400;">{{ __('messages.home.construction.subtitle') }}</span></h2>
                 <div class="construction-card">
                     <!-- Большой круг -->
                     <div class="circular-progress">
@@ -1536,7 +1536,7 @@
 
                     <!-- Текст справа -->
                     <div class="construction-info">
-                        <div id="stage-name" class="construction-stage-title">ТЭО - ФЭМ</div>
+                        <div id="stage-name" class="construction-stage-title">{{ __('messages.home.stage.1.name') }}</div>
                         <div class="stage-indicator" id="stage-dots">
                             <div class="stage-dot active"></div>
                             <div class="stage-dot"></div>
@@ -1551,10 +1551,10 @@
         <script>
         (function() {
             var stages = [
-                { name: 'ТЭО - ФЭМ',                    pct: 25  },
-                { name: 'Цифровое проектирование BIM',   pct: 50  },
-                { name: 'Рабочий проект',                pct: 80  },
-                { name: 'Прохождение экспертизы',        pct: 100 },
+                { name: '{{ __("messages.home.stage.1.name") }}', pct: 25  },
+                { name: '{{ __("messages.home.stage.2.name") }}', pct: 50  },
+                { name: '{{ __("messages.home.stage.3.name") }}', pct: 80  },
+                { name: '{{ __("messages.home.stage.4.name") }}', pct: 100 },
             ];
             var current = 0;
             var circumference = 678.6;
@@ -1597,15 +1597,15 @@
         <!-- Projects Section -->
         <section class="projects-section" id="projects">
             <div class="projects-container">
-                <h2 class="projects-title">Наши проекты</h2>
+                <h2 class="projects-title">{{ __('messages.home.projects.title') }}</h2>
 
                 <div class="projects-carousel">
                     <div class="project-card">
                         <div class="project-bg" style="background: url('/public/home_project_1.jpg') center/cover no-repeat;"></div>
                         <div class="project-overlay">
                             <div class="project-info">
-                                <div class="project-overlay-title">Caravan Resources Group</div>
-                                <div class="project-overlay-description">Завод по производству катодной меди</div>
+                                <div class="project-overlay-title">{{ __('messages.home.project.1.title') }}</div>
+                                <div class="project-overlay-description">{{ __('messages.home.project.1.desc') }}</div>
                             </div>
                         </div>
                     </div>
@@ -1614,8 +1614,8 @@
                         <div class="project-bg" style="background: url('/public/home_project_2.jpg') center/cover no-repeat;"></div>
                         <div class="project-overlay">
                             <div class="project-info">
-                                <div class="project-overlay-title">RESOURCES CAPITAL GROUP</div>
-                                <div class="project-overlay-description">Горно-обогатительный комбинат на месторождении Акмая в Карагандинской обл.</div>
+                                <div class="project-overlay-title">{{ __('messages.home.project.2.title') }}</div>
+                                <div class="project-overlay-description">{{ __('messages.home.project.2.desc') }}</div>
                             </div>
                         </div>
                     </div>
@@ -1624,8 +1624,8 @@
                         <div class="project-bg" style="background: url('/public/home_project_3.jpg') center/cover no-repeat;"></div>
                         <div class="project-overlay">
                             <div class="project-info">
-                                <div class="project-overlay-title">AK SU KMG</div>
-                                <div class="project-overlay-description">Новый опреснительный завод на берегу Каспийского моря</div>
+                                <div class="project-overlay-title">{{ __('messages.home.project.3.title') }}</div>
+                                <div class="project-overlay-description">{{ __('messages.home.project.3.desc') }}</div>
                             </div>
                         </div>
                     </div>
@@ -1634,8 +1634,8 @@
                         <div class="project-bg" style="background: url('/public/home_project_4.jpg') center/cover no-repeat;"></div>
                         <div class="project-overlay">
                             <div class="project-info">
-                                <div class="project-overlay-title">АО "MB Project Partners"</div>
-                                <div class="project-overlay-description">Фиброцементный завод в г. Алматы</div>
+                                <div class="project-overlay-title">{{ __('messages.home.project.4.title') }}</div>
+                                <div class="project-overlay-description">{{ __('messages.home.project.4.desc') }}</div>
                             </div>
                         </div>
                     </div>
@@ -1648,7 +1648,7 @@
                             <polyline points="12 5 19 12 12 19"/>
                         </svg>
                     </a>
-                    <span class="projects-circle-label">Все проекты</span>
+                    <span class="projects-circle-label">{{ __('messages.home.projects.all') }}</span>
                 </div>
             </div>
         </section>
@@ -1657,18 +1657,19 @@
         <section class="contact-section" id="contact">
             <div class="contact-container">
                 <div class="contact-form-wrapper">
-                    <h1 class="contact-main-title">Остались вопросы?</h1>
-                    <p class="contact-subtitle">Оставьте заявку и мы с вами свяжемся!</p>
-                    
+                    <h1 class="contact-main-title">{{ __('messages.home.contact.title') }}</h1>
+                    <p class="contact-subtitle">{{ __('messages.home.contact.subtitle') }}</p>
+
                     <form class="contact-form" id="contactForm">
-                        <input type="text" name="name" class="form-input" placeholder="Имя" required>
-                        <input type="tel" name="phone" class="form-input" placeholder="Телефон" required>
-                        <button type="button" onclick="submitFeedback()" class="form-submit">Оставить заявку</button>
+                        <input type="hidden" id="source" value="{{ __('messages.nav.home') }}">
+                        <input type="text" id="input" name="name" class="form-input" placeholder="{{ __('messages.form.name') }}" required>
+                        <input type="tel" id="input1" name="phone" class="form-input" placeholder="{{ __('messages.form.phone') }}" required>
+                        <button type="button" onclick="submitFeedback()" class="form-submit">{{ __('messages.form.submit') }}</button>
                     </form>
                 </div>
                 
                         <div class="contact-info-section">
-                            <h2 class="contact-info-title">Наши контакты</h2>
+                            <h2 class="contact-info-title">{{ __('messages.home.contact.info') }}</h2>
                                         
                             <div class="contact-item">
                         <div class="contact-icon">
@@ -1689,7 +1690,7 @@
                             <img src="/public/map-icon.png" alt="Location" style="width: 24px; height: 24px;">
                         </div>
                         <a href="https://www.google.com/maps/place/43%C2%B012'48.8%22N+76%C2%B049'50.1%22E/@43.213543,76.829912,18z/data=!3m1!4b1!4m4!3m3!8m2!3d43.213543!4d76.830581?entry=ttu&g_ep=EgoyMDI2MDQwNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="contact-text">
-                            Казахстан, 050000, г. Алматы, Ауэзовский район, мкр. Достык,<br>ул. Фарида Шарипова, д. 134А
+                            {!! __('messages.contacts.address.full') !!}
                         </a>
                     </div>
                     
@@ -1732,17 +1733,17 @@
 
         // Circular Progress Animation - Single Card with Scroll-based Stage Changes
         const constructionStages = [
-            { percentage: 9, title: 'ТЭО - ФЭМ', description: 'Технико-экономическое обоснование и финансово-экономическая модель проекта. Анализ целесообразности и эффективности инвестиций', time: '1-30 дней' },
-            { percentage: 18, title: 'Цифровое проектирование BIM', description: 'Создание информационной модели здания с использованием технологий BIM для оптимизации проектных решений и координации всех систем', time: '31-60 дней' },
-            { percentage: 27, title: 'Рабочий проект', description: 'Разработка полного комплекта рабочей документации для строительства с детализацией всех конструктивных и технологических решений', time: '61-90 дней' },
-            { percentage: 36, title: 'Прохождение экспертизы', description: 'Государственная экспертиза проектной документации и результатов инженерных изысканий для получения положительного заключения', time: '91-120 дней' },
-            { percentage: 45, title: 'Мобилизация', description: 'Подготовка строительной площадки, организация временных сооружений, доставка техники и материалов, формирование рабочих бригад', time: '121-150 дней' },
-            { percentage: 55, title: 'Земляные работы', description: 'Подготовка котлована, планировка территории, устройство фундаментов и подземных коммуникаций согласно проектной документации', time: '151-180 дней' },
-            { percentage: 64, title: 'Монтаж бетонных и металлических конструкций', description: 'Возведение несущего каркаса здания из железобетонных и металлических элементов с соблюдением проектных параметров и норм безопасности', time: '181-210 дней' },
-            { percentage: 73, title: 'Разводка инженерных сетей', description: 'Монтаж систем водоснабжения, канализации, отопления, вентиляции, электроснабжения и других инженерных коммуникаций', time: '211-240 дней' },
-            { percentage: 82, title: 'Монтаж технологического оборудования', description: 'Установка и подключение специализированного оборудования, систем автоматизации и технологических линий согласно технологическому проекту', time: '241-270 дней' },
-            { percentage: 91, title: 'Возведение несущих и ограждающих конструкций', description: 'Устройство стен, перекрытий, кровли, фасадных систем и других конструктивных элементов здания с применением современных материалов', time: '271-330 дней' },
-            { percentage: 100, title: 'Пусконаладка', description: 'Комплексное тестирование и настройка всех инженерных систем и технологического оборудования, подготовка объекта к вводу в эксплуатацию', time: '331-365 дней' }
+            { percentage: 9,   title: '{{ __("messages.home.stage.1.name") }}', description: '{{ __("messages.home.stage.1.desc") }}', time: '{{ __("messages.home.stage.1.time") }}' },
+            { percentage: 18,  title: '{{ __("messages.home.stage.2.name") }}', description: '{{ __("messages.home.stage.2.desc") }}', time: '{{ __("messages.home.stage.2.time") }}' },
+            { percentage: 27,  title: '{{ __("messages.home.stage.3.name") }}', description: '{{ __("messages.home.stage.3.desc") }}', time: '{{ __("messages.home.stage.3.time") }}' },
+            { percentage: 36,  title: '{{ __("messages.home.stage.4.name") }}', description: '{{ __("messages.home.stage.4.desc") }}', time: '{{ __("messages.home.stage.4.time") }}' },
+            { percentage: 45,  title: '{{ __("messages.home.stage.5.name") }}', description: '{{ __("messages.home.stage.5.desc") }}', time: '{{ __("messages.home.stage.5.time") }}' },
+            { percentage: 55,  title: '{{ __("messages.home.stage.6.name") }}', description: '{{ __("messages.home.stage.6.desc") }}', time: '{{ __("messages.home.stage.6.time") }}' },
+            { percentage: 64,  title: '{{ __("messages.home.stage.7.name") }}', description: '{{ __("messages.home.stage.7.desc") }}', time: '{{ __("messages.home.stage.7.time") }}' },
+            { percentage: 73,  title: '{{ __("messages.home.stage.8.name") }}', description: '{{ __("messages.home.stage.8.desc") }}', time: '{{ __("messages.home.stage.8.time") }}' },
+            { percentage: 82,  title: '{{ __("messages.home.stage.9.name") }}', description: '{{ __("messages.home.stage.9.desc") }}', time: '{{ __("messages.home.stage.9.time") }}' },
+            { percentage: 91,  title: '{{ __("messages.home.stage.10.name") }}', description: '{{ __("messages.home.stage.10.desc") }}', time: '{{ __("messages.home.stage.10.time") }}' },
+            { percentage: 100, title: '{{ __("messages.home.stage.11.name") }}', description: '{{ __("messages.home.stage.11.desc") }}', time: '{{ __("messages.home.stage.11.time") }}' },
         ];
 
         const constructionSection = document.querySelector('.construction-section');

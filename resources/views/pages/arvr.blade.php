@@ -11,34 +11,23 @@
         padding: 0;
     }
 
-    /* Декоративные световые эффекты */
-    .glow-effect-1 {
-        position: absolute;
-        width: 389px;
-        height: 437px;
-        left: -60px;
-        top: 1358px;
-        background: #F8F3FC;
-        filter: blur(350px);
-        z-index: 0;
-    }
-    
-    .glow-effect-2 {
-        position: absolute;
-        width: 389px;
-        height: 437px;
-        right: 0;
-        top: 916px;
-        background: #F8F3FC;
-        filter: blur(350px);
-        z-index: 0;
-    }
 
     .arvr-page {
         position: relative;
         width: 100%;
         background: #10022B;
         color: #F8F3FC;
+    }
+
+    .hero-fade-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 30%;
+        background: linear-gradient(to bottom, transparent 0%, rgba(16,2,43,0.6) 40%, #10022B 65%, #10022B 100%);
+        z-index: 1;
+        pointer-events: none;
     }
 
     /* Hero Section */
@@ -50,6 +39,7 @@
         overflow: hidden;
         display: flex;
         align-items: flex-end;
+        background: #10022B;
     }
 
     .hero-background {
@@ -66,10 +56,10 @@
 
     .hero-content {
         position: relative;
-        z-index: 2;
+        z-index: 10;
         width: 1150px;
         margin: 0 auto;
-        padding: 0 20px 80px;
+        padding: 0 20px 60px;
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -385,16 +375,16 @@
     }
 
     @media (max-width: 768px) {
-        .glow-effect-1,
-        .glow-effect-2 {
-            display: none;
-        }
 
         .hero-section {
             height: 70vh;
             min-height: 70vh;
             display: flex;
             align-items: flex-end;
+        }
+
+        .hero-fade-bottom {
+            height: 55%;
         }
 
         .hero-content {
@@ -565,52 +555,53 @@
 
 @section('content')
 <div class="arvr-page">
-    <div class="glow-effect-1"></div>
-    <div class="glow-effect-2"></div>
-    
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section" style="overflow:hidden;">
         <div class="hero-background"></div>
         <div class="hero-content">
-            <h1 class="hero-title">VR решения для производства</h1>
-            <p class="hero-description">Симуляторы, интерактивные 3D-карты и приложения.</p>
-            <a href="#application" class="hero-button">Оставить заявку</a>
+            <h1 class="hero-title">{{ __('messages.arvr.title') }}</h1>
+            <p class="hero-description">{{ __('messages.arvr.hero.description') }}</p>
+            <a href="#application" class="hero-button">{{ __('messages.arvr.hero.button') }}</a>
         </div>
+        <!-- Градиентный блюр внутри hero -->
+        <div style="position:absolute;bottom:0;left:0;width:100%;height:250px;z-index:8;background:linear-gradient(to bottom,transparent 0%,rgba(16,2,43,0.7) 55%,#10022B 100%);pointer-events:none;"></div>
     </section>
+    <!-- Сплошная полоска перекрывает sub-pixel зазор -->
+    <div style="position:relative;z-index:20;margin-top:-3px;height:4px;background:#10022B;pointer-events:none;"></div>
 
     <div class="page-container">
         <!-- Services Section -->
-        <section class="content-wrapper services-section">
-            <h2 class="section-title">VR тренажеры и симуляторы</h2>
+        <section class="content-wrapper services-section" style="padding-top: 100px;">
+            <h2 class="section-title">{{ __('messages.arvr.service_title') }}</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-info">
-                        <h3 class="service-title">VR-тренажеры для обучения и оптимизации производства</h3>
-                        <p class="service-description">Разработка и внедрение VR-тренажеров, которые помогают обучать операторов и технический персонал в безопасной и реалистичной среде</p>
+                        <h3 class="service-title">{{ __('messages.arvr.service_1.title') }}</h3>
+                        <p class="service-description">{{ __('messages.arvr.service_1.desc') }}</p>
                     </div>
                     <div class="service-arrow"></div>
                 </div>
 
                 <div class="service-card">
                     <div class="service-info">
-                        <h3 class="service-title">Создание AR-приложений для поддержки обслуживания</h3>
-                        <p class="service-description">Интерактивные инструкции и схемы для упрощения ремонта и технического обслуживания оборудования</p>
+                        <h3 class="service-title">{{ __('messages.arvr.service_2.title') }}</h3>
+                        <p class="service-description">{{ __('messages.arvr.service_2.desc') }}</p>
                     </div>
                     <div class="service-arrow"></div>
                 </div>
 
                 <div class="service-card">
                     <div class="service-info">
-                        <h3 class="service-title">3D-моделирование и визуализация производственных линий</h3>
-                        <p class="service-description">Создание детализированных моделей для планирования и оптимизации</p>
+                        <h3 class="service-title">{{ __('messages.arvr.service_3.title') }}</h3>
+                        <p class="service-description">{{ __('messages.arvr.service_3.desc') }}</p>
                     </div>
                     <div class="service-arrow"></div>
                 </div>
 
                 <div class="service-card">
                     <div class="service-info">
-                        <h3 class="service-title">Интерактивные 3D карты для визуализации объектов</h3>
-                        <p class="service-description">Цифровые интерактивные карты производственных объектов для навигации, мониторинга и оперативного планирования</p>
+                        <h3 class="service-title">{{ __('messages.arvr.service_4.title') }}</h3>
+                        <p class="service-description">{{ __('messages.arvr.service_4.desc') }}</p>
                     </div>
                     <div class="service-arrow"></div>
                 </div>
@@ -620,20 +611,19 @@
         <!-- Application Form Section -->
         <section class="application-section" id="application">
             <div class="form-container">
-                <h2 class="form-title">Выбрали услугу?</h2>
-                <p>Тогда оставьте заявку, а мы с вами свяжемся</p>
+                <h2 class="form-title">{{ __('messages.form.title') }}</h2>
+                <p>{{ __('messages.form.subtitle') }}</p>
 
                 <form id="arvrForm" onsubmit="submitARVRForm(event)">
                     <div class="form-group">
-                        <input type="text" name="name" class="form-input" placeholder="Имя" required>
+                        <input type="text" name="name" class="form-input" placeholder="{{ __('messages.form.name') }}" required>
                     </div>
 
                     <div class="form-group">
-                        <input type="tel" name="phone" class="form-input" placeholder="Телефон" required>
+                        <input type="tel" name="phone" class="form-input" placeholder="{{ __('messages.form.phone') }}" required>
                     </div>
 
-
-                    <button type="submit" class="submit-button">Оставить заявку</button>
+                    <button type="submit" class="submit-button">{{ __('messages.form.submit') }}</button>
                 </form>
             </div>
 
@@ -647,10 +637,14 @@ function submitARVRForm(event) {
     event.preventDefault();
     
     const formData = new FormData(event.target);
+    const phone = formData.get('phone').trim();
+    if (!/^[\d\s\+\-\(\)]{7,16}$/.test(phone)) { alert('Введите корректный номер телефона'); return; }
+
     const data = {
-        name: formData.get('name'),
-        number: formData.get('phone'),
-        service: 'AR/VR обучение'
+        name: formData.get('name').trim(),
+        phone,
+        service: 'AR/VR обучение',
+        source: 'AR/VR обучение'
     };
 
     fetch('/api/submit', {
@@ -661,15 +655,14 @@ function submitARVRForm(event) {
         },
         body: JSON.stringify(data)
     })
-    .then(response => response.text())
-    .then(text => {
-        const jsonMatch = text.match(/\{.*\}/);
-        if (jsonMatch) {
-            const result = JSON.parse(jsonMatch[0]);
-            alert('Спасибо! Ваша заявка отправлена.');
+    .then(r => r.json())
+    .then(result => {
+        if (result.success) {
+            const modal = document.getElementById('thankYouModal');
+            if (modal) { modal.classList.remove('hidden'); modal.style.display = 'flex'; }
             event.target.reset();
         } else {
-            throw new Error('Invalid response');
+            alert('Ошибка: ' + (result.message || 'Попробуйте ещё раз'));
         }
     })
     .catch(error => {

@@ -9,32 +9,7 @@
 </head>
 <body style="background: #10022B; margin: 0; padding: 0; font-family: 'Involve', sans-serif; position: relative; overflow-x: hidden; width: 100%;">
 
-<div class="glow-effect-1"></div>
-<div class="glow-effect-2"></div>
-
 <style>
-    /* Декоративные световые эффекты */
-    .glow-effect-1 {
-        position: absolute;
-        width: 389px;
-        height: 437px;
-        left: -60px;
-        top: 1358px;
-        background: #F8F3FC;
-        filter: blur(350px);
-        z-index: 0;
-    }
-    
-    .glow-effect-2 {
-        position: absolute;
-        width: 389px;
-        height: 437px;
-        right: 0;
-        top: 916px;
-        background: #F8F3FC;
-        filter: blur(350px);
-        z-index: 0;
-    }
 
     @font-face {
         font-family: 'Involve';
@@ -86,6 +61,7 @@
         width: 100%;
         margin: 0 auto;
         position: relative;
+        background: #10022B;
     }
 
     .content-wrapper {
@@ -100,9 +76,20 @@
         width: 100%;
         height: 100vh;
         max-height: 800px;
-        margin-bottom: 65px;
         display: flex;
         align-items: flex-end;
+        background: #10022B;
+    }
+
+    .hero-fade-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 30%;
+        background: linear-gradient(to bottom, transparent 0%, rgba(16,2,43,0.6) 40%, #10022B 65%, #10022B 100%);
+        z-index: 1;
+        pointer-events: none;
     }
 
     .hero-background {
@@ -119,10 +106,10 @@
     .hero-content {
         position: relative;
         padding-top: 0;
-        padding-bottom: 80px;
+        padding-bottom: 130px;
         width: 1150px;
         margin: 0 auto;
-        z-index: 2;
+        z-index: 10;
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -372,30 +359,6 @@
         background: url('/public/form_logo.png') center/250px no-repeat;
     }
 
-    /* Blur Effects */
-    .blur-effect-1 {
-        position: absolute;
-        width: 389px;
-        height: 437px;
-        right: 328px;
-        top: 1835px;
-        background: #F8F3FC;
-        filter: blur(350px);
-        pointer-events: none;
-        z-index: 0;
-    }
-
-    .blur-effect-2 {
-        position: absolute;
-        width: 389px;
-        height: 437px;
-        left: 12px;
-        top: 1030px;
-        background: #F8F3FC;
-        filter: blur(350px);
-        pointer-events: none;
-        z-index: 0;
-    }
 
     /* Responsive */
     @media (max-width: 1400px) {
@@ -425,17 +388,16 @@
     }
 
     @media (max-width: 768px) {
-        .glow-effect-1,
-        .glow-effect-2 {
-            display: none;
-        }
 
         .hero-section {
             height: 70vh;
             min-height: 70vh;
-            margin-bottom: 40px;
             display: flex;
             align-items: flex-end;
+        }
+
+        .hero-fade-bottom {
+            height: 55%;
         }
 
         .hero-content {
@@ -608,53 +570,53 @@
 @include('components.header')
 
 <div class="page-container">
-    <!-- Blur Effects -->
-    <div class="blur-effect-1"></div>
-    <div class="blur-effect-2"></div>
-
     <!-- Hero Section -->
-    <section class="hero-section">
+    <section class="hero-section" style="overflow:hidden;">
         <div class="hero-background"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">BIM Внедрение</h1>
-            <p class="hero-description">Цифровое проектирование и информационное моделирование зданий и промышленных объектов на базе BIM-технологий.</p>
-            <a href="#form" class="hero-button">Оставить заявку</a>
+            <h1 class="hero-title">{{ __('messages.automation.title') }}</h1>
+            <p class="hero-description">{{ __('messages.automation.hero.description') }}</p>
+            <a href="#form" class="hero-button">{{ __('messages.automation.hero.button') }}</a>
         </div>
+        <!-- Градиентный блюр внутри hero -->
+        <div style="position:absolute;bottom:0;left:0;width:100%;height:250px;z-index:8;background:linear-gradient(to bottom,transparent 0%,rgba(16,2,43,0.7) 55%,#10022B 100%);pointer-events:none;"></div>
     </section>
+    <!-- Сплошная полоска перекрывает sub-pixel зазор -->
+    <div style="position:relative;z-index:20;margin-top:-3px;height:4px;background:#10022B;pointer-events:none;"></div>
 
     <!-- Services Section -->
-    <section class="content-wrapper services-section">
-        <h2 class="section-title">Полный цикл BIM-внедрения для вашего объекта</h2>
+    <section class="content-wrapper services-section" style="padding-top: 100px;">
+        <h2 class="section-title">{{ __('messages.automation.services.title') }}</h2>
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-info">
-                    <h3 class="service-title">Разработка BIM-модели объекта</h3>
-                    <p class="service-description">Создание детальной информационной модели здания или промышленного объекта с полной параметризацией всех элементов</p>
+                    <h3 class="service-title">{{ __('messages.automation.service_1.title') }}</h3>
+                    <p class="service-description">{{ __('messages.automation.service_1.desc') }}</p>
                 </div>
                 <div class="service-arrow"></div>
             </div>
 
             <div class="service-card">
                 <div class="service-info">
-                    <h3 class="service-title">Координация и проверка на коллизии</h3>
-                    <p class="service-description">Сведение моделей всех разделов проекта и автоматическое выявление пересечений конструкций до начала строительства</p>
+                    <h3 class="service-title">{{ __('messages.automation.service_2.title') }}</h3>
+                    <p class="service-description">{{ __('messages.automation.service_2.desc') }}</p>
                 </div>
                 <div class="service-arrow"></div>
             </div>
 
             <div class="service-card">
                 <div class="service-info">
-                    <h3 class="service-title">Разработка стандарта BIM для предприятия</h3>
-                    <p class="service-description">Создание корпоративных требований к информационному моделированию, шаблонов и регламентов для устойчивого внедрения BIM</p>
+                    <h3 class="service-title">{{ __('messages.automation.service_3.title') }}</h3>
+                    <p class="service-description">{{ __('messages.automation.service_3.desc') }}</p>
                 </div>
                 <div class="service-arrow"></div>
             </div>
 
             <div class="service-card">
                 <div class="service-info">
-                    <h3 class="service-title">Обучение и сопровождение команды</h3>
-                    <p class="service-description">Подготовка специалистов заказчика к работе с BIM-инструментами, онлайн и офлайн обучение, поддержка на всех этапах проекта</p>
+                    <h3 class="service-title">{{ __('messages.automation.service_4.title') }}</h3>
+                    <p class="service-description">{{ __('messages.automation.service_4.desc') }}</p>
                 </div>
                 <div class="service-arrow"></div>
             </div>
@@ -665,12 +627,14 @@
     <!-- Application Form Section -->
     <section class="application-section" id="form">
         <div class="form-container">
-            <h2 class="form-title">Выбрали услугу?</h2>
-            <p class="form-subtitle">Тогда оставьте заявку, а мы с вами свяжемся</p>
+            <h2 class="form-title">{{ __('messages.form.title') }}</h2>
+            <p class="form-subtitle">{{ __('messages.form.subtitle') }}</p>
             <form id="automationForm">
-                <input type="text" name="name" class="form-input" placeholder="Имя" required>
-                <input type="tel" name="phone" class="form-input" placeholder="Телефон" required>
-                <button type="submit" class="form-button">Оставить заявку</button>
+                <input type="hidden" name="source" value="BIM Внедрение">
+                <input type="hidden" name="service" value="BIM Внедрение">
+                <input type="text" name="name" class="form-input" placeholder="{{ __('messages.form.name') }}" required>
+                <input type="tel" name="phone" class="form-input" placeholder="{{ __('messages.form.phone') }}" required>
+                <button type="submit" class="form-button">{{ __('messages.form.submit') }}</button>
             </form>
         </div>
         <div class="form-image"></div>
@@ -693,29 +657,33 @@ if (mobileMenuButton && mobileMenu) {
 // Form submission
 document.getElementById('automationForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    
-    const formData = new FormData(this);
-    
+
+    const phone = this.querySelector('[name="phone"]').value.trim();
+    if (!/^[\d\s\+\-\(\)]{7,16}$/.test(phone)) { alert('Введите корректный номер телефона'); return; }
+
+    const data = {
+        name: this.querySelector('[name="name"]').value.trim(),
+        phone,
+        service: 'BIM Внедрение',
+        source: 'BIM Внедрение'
+    };
+
     fetch('/api/submit', {
         method: 'POST',
-        body: formData,
         headers: {
+            'Content-Type': 'application/json',
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
-        }
+        },
+        body: JSON.stringify(data)
     })
-    .then(response => response.text())
-    .then(text => {
-        const jsonMatch = text.match(/\{[\s\S]*\}/);
-        if (jsonMatch) {
-            const data = JSON.parse(jsonMatch[0]);
-            if (data.success) {
-                alert('Заявка успешно отправлена!');
-                this.reset();
-            } else {
-                alert('Ошибка при отправке заявки');
-            }
+    .then(r => r.json())
+    .then(result => {
+        if (result.success) {
+            const modal = document.getElementById('thankYouModal');
+            if (modal) { modal.classList.remove('hidden'); modal.style.display = 'flex'; }
+            this.reset();
         } else {
-            alert('Ошибка при отправке заявки');
+            alert('Ошибка: ' + (result.message || 'Попробуйте ещё раз'));
         }
     })
     .catch(error => {

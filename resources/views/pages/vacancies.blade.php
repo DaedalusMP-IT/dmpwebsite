@@ -35,6 +35,17 @@
         z-index: 0;
     }
     
+    .hero-fade-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 30%;
+        background: linear-gradient(to bottom, transparent 0%, rgba(16,2,43,0.6) 40%, #10022B 65%, #10022B 100%);
+        z-index: 1;
+        pointer-events: none;
+    }
+
     .hero-section {
         position: relative;
         width: 100%;
@@ -42,6 +53,7 @@
         max-height: 800px;
         overflow: hidden;
         display: flex;
+        background: #10022B;
         align-items: flex-end;
     }
     
@@ -58,10 +70,10 @@
     
     .hero-content {
         position: relative;
-        z-index: 2;
+        z-index: 10;
         max-width: 1150px;
         margin: 0 auto;
-        padding: 0 20px 80px;
+        padding: 0 20px 60px;
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -305,6 +317,10 @@
             align-items: flex-end;
         }
 
+        .hero-fade-bottom {
+            height: 55%;
+        }
+
         .hero-content {
             padding: 0 20px 50px;
             text-align: center;
@@ -439,21 +455,25 @@
     <div class="glow-effect-2"></div>
     
     <!-- Hero Section -->
-    <div class="hero-section">
+    <div class="hero-section" style="overflow:hidden;">
         <div class="hero-bg-image"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">Вакансии</h1>
-            <p class="hero-subtitle">Присоединяйся к нашей команде и стань частью профессионалов!</p>
+            <h1 class="hero-title">{{ __('messages.vacancies.title') }}</h1>
+            <p class="hero-subtitle">{{ __('messages.vacancies.hero.subtitle') }}</p>
             <button class="hero-button" onclick="document.getElementById('vacancies-list').scrollIntoView({behavior: 'smooth'})">
-                Откликнуться
+                {{ __('messages.vacancies.hero.button') }}
             </button>
         </div>
+        <!-- Градиентный блюр внутри hero -->
+        <div style="position:absolute;bottom:0;left:0;width:100%;height:250px;z-index:8;background:linear-gradient(to bottom,transparent 0%,rgba(16,2,43,0.7) 55%,#10022B 100%);pointer-events:none;"></div>
     </div>
-    
+    <!-- Сплошная полоска перекрывает sub-pixel зазор -->
+    <div style="position:relative;z-index:20;margin-top:-3px;height:4px;background:#10022B;pointer-events:none;"></div>
+
     <!-- Team Section -->
     <div class="content-wrapper">
-        <h2 class="section-title">Познакомьтесь с нашей командой</h2>
+        <h2 class="section-title">{{ __('messages.vacancies.team.title') }}</h2>
         <div class="team-photos">
             <div class="team-photo"></div>
             <div class="team-photo"></div>
@@ -464,24 +484,24 @@
     <!-- Interview Process Section -->
     <div class="content-wrapper">
         <div class="interview-section">
-            <h2 class="section-title">Как проходит собеседование</h2>
-            
+            <h2 class="section-title">{{ __('messages.vacancies.interview.title') }}</h2>
+
             <div class="interview-image"></div>
-            
+
             <div class="interview-steps">
                 <div class="interview-step">
                     <div class="step-number">1</div>
-                    <div class="step-box">Онлайн собеседование</div>
+                    <div class="step-box">{{ __('messages.vacancies.interview.step1') }}</div>
                 </div>
-                
+
                 <div class="interview-step">
                     <div class="step-number">2</div>
-                    <div class="step-box">Собеседование в реальной жизни и знакомство с командой</div>
+                    <div class="step-box">{{ __('messages.vacancies.interview.step2') }}</div>
                 </div>
-                
+
                 <div class="interview-step">
                     <div class="step-number">3</div>
-                    <div class="step-box">Приглашение на работу</div>
+                    <div class="step-box">{{ __('messages.vacancies.interview.step3') }}</div>
                 </div>
             </div>
         </div>
@@ -490,56 +510,53 @@
     <!-- Vacancies List Section -->
     <div class="content-wrapper">
         <div class="vacancies-list-section" id="vacancies-list">
-            <h2 class="section-title">Мы всегда рады талантливым людям</h2>
-            
-            <div class="vacancy-card">
-                <div class="vacancy-info">
-                    <div class="vacancy-title">Инженер-проектировщик раздела ОВ</div>
-                    <div class="vacancy-description">Разработка проектной и рабочей документации систем отопления, вентиляции и кондиционирования. Проведение теплотехнических расчётов, подбор оборудования, прохождение экспертизы.</div>
-                </div>
-                <button class="vacancy-button">{{ __('messages.apply') }}</button>
-            </div>
+            <h2 class="section-title">{{ __('messages.vacancies.list.title') }}</h2>
 
+            @php $vacancies = [1,2,3,4,5,6]; @endphp
+            @foreach($vacancies as $i)
             <div class="vacancy-card">
                 <div class="vacancy-info">
-                    <div class="vacancy-title">Инженер-проектировщик раздела ВК</div>
-                    <div class="vacancy-description">Проектирование систем водоснабжения и водоотведения промышленных и гражданских объектов. Разработка схем, гидравлические расчёты, подбор насосного оборудования.</div>
+                    <div class="vacancy-title">{{ __("messages.vacancies.vacancy.$i.title") }}</div>
+                    <div class="vacancy-description">{{ __("messages.vacancies.vacancy.$i.desc") }}</div>
                 </div>
-                <button class="vacancy-button">{{ __('messages.apply') }}</button>
+                <button class="vacancy-button" onclick="openApplyModal('{{ __("messages.vacancies.vacancy.$i.title") }}')">{{ __('messages.apply') }}</button>
             </div>
-
-            <div class="vacancy-card">
-                <div class="vacancy-info">
-                    <div class="vacancy-title">Инженер-проектировщик раздела ТХ</div>
-                    <div class="vacancy-description">Разработка технологических решений для промышленных объектов. Компоновка оборудования, разработка технологических схем, спецификаций и регламентов.</div>
-                </div>
-                <button class="vacancy-button">{{ __('messages.apply') }}</button>
-            </div>
-
-            <div class="vacancy-card">
-                <div class="vacancy-info">
-                    <div class="vacancy-title">Инженер-проектировщик раздела КЖ</div>
-                    <div class="vacancy-description">Проектирование железобетонных конструкций зданий и сооружений. Расчёт несущих конструкций, разработка армирования, сопровождение при экспертизе.</div>
-                </div>
-                <button class="vacancy-button">{{ __('messages.apply') }}</button>
-            </div>
-
-            <div class="vacancy-card">
-                <div class="vacancy-info">
-                    <div class="vacancy-title">Инженер-проектировщик раздела КМ</div>
-                    <div class="vacancy-description">Проектирование металлических конструкций. Расчёт несущих элементов, разработка КМ и КМД, работа с Tekla Structures или аналогами.</div>
-                </div>
-                <button class="vacancy-button">{{ __('messages.apply') }}</button>
-            </div>
-
-            <div class="vacancy-card">
-                <div class="vacancy-info">
-                    <div class="vacancy-title">Инженер-проектировщик раздела ЭО</div>
-                    <div class="vacancy-description">Разработка проектной документации по электроснабжению и электрооборудованию. Расчёт нагрузок, проектирование щитового оборудования, кабельных трасс, систем заземления.</div>
-                </div>
-                <button class="vacancy-button">{{ __('messages.apply') }}</button>
-            </div>
+            @endforeach
         </div>
     </div>
 </div>
+
+<!-- Apply Modal -->
+<div id="applyModal" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:99999; align-items:center; justify-content:center;">
+    <div style="background:#1A0B3A; border:1px solid rgba(248,243,252,0.15); border-radius:16px; padding:40px; width:100%; max-width:420px; margin:16px; position:relative; text-align:center;">
+        <button onclick="closeApplyModal()" style="position:absolute; top:16px; right:16px; background:none; border:none; color:#F8F3FC; font-size:20px; cursor:pointer;">✕</button>
+        <h3 style="color:#F8F3FC; font-size:20px; font-weight:700; margin-bottom:8px;">{{ __('messages.vacancies.modal.title') }}</h3>
+        <p id="applyVacancyTitle" style="color:rgba(248,243,252,0.6); font-size:14px; margin-bottom:28px;"></p>
+        <p style="color:rgba(248,243,252,0.7); font-size:15px; margin-bottom:16px;">{{ __('messages.vacancies.modal.instructions') }}</p>
+        <a href="mailto:info@daedalus.kz?subject=Отклик на вакансию"
+           style="display:inline-block; background:#810EC7; color:#F8F3FC; font-size:16px; font-weight:600; padding:14px 28px; border-radius:12px; text-decoration:none;">
+            info@daedalus.kz
+        </a>
+        <p style="color:rgba(248,243,252,0.4); font-size:12px; margin-top:16px;">{{ __('messages.vacancies.modal.footer') }}</p>
+    </div>
+</div>
+
+@push('scripts')
+<script>
+function openApplyModal(title) {
+    document.getElementById('applyVacancyTitle').textContent = title;
+    const link = document.querySelector('#applyModal a[href^="mailto"]');
+    if (link) link.href = 'mailto:info@daedalus.kz?subject=Отклик на вакансию: ' + encodeURIComponent(title);
+    document.getElementById('applyModal').style.display = 'flex';
+}
+
+function closeApplyModal() {
+    document.getElementById('applyModal').style.display = 'none';
+}
+
+document.getElementById('applyModal').addEventListener('click', function(e) {
+    if (e.target === this) closeApplyModal();
+});
+</script>
+@endpush
 @endsection

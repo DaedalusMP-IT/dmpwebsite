@@ -12,28 +12,6 @@
         overflow-x: hidden;
     }
     
-    /* Декоративные световые эффекты */
-    .glow-effect-1 {
-        position: absolute;
-        width: 389px;
-        height: 437px;
-        left: -60px;
-        top: 1358px;
-        background: #F8F3FC;
-        filter: blur(350px);
-        z-index: 0;
-    }
-    
-    .glow-effect-2 {
-        position: absolute;
-        width: 389px;
-        height: 437px;
-        right: 0;
-        top: 916px;
-        background: #F8F3FC;
-        filter: blur(350px);
-        z-index: 0;
-    }
     
     /* Hero Section */
     .hero-section {
@@ -43,6 +21,18 @@
         overflow: hidden;
         display: flex;
         align-items: flex-end;
+        background: #10022B;
+    }
+
+    .hero-fade-bottom {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 30%;
+        background: linear-gradient(to bottom, transparent 0%, rgba(16,2,43,0.6) 40%, #10022B 65%, #10022B 100%);
+        z-index: 1;
+        pointer-events: none;
     }
     
     .hero-bg-image {
@@ -58,17 +48,15 @@
     
     .hero-content {
         position: relative;
-        z-index: 2;
+        z-index: 10;
         max-width: 1150px;
         margin: 0 auto;
         padding: 0 20px;
-        padding-top: 160px;
         text-align: center;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 0;
-        padding-bottom: 80px;
+        padding-bottom: 130px;
     }
 
     .hero-title {
@@ -463,10 +451,6 @@
     }
     
     @media (max-width: 768px) {
-        .glow-effect-1,
-        .glow-effect-2 {
-            display: none;
-        }
 
         .hero-section {
             height: 70vh;
@@ -474,6 +458,10 @@
             padding: 0;
             display: flex;
             align-items: flex-end;
+        }
+
+        .hero-fade-bottom {
+            height: 55%;
         }
 
         .hero-content {
@@ -651,25 +639,25 @@
 </style>
 
 <div class="design-page">
-    <!-- Glow Effects -->
-    <div class="glow-effect-1"></div>
-    <div class="glow-effect-2"></div>
-    
     <!-- Hero Section -->
-    <div class="hero-section">
+    <div class="hero-section" style="overflow:hidden;">
         <div class="hero-bg-image"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1 class="hero-title">Проектирование</h1>
-            <p class="hero-description">Полный спектр услуг проектирования:<br class="mobile-br"> от промышленных объектов до систем<br class="mobile-br"> безопасности и автоматизации.</p>
+            <h1 class="hero-title">{{ __('messages.design.title') }}</h1>
+            <p class="hero-description">{!! __('messages.design.hero.description') !!}</p>
             <button class="hero-button" onclick="document.getElementById('application').scrollIntoView({behavior: 'smooth'})">
-                Оставить заявку
+                {{ __('messages.design.hero.button') }}
             </button>
         </div>
+        <!-- Градиентный блюр внутри hero -->
+        <div style="position:absolute;bottom:0;left:0;width:100%;height:250px;z-index:8;background:linear-gradient(to bottom,transparent 0%,rgba(16,2,43,0.7) 55%,#10022B 100%);pointer-events:none;"></div>
     </div>
-    
+    <!-- Сплошная полоска перекрывает sub-pixel зазор -->
+    <div style="position:relative;z-index:20;margin-top:-3px;height:4px;background:#10022B;pointer-events:none;"></div>
+
     <!-- Services Section -->
-    <div class="content-wrapper">
+    <div class="content-wrapper" style="padding-top: 100px;">
         <h2 class="section-title">{{ __('messages.design.services_title') }}</h2>
         
         <div class="services-grid">
@@ -726,15 +714,15 @@
     <!-- Projects Section -->
     <div class="content-wrapper">
         <div class="projects-section">
-            <h2 class="section-title">Наши проекты</h2>
+            <h2 class="section-title">{{ __('messages.design.projects.title') }}</h2>
 
             <div class="projects-slider">
                 <div class="project-card">
                     <div class="project-bg" style="background: url('/public/home_project_1.jpg') center/cover no-repeat;"></div>
                     <div class="project-overlay">
                         <div class="project-info">
-                            <div class="project-title">Caravan Resources Group</div>
-                            <div class="project-description">Завод по производству катодной меди</div>
+                            <div class="project-title">{{ __('messages.design.project.1.title') }}</div>
+                            <div class="project-description">{{ __('messages.design.project.1.desc') }}</div>
                         </div>
                     </div>
                 </div>
@@ -743,8 +731,8 @@
                     <div class="project-bg" style="background: url('/public/home_project_2.jpg') center/cover no-repeat;"></div>
                     <div class="project-overlay">
                         <div class="project-info">
-                            <div class="project-title">RESOURCES CAPITAL GROUP</div>
-                            <div class="project-description">Горно-обогатительный комбинат на месторождении Акмая в Карагандинской обл.</div>
+                            <div class="project-title">{{ __('messages.design.project.2.title') }}</div>
+                            <div class="project-description">{{ __('messages.design.project.2.desc') }}</div>
                         </div>
                     </div>
                 </div>
@@ -753,8 +741,8 @@
                     <div class="project-bg" style="background: url('/public/home_project_3.jpg') center/cover no-repeat;"></div>
                     <div class="project-overlay">
                         <div class="project-info">
-                            <div class="project-title">AK SU KMG</div>
-                            <div class="project-description">Новый опреснительный завод на берегу Каспийского моря</div>
+                            <div class="project-title">{{ __('messages.design.project.3.title') }}</div>
+                            <div class="project-description">{{ __('messages.design.project.3.desc') }}</div>
                         </div>
                     </div>
                 </div>
@@ -763,21 +751,21 @@
                     <div class="project-bg" style="background: url('/public/home_project_4.jpg') center/cover no-repeat;"></div>
                     <div class="project-overlay">
                         <div class="project-info">
-                            <div class="project-title">АО "MB Project Partners"</div>
-                            <div class="project-description">Фиброцементный завод в г. Алматы</div>
+                            <div class="project-title">{{ __('messages.design.project.4.title') }}</div>
+                            <div class="project-description">{{ __('messages.design.project.4.desc') }}</div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="projects-btn-wrapper">
-                <a href="/projects" class="projects-circle-btn" aria-label="Все проекты">
+                <a href="/projects" class="projects-circle-btn" aria-label="{{ __('messages.design.projects.all') }}">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"/>
                         <polyline points="12 5 19 12 12 19"/>
                     </svg>
                 </a>
-                <span class="projects-circle-label">Все проекты</span>
+                <span class="projects-circle-label">{{ __('messages.design.projects.all') }}</span>
             </div>
         </div>
     </div>
@@ -786,13 +774,13 @@
     <div class="content-wrapper">
         <div class="application-section" id="application">
             <div class="application-form">
-                <h2 class="application-title">Выбрали услугу?</h2>
-                <p class="application-text">Тогда оставьте заявку, а мы с вами свяжемся</p>
-                
+                <h2 class="application-title">{{ __('messages.form.title') }}</h2>
+                <p class="application-text">{{ __('messages.form.subtitle') }}</p>
+
                 <form id="designForm">
-                    <input type="text" name="name" class="form-input-app" placeholder="Имя" required>
-                    <input type="tel" name="phone" class="form-input-app" placeholder="Телефон" required>
-                    <button type="submit" class="submit-button">Оставить заявку</button>
+                    <input type="text" name="name" class="form-input-app" placeholder="{{ __('messages.form.name') }}" required>
+                    <input type="tel" name="phone" class="form-input-app" placeholder="{{ __('messages.form.phone') }}" required>
+                    <button type="submit" class="submit-button">{{ __('messages.form.submit') }}</button>
                 </form>
             </div>
             
@@ -806,12 +794,16 @@
 document.getElementById('designForm').addEventListener('submit', async function(e) {
     e.preventDefault();
     
+    const phone = this.querySelector('[name="phone"]').value.trim();
+    if (!/^[\d\s\+\-\(\)]{7,16}$/.test(phone)) { alert('Введите корректный номер телефона'); return; }
+
     const formData = {
-        name: this.querySelector('[name="name"]').value,
-        phone: this.querySelector('[name="phone"]').value,
-        service: 'Проектирование'
+        name: this.querySelector('[name="name"]').value.trim(),
+        phone,
+        service: 'Проектирование',
+        source: 'Проектирование'
     };
-    
+
     try {
         const response = await fetch('/api/submit', {
             method: 'POST',
@@ -821,20 +813,18 @@ document.getElementById('designForm').addEventListener('submit', async function(
             },
             body: JSON.stringify(formData)
         });
-        
-        const text = await response.text();
-        const jsonMatch = text.match(/\{.*\}/);
-        const data = jsonMatch ? JSON.parse(jsonMatch[0]) : JSON.parse(text);
-        
+
+        const data = await response.json();
+
         if (data.success) {
-            alert('Заявка успешно отправлена!');
+            const modal = document.getElementById('thankYouModal');
+            if (modal) { modal.classList.remove('hidden'); modal.style.display = 'flex'; }
             this.reset();
         } else {
-            alert('Ошибка: ' + (data.message || 'Неизвестная ошибка'));
+            alert('Ошибка: ' + (data.message || 'Попробуйте ещё раз'));
         }
     } catch (error) {
-        console.error('Error:', error);
-        alert('Произошла ошибка при отправке формы');
+        alert('Ошибка при отправке формы');
     }
 });
 

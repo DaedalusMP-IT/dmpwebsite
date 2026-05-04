@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Проекты - DAEDALUS')
+@section('title', __('messages.projects.page.title'))
 
 @section('content')
 <style>
@@ -212,188 +212,33 @@
 
         <div class="projects-list">
 
+            @foreach([
+                ['img'=>'project_1.jpg','key'=>'1','status'=>false],
+                ['img'=>'project_2.jpg','key'=>'2','status'=>false],
+                ['img'=>'project_3.jpg','key'=>'3','status'=>false],
+                ['img'=>'project_4.jpg','key'=>'4','status'=>false],
+                ['img'=>'project_5.jpg','key'=>'5','status'=>false],
+                ['img'=>'project_8.jpg','key'=>'6','status'=>false],
+                ['img'=>'project_6.jpg','key'=>'7','status'=>true],
+                ['img'=>'project_7.jpg','key'=>'8','status'=>true],
+            ] as $p)
             <div class="project-card">
-                <div class="project-images" style="background: url('/public/project_1.jpg') center/cover no-repeat;"></div>
+                <div class="project-images" style="background: url('/public/{{ $p["img"] }}') center/cover no-repeat;"></div>
                 <div class="project-info">
-                    <p class="project-category">Промышленное строительство</p>
-                    <h3 class="project-name">"ГОРНОРУДНАЯ КОМПАНИЯ "САРЫ АРКА"</h3>
-                    <p class="project-description">
-                        • Строительство гидрометаллургического завода по производству сульфата никеля<br>
-                        • Проектирование технологической схемы<br>
-                        • Подбор оборудования<br>
-                        • Выдача заданий на изыскания<br>
-                        • Эскизный проект<br>
-                        • Цифровое ПРОЕКТИРОВАНИЕ BIM<br>
-                        • Рабочий проект<br>
-                        • ОВОС<br>
-                        • Смета<br>
-                        • Прохождение государственной экспертизы<br>
-                        • Получение разрешения на строительство
-                    </p>
+                    @if($p['status'])<span class="project-status">{{ __('messages.projects.status.in_progress') }}</span>@endif
+                    <p class="project-category">{{ __('messages.projects.category.industrial') }}</p>
+                    <h3 class="project-name">{{ __("messages.projects.card.{$p['key']}.name") }}</h3>
+                    <p class="project-description">{!! __("messages.projects.card.{$p['key']}.desc") !!}</p>
                     <div class="project-details">
-                        <div class="project-detail"><strong>Классификация объекта:</strong> Гидрометаллургический завод по производству сульфата никеля</div>
-                        <div class="project-detail"><strong>Срок реализации:</strong> 9 месяцев</div>
-                        <div class="project-detail"><strong>Год:</strong> 2024-2025</div>
+                        <div class="project-detail"><strong>{{ __('messages.projects.detail.classification') }}</strong> {{ __("messages.projects.card.{$p['key']}.classification") }}</div>
+                        @if(__("messages.projects.card.{$p['key']}.duration"))
+                        <div class="project-detail"><strong>{{ __('messages.projects.detail.duration') }}</strong> {{ __("messages.projects.card.{$p['key']}.duration") }}</div>
+                        <div class="project-detail"><strong>{{ __('messages.projects.detail.year') }}</strong> {{ __("messages.projects.card.{$p['key']}.year") }}</div>
+                        @endif
                     </div>
                 </div>
             </div>
-
-            <div class="project-card">
-                <div class="project-images" style="background: url('/public/project_2.jpg') center/cover no-repeat;"></div>
-                <div class="project-info">
-                    <p class="project-category">Промышленное строительство</p>
-                    <h3 class="project-name">ТОО "RESOURCES CAPITAL GROUP"</h3>
-                    <p class="project-description">
-                        • Выполнение работ по разработке технико-экономического обоснования (ТЭО)<br>
-                        • Финансово-экономическая модель проекта, оценка CAPEX / OPEX и эффективности<br>
-                        • Горная, геологическая и гидрогеологическая части<br>
-                        • Технологическая часть (технологические схемы добычи и переработки сырья)<br>
-                        • Генеральный план, транспортная инфраструктура и инженерные сети<br>
-                        • Автоматизация, КИПиА и системы управления<br>
-                        • Экологическая оценка и природоохранные мероприятия<br>
-                        • Организация строительства, календарное планирование и анализ рисков
-                    </p>
-                    <div class="project-details">
-                        <div class="project-detail"><strong>Классификация объекта:</strong> Обогащение и металлургия вольфрамовых руд</div>
-                        <div class="project-detail"><strong>Срок реализации:</strong> 12 месяцев</div>
-                        <div class="project-detail"><strong>Год:</strong> 2024-2025</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-images" style="background: url('/public/project_3.jpg') center/cover no-repeat;"></div>
-                <div class="project-info">
-                    <p class="project-category">Промышленное строительство</p>
-                    <h3 class="project-name">"AK SU KMG"</h3>
-                    <p class="project-description">
-                        • Строительство нового опреснительного завода на берегу, г. Жанаозен<br>
-                        • Выдача заданий на изыскания<br>
-                        • Эскизный проект<br>
-                        • Расчет конструкции<br>
-                        • Цифровое ПРОЕКТИРОВАНИЕ BIM<br>
-                        • Рабочий проект<br>
-                        • Смета<br>
-                        • Прохождение государственной экспертизы<br>
-                        • Получение разрешения на строительство
-                    </p>
-                    <div class="project-details">
-                        <div class="project-detail"><strong>Классификация объекта:</strong> Опреснительный завод на берегу Каспийского моря</div>
-                        <div class="project-detail"><strong>Срок реализации:</strong> 10 месяцев</div>
-                        <div class="project-detail"><strong>Год:</strong> 2023-2024</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-images" style="background: url('/public/project_4.jpg') center/cover no-repeat;"></div>
-                <div class="project-info">
-                    <p class="project-category">Промышленное строительство</p>
-                    <h3 class="project-name">АО "MB Project Partners"</h3>
-                    <p class="project-description">
-                        • Строительство Фиброцементного завода в г. Алматы<br>
-                        • Выдача заданий на изыскания<br>
-                        • Эскизный проект<br>
-                        • Расчет конструкции<br>
-                        • Цифровое ПРОЕКТИРОВАНИЕ BIM<br>
-                        • Рабочий проект<br>
-                        • Смета<br>
-                        • Прохождение государственной экспертизы<br>
-                        • Получение разрешения на строительство
-                    </p>
-                    <div class="project-details">
-                        <div class="project-detail"><strong>Классификация объекта:</strong> Фиброцементный завод</div>
-                        <div class="project-detail"><strong>Срок реализации:</strong> 4 месяца</div>
-                        <div class="project-detail"><strong>Год:</strong> 2023</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-images" style="background: url('/public/project_5.jpg') center/cover no-repeat;"></div>
-                <div class="project-info">
-                    <p class="project-category">Промышленное строительство</p>
-                    <h3 class="project-name">TOO "CARAVAN RESOURCES GROUP"</h3>
-                    <p class="project-description">
-                        • Строительство горно-перерабатывающего комплекса Алмалы-2 по технологии кучного выщелачивания вторичных руд производительностью до 30 тыс.тонн катодной меди в год в Шетском районе Карагандинской области<br>
-                        • Модернизация технологической схемы<br>
-                        • Детальное проектирование BIM<br>
-                        • Компоновка объектов и технологического оборудования<br>
-                        • Разработка 3D чертежа<br>
-                        • Прохождение государственной экспертизы с получением положительного заключения<br>
-                        • Смета
-                    </p>
-                    <div class="project-details">
-                        <div class="project-detail"><strong>Классификация объекта:</strong> Кучное выщелачивание вторичных руд для получения катодной меди</div>
-                        <div class="project-detail"><strong>Срок реализации:</strong> 6 месяцев</div>
-                        <div class="project-detail"><strong>Год:</strong> 2023-2024</div>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <div class="project-card">
-                <div class="project-images" style="background: url('/public/project_8.jpg') center/cover no-repeat;"></div>
-                <div class="project-info">
-                    <p class="project-category">Промышленное строительство</p>
-                    <h3 class="project-name">ТОО "РИДДЕР-ПОЛИМЕТАЛЛ"</h3>
-                    <p class="project-description">
-                        • Выполнение работ по разработке технико-экономического обоснования (ТЭО)<br>
-                        • Проект "Строительство обогатительной фабрики по переработке полиметаллической руды месторождения «Стрежанское»"<br>
-                        • Разработка технико-экономического обоснования и инвестиции в проект<br>
-                        • DCF модель для проекта по строительству<br>
-                        • Финансовая экономическая модель предприятия, вычисление CAPEX & OPEX<br>
-                        • Разработка Эскизного проекта<br>
-                        • Предварительная посадка завода в 3D Генплан на месторождении «Стрежанское»
-                    </p>
-                    <div class="project-details">
-                        <div class="project-detail"><strong>Классификация объекта:</strong></div>
-                        <div class="project-detail"><strong>Срок реализации:</strong></div>
-                        <div class="project-detail"><strong>Год:</strong></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-images" style="background: url('/public/project_6.jpg') center/cover no-repeat;"></div>
-                <div class="project-info">
-                    <span class="project-status">В процессе</span>
-                    <p class="project-category">Промышленное строительство</p>
-                    <h3 class="project-name">АО «АЛЮМИНИЙ КАЗАХСТАНА»</h3>
-                    <p class="project-description">
-                        • Выполнение работ по адаптации проекта «Строительство участка продукционной фильтрации и вертикальных печей кальцинации на ПАЗ», г. Павлодар<br>
-                        • Проектирование полной технологической схемы производства<br>
-                        • Проектирование и реализация реконструкции существующих зданий и сооружений<br>
-                        • Интеграция новой технологической системы в действующее производство<br>
-                        • Выполнение инженерных расчетов пневматического транспорта готовой продукции (глинозёма)<br>
-                        • Прохождение государственной экспертизы
-                    </p>
-                    <div class="project-details">
-                        <div class="project-detail"><strong>Классификация объекта:</strong> Строительство участка продукционной фильтрации и вертикальных печей кальцинации</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-images" style="background: url('/public/project_7.jpg') center/cover no-repeat;"></div>
-                <div class="project-info">
-                    <span class="project-status">В процессе</span>
-                    <p class="project-category">Промышленное строительство</p>
-                    <h3 class="project-name">АО «ТРАНСНАЦИОНАЛЬНАЯ КОМПАНИЯ «КАЗХРОМ»</h3>
-                    <p class="project-description">
-                        • Выполнение работ по адаптации проекта "Утилизационная электростанция ферросплавных газов плавильного цеха № 4 Актюбинского завода ферросплавов, Республики Казахстан"<br>
-                        • Адаптация проектной документации Китайской инженерной корпорации «Тяньчэн» к требованиям нормативно-технической базы РК<br>
-                        • Подготовка экспертного заключения о соответствии проектных решений действующим нормативам РК<br>
-                        • Разработка, формирование и комплектация комплектов проектной и рабочей документации<br>
-                        • Разработка и выпуск рабочей (строительной) документации<br>
-                        • Сопровождение проекта при прохождении государственной экспертизы
-                    </p>
-                    <div class="project-details">
-                        <div class="project-detail"><strong>Классификация объекта:</strong> Утилизационная электростанция ферросплавных газов</div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
         </div>
     </div>

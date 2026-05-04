@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\GoogleSheetsController;
+use App\Http\Controllers\TelegramController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
@@ -19,4 +19,4 @@ Route::get('/news', [PageController::class, 'news'])->name('news');
 Route::get('/contacts', [PageController::class, 'contacts'])->name('contacts');
 
 // API
-Route::post('/api/submit', [GoogleSheetsController::class, 'appendRow']);
+Route::post('/api/submit', [TelegramController::class, 'appendRow']);
