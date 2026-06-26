@@ -199,8 +199,6 @@
                 ['img'=>'project_4.jpg','key'=>'4','status'=>false],
                 ['img'=>'project_5.jpg','key'=>'5','status'=>false],
                 ['img'=>'project_8.jpg','key'=>'6','status'=>false],
-                ['img'=>'project_6.jpg','key'=>'7','status'=>true],
-                ['img'=>'project_7.jpg','key'=>'8','status'=>true],
             ] as $p)
             <div class="project-card">
                 <div class="project-images" style="background: url('/public/{{ $p["img"] }}') center/cover no-repeat;"></div>
