@@ -19,3 +19,6 @@ yarn-error.log
 /.idea
 /.vscode
 /.zed
+
+# Токен бота для отдельного бэкенда — только на хостинге, не в репозитории
+/backend-hosterkz/config.php

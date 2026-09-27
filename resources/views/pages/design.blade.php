@@ -759,7 +759,7 @@
             </div>
 
             <div class="projects-btn-wrapper">
-                <a href="/projects" class="projects-circle-btn" aria-label="{{ __('messages.design.projects.all') }}">
+                <a href="{{ locale_url('projects') }}" class="projects-circle-btn" aria-label="{{ __('messages.design.projects.all') }}">
                     <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"/>
                         <polyline points="12 5 19 12 12 19"/>
@@ -777,9 +777,10 @@
                 <h2 class="application-title">{{ __('messages.form.title') }}</h2>
                 <p class="application-text">{{ __('messages.form.subtitle') }}</p>
 
-                <form id="designForm">
+                <form id="designForm" data-tg-form data-service="Проектирование" data-source="Проектирование">
                     <input type="text" name="name" class="form-input-app" placeholder="{{ __('messages.form.name') }}" required>
                     <input type="tel" name="phone" class="form-input-app" placeholder="{{ __('messages.form.phone') }}" required>
+                    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
                     <button type="submit" class="submit-button">{{ __('messages.form.submit') }}</button>
                 </form>
             </div>
@@ -791,42 +792,7 @@
 
 @push('scripts')
 <script>
-document.getElementById('designForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const phone = this.querySelector('[name="phone"]').value.trim();
-    if (!/^[\d\s\+\-\(\)]{7,16}$/.test(phone)) { alert('Введите корректный номер телефона'); return; }
-
-    const formData = {
-        name: this.querySelector('[name="name"]').value.trim(),
-        phone,
-        service: 'Проектирование',
-        source: 'Проектирование'
-    };
-
-    try {
-        const response = await fetch('/api/submit', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-            },
-            body: JSON.stringify(formData)
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            const modal = document.getElementById('thankYouModal');
-            if (modal) { modal.classList.remove('hidden'); modal.style.display = 'flex'; }
-            this.reset();
-        } else {
-            alert('Ошибка: ' + (data.message || 'Попробуйте ещё раз'));
-        }
-    } catch (error) {
-        alert('Ошибка при отправке формы');
-    }
-});
+// Отправка формы — см. /index.js (data-tg-form)
 
 var _dd = null, _dt = null;
 function toggleSelect(id) {

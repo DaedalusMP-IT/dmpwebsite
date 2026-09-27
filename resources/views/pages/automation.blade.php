@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="form-endpoint" content="{{ config('services.telegram.endpoint') }}">
     <title>BIM Внедрение - DAEDALUS</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -629,11 +630,10 @@
         <div class="form-container">
             <h2 class="form-title">{{ __('messages.form.title') }}</h2>
             <p class="form-subtitle">{{ __('messages.form.subtitle') }}</p>
-            <form id="automationForm">
-                <input type="hidden" name="source" value="BIM Внедрение">
-                <input type="hidden" name="service" value="BIM Внедрение">
+            <form id="automationForm" data-tg-form data-service="BIM Внедрение" data-source="BIM Внедрение">
                 <input type="text" name="name" class="form-input" placeholder="{{ __('messages.form.name') }}" required>
                 <input type="tel" name="phone" class="form-input" placeholder="{{ __('messages.form.phone') }}" required>
+                <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
                 <button type="submit" class="form-button">{{ __('messages.form.submit') }}</button>
             </form>
         </div>
@@ -654,43 +654,7 @@ if (mobileMenuButton && mobileMenu) {
     });
 }
 
-// Form submission
-document.getElementById('automationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const phone = this.querySelector('[name="phone"]').value.trim();
-    if (!/^[\d\s\+\-\(\)]{7,16}$/.test(phone)) { alert('Введите корректный номер телефона'); return; }
-
-    const data = {
-        name: this.querySelector('[name="name"]').value.trim(),
-        phone,
-        service: 'BIM Внедрение',
-        source: 'BIM Внедрение'
-    };
-
-    fetch('/api/submit', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || ''
-        },
-        body: JSON.stringify(data)
-    })
-    .then(r => r.json())
-    .then(result => {
-        if (result.success) {
-            const modal = document.getElementById('thankYouModal');
-            if (modal) { modal.classList.remove('hidden'); modal.style.display = 'flex'; }
-            this.reset();
-        } else {
-            alert('Ошибка: ' + (result.message || 'Попробуйте ещё раз'));
-        }
-    })
-    .catch(error => {
-        console.error('Ошибка:', error);
-        alert('Ошибка при отправке заявки');
-    });
-});
+// Отправка формы — см. /index.js (data-tg-form)
 
 var _dd = null, _dt = null;
 function toggleSelect(id) {
@@ -728,6 +692,10 @@ document.addEventListener('click', function(e) {
     if (_dt && !_dt.contains(e.target) && _dd && !_dd.contains(e.target)) closeDD();
 });
 </script>
+
+<!-- Обработчик форм заявок (отправка в Telegram) -->
+<script src="/form-config.js?v=2"></script>
+    <script src="/index.js?v=2"></script>
 
 </body>
 </html>

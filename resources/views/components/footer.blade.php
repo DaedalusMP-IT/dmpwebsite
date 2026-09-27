@@ -32,11 +32,11 @@
             <div>
                 <h4 class="font-bold mb-4">{{ __('messages.footer.pages') }}</h4>
                 <ul class="space-y-2 text-sm text-white">
-                    <li><a href="{{ route('home') }}" class="hover:text-purple-400">{{ __('messages.nav.home') }}</a></li>
-                    <li><a href="{{ route('projects') }}" class="hover:text-purple-400">{{ __('messages.nav.projects') }}</a></li>
-                    <li><a href="{{ route('news') }}" class="hover:text-purple-400">{{ __('messages.nav.news') }}</a></li>
-                    <li><a href="{{ route('vacancies') }}" class="hover:text-purple-400">{{ __('messages.nav.vacancies') }}</a></li>
-                    <li><a href="{{ route('contacts') }}" class="hover:text-purple-400">{{ __('messages.nav.contacts') }}</a></li>
+                    <li><a href="{{ locale_url('') }}" class="hover:text-purple-400">{{ __('messages.nav.home') }}</a></li>
+                    <li><a href="{{ locale_url('projects') }}" class="hover:text-purple-400">{{ __('messages.nav.projects') }}</a></li>
+                    <li><a href="{{ locale_url('news') }}" class="hover:text-purple-400">{{ __('messages.nav.news') }}</a></li>
+                    <li><a href="{{ locale_url('vacancies') }}" class="hover:text-purple-400">{{ __('messages.nav.vacancies') }}</a></li>
+                    <li><a href="{{ locale_url('contacts') }}" class="hover:text-purple-400">{{ __('messages.nav.contacts') }}</a></li>
                 </ul>
             </div>
 
@@ -44,9 +44,9 @@
             <div>
                 <h4 class="font-bold mb-4">{{ __('messages.footer.services') }}</h4>
                 <ul class="space-y-2 text-sm text-white">
-                    <li><a href="{{ route('design') }}" class="hover:text-purple-400">{{ __('messages.nav.design') }}</a></li>
-                    <li><a href="{{ route('automation') }}" class="hover:text-purple-400">{{ __('messages.nav.automation') }}</a></li>
-                    <li><a href="{{ route('arvr') }}" class="hover:text-purple-400">{{ __('messages.nav.arvr') }}</a></li>
+                    <li><a href="{{ locale_url('design') }}" class="hover:text-purple-400">{{ __('messages.nav.design') }}</a></li>
+                    <li><a href="{{ locale_url('automation') }}" class="hover:text-purple-400">{{ __('messages.nav.automation') }}</a></li>
+                    <li><a href="{{ locale_url('arvr') }}" class="hover:text-purple-400">{{ __('messages.nav.arvr') }}</a></li>
                 </ul>
             </div>
 
@@ -87,9 +87,9 @@
 
         <!-- Language Switcher -->
         <div class="flex justify-center space-x-4 mt-8 pt-8">
-            <a href="{{ route('language.switch', 'en') }}" class="text-sm {{ app()->getLocale() == 'en' ? 'text-purple-400' : 'hover:text-purple-400' }}">EN</a>
-            <a href="{{ route('language.switch', 'ru') }}" class="text-sm {{ app()->getLocale() == 'ru' ? 'text-purple-400' : 'hover:text-purple-400' }}">РУС</a>
-            <a href="{{ route('language.switch', 'kk') }}" class="text-sm {{ app()->getLocale() == 'kk' ? 'text-purple-400' : 'hover:text-purple-400' }}">ҚАЗ</a>
+            <a href="{{ switch_locale_url('en') }}" class="text-sm {{ app()->getLocale() == 'en' ? 'text-purple-400' : 'hover:text-purple-400' }}">EN</a>
+            <a href="{{ switch_locale_url('ru') }}" class="text-sm {{ app()->getLocale() == 'ru' ? 'text-purple-400' : 'hover:text-purple-400' }}">РУС</a>
+            <a href="{{ switch_locale_url('kk') }}" class="text-sm {{ app()->getLocale() == 'kk' ? 'text-purple-400' : 'hover:text-purple-400' }}">ҚАЗ</a>
         </div>
     </div>
 </footer>

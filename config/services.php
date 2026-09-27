@@ -35,4 +35,14 @@ return [
         ],
     ],
 
+    'telegram' => [
+        'bot_token' => env('TELEGRAM_BOT_TOKEN'),
+        'chat_id' => env('TELEGRAM_CHAT_ID'),
+
+        // Куда формы шлют заявку. Пусто — на этот же сайт (/api/submit).
+        // Если приём заявок вынесен на отдельный хостинг, укажите полный URL,
+        // например: https://api.daedalus.kz/submit.php
+        'endpoint' => env('FORM_ENDPOINT', ''),
+    ],
+
 ];

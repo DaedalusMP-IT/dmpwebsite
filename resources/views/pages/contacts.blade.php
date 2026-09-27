@@ -309,11 +309,13 @@
             <h1 class="form-title">{{ __('messages.contacts.form.title') }}</h1>
             <p class="form-subtitle">{{ __('messages.contacts.form.subtitle') }}</p>
 
-            <form id="contactForm">
-                <input type="hidden" id="source" value="{{ __('messages.contacts.form.source') }}">
+            <form id="contactForm" data-tg-form
+                  data-service="{{ __('messages.contacts.form.source') }}"
+                  data-source="{{ __('messages.contacts.form.source') }}">
                 <input type="text" id="input" name="name" class="form-input" placeholder="{{ __('messages.contacts.form.name') }}" required>
                 <input type="tel" id="input1" name="phone" class="form-input" placeholder="{{ __('messages.contacts.form.phone') }}" required>
-                <button type="button" onclick="submitFeedback()" class="submit-button">{{ __('messages.form.submit') }}</button>
+                <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+                <button type="submit" class="submit-button">{{ __('messages.form.submit') }}</button>
             </form>
         </div>
 
@@ -371,7 +373,4 @@
     </div>
 </div>
 
-@push('scripts')
-<script src="{{ asset('index.js') }}"></script>
-@endpush
 @endsection

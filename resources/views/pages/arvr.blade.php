@@ -614,7 +614,7 @@
                 <h2 class="form-title">{{ __('messages.form.title') }}</h2>
                 <p>{{ __('messages.form.subtitle') }}</p>
 
-                <form id="arvrForm" onsubmit="submitARVRForm(event)">
+                <form id="arvrForm" data-tg-form data-service="AR/VR обучение" data-source="AR/VR обучение">
                     <div class="form-group">
                         <input type="text" name="name" class="form-input" placeholder="{{ __('messages.form.name') }}" required>
                     </div>
@@ -623,6 +623,7 @@
                         <input type="tel" name="phone" class="form-input" placeholder="{{ __('messages.form.phone') }}" required>
                     </div>
 
+                    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
                     <button type="submit" class="submit-button">{{ __('messages.form.submit') }}</button>
                 </form>
             </div>
@@ -633,43 +634,7 @@
 </div>
 
 <script>
-function submitARVRForm(event) {
-    event.preventDefault();
-    
-    const formData = new FormData(event.target);
-    const phone = formData.get('phone').trim();
-    if (!/^[\d\s\+\-\(\)]{7,16}$/.test(phone)) { alert('Введите корректный номер телефона'); return; }
-
-    const data = {
-        name: formData.get('name').trim(),
-        phone,
-        service: 'AR/VR обучение',
-        source: 'AR/VR обучение'
-    };
-
-    fetch('/api/submit', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content
-        },
-        body: JSON.stringify(data)
-    })
-    .then(r => r.json())
-    .then(result => {
-        if (result.success) {
-            const modal = document.getElementById('thankYouModal');
-            if (modal) { modal.classList.remove('hidden'); modal.style.display = 'flex'; }
-            event.target.reset();
-        } else {
-            alert('Ошибка: ' + (result.message || 'Попробуйте ещё раз'));
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Произошла ошибка при отправке заявки. Пожалуйста, попробуйте позже.');
-    });
-}
+// Отправка формы — см. /index.js (data-tg-form)
 
 var _dd = null, _dt = null;
 function toggleSelect(id) {

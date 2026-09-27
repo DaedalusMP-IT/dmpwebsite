@@ -67,28 +67,28 @@
         <div class="flex items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center">
-                <a href="{{ route('home') }}">
+                <a href="{{ locale_url('') }}">
                     <img src="/public/logo.png" alt="DAEDALUS" style="height: 24px; width: auto;">
                 </a>
             </div>
 
             <!-- Desktop Navigation -->
             <div class="hidden md:flex space-x-6">
-                <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'text-purple-400' : '' }}">{{ __('messages.nav.home') }}</a>
-                <a href="{{ route('design') }}" class="{{ request()->routeIs('design') ? 'text-purple-400' : '' }}">{{ __('messages.nav.design') }}</a>
-                <a href="{{ route('automation') }}" class="{{ request()->routeIs('automation') ? 'text-purple-400' : '' }}">{{ __('messages.nav.automation') }}</a>
-                <a href="{{ route('arvr') }}" class="{{ request()->routeIs('arvr') ? 'text-purple-400' : '' }}">{{ __('messages.nav.arvr') }}</a>
-                <a href="{{ route('projects') }}" class="{{ request()->routeIs('projects') ? 'text-purple-400' : '' }}">{{ __('messages.nav.projects') }}</a>
-                <a href="{{ route('vacancies') }}" class="{{ request()->routeIs('vacancies') ? 'text-purple-400' : '' }}">{{ __('messages.nav.vacancies') }}</a>
-                <a href="{{ route('news') }}" class="{{ request()->routeIs('news') ? 'text-purple-400' : '' }}">{{ __('messages.nav.news') }}</a>
-                <a href="{{ route('contacts') }}" class="{{ request()->routeIs('contacts') ? 'text-purple-400' : '' }}">{{ __('messages.nav.contacts') }}</a>
+                <a href="{{ locale_url('') }}" class="{{ request()->routeIs('home', 'loc.home') ? 'text-purple-400' : '' }}">{{ __('messages.nav.home') }}</a>
+                <a href="{{ locale_url('design') }}" class="{{ request()->routeIs('design', 'loc.design') ? 'text-purple-400' : '' }}">{{ __('messages.nav.design') }}</a>
+                <a href="{{ locale_url('automation') }}" class="{{ request()->routeIs('automation', 'loc.automation') ? 'text-purple-400' : '' }}">{{ __('messages.nav.automation') }}</a>
+                <a href="{{ locale_url('arvr') }}" class="{{ request()->routeIs('arvr', 'loc.arvr') ? 'text-purple-400' : '' }}">{{ __('messages.nav.arvr') }}</a>
+                <a href="{{ locale_url('projects') }}" class="{{ request()->routeIs('projects', 'loc.projects') ? 'text-purple-400' : '' }}">{{ __('messages.nav.projects') }}</a>
+                <a href="{{ locale_url('vacancies') }}" class="{{ request()->routeIs('vacancies', 'loc.vacancies') ? 'text-purple-400' : '' }}">{{ __('messages.nav.vacancies') }}</a>
+                <a href="{{ locale_url('news') }}" class="{{ request()->routeIs('news', 'loc.news') ? 'text-purple-400' : '' }}">{{ __('messages.nav.news') }}</a>
+                <a href="{{ locale_url('contacts') }}" class="{{ request()->routeIs('contacts', 'loc.contacts') ? 'text-purple-400' : '' }}">{{ __('messages.nav.contacts') }}</a>
             </div>
 
             <!-- Language Switcher -->
             <div class="hidden md:flex space-x-2">
-                <a href="{{ route('language.switch', 'en') }}" class="px-3 py-1 rounded {{ app()->getLocale() == 'en' ? 'bg-purple-600' : '' }}">EN</a>
-                <a href="{{ route('language.switch', 'ru') }}" class="px-3 py-1 rounded {{ app()->getLocale() == 'ru' ? 'bg-purple-600' : '' }}">РУС</a>
-                <a href="{{ route('language.switch', 'kk') }}" class="px-3 py-1 rounded {{ app()->getLocale() == 'kk' ? 'bg-purple-600' : '' }}">ҚАЗ</a>
+                <a href="{{ switch_locale_url('en') }}" class="px-3 py-1 rounded {{ app()->getLocale() == 'en' ? 'bg-purple-600' : '' }}">EN</a>
+                <a href="{{ switch_locale_url('ru') }}" class="px-3 py-1 rounded {{ app()->getLocale() == 'ru' ? 'bg-purple-600' : '' }}">РУС</a>
+                <a href="{{ switch_locale_url('kk') }}" class="px-3 py-1 rounded {{ app()->getLocale() == 'kk' ? 'bg-purple-600' : '' }}">ҚАЗ</a>
             </div>
 
             <!-- Mobile menu button -->
@@ -101,20 +101,20 @@
 
         <!-- Mobile Navigation -->
         <div id="mobile-menu" class="hidden md:hidden">
-            <a href="{{ route('home') }}" class="block">{{ __('messages.nav.home') }}</a>
-            <a href="{{ route('design') }}" class="block">{{ __('messages.nav.design') }}</a>
-            <a href="{{ route('automation') }}" class="block">{{ __('messages.nav.automation') }}</a>
-            <a href="{{ route('arvr') }}" class="block">{{ __('messages.nav.arvr') }}</a>
-            <a href="{{ route('projects') }}" class="block">{{ __('messages.nav.projects') }}</a>
-            <a href="{{ route('vacancies') }}" class="block">{{ __('messages.nav.vacancies') }}</a>
-            <a href="{{ route('news') }}" class="block">{{ __('messages.nav.news') }}</a>
-            <a href="{{ route('contacts') }}" class="block">{{ __('messages.nav.contacts') }}</a>
+            <a href="{{ locale_url('') }}" class="block">{{ __('messages.nav.home') }}</a>
+            <a href="{{ locale_url('design') }}" class="block">{{ __('messages.nav.design') }}</a>
+            <a href="{{ locale_url('automation') }}" class="block">{{ __('messages.nav.automation') }}</a>
+            <a href="{{ locale_url('arvr') }}" class="block">{{ __('messages.nav.arvr') }}</a>
+            <a href="{{ locale_url('projects') }}" class="block">{{ __('messages.nav.projects') }}</a>
+            <a href="{{ locale_url('vacancies') }}" class="block">{{ __('messages.nav.vacancies') }}</a>
+            <a href="{{ locale_url('news') }}" class="block">{{ __('messages.nav.news') }}</a>
+            <a href="{{ locale_url('contacts') }}" class="block">{{ __('messages.nav.contacts') }}</a>
 
             <!-- Language switcher -->
             <div class="mobile-lang" style="display:flex; gap:24px; margin-top:32px; width:100%; justify-content:center;">
-                <a href="{{ route('language.switch', 'en') }}" style="color:{{ app()->getLocale()=='en' ? '#c084fc' : 'rgba(255,255,255,0.6)' }};">EN</a>
-                <a href="{{ route('language.switch', 'ru') }}" style="color:{{ app()->getLocale()=='ru' ? '#c084fc' : 'rgba(255,255,255,0.6)' }};">РУС</a>
-                <a href="{{ route('language.switch', 'kk') }}" style="color:{{ app()->getLocale()=='kk' ? '#c084fc' : 'rgba(255,255,255,0.6)' }};">ҚАЗ</a>
+                <a href="{{ switch_locale_url('en') }}" style="color:{{ app()->getLocale()=='en' ? '#c084fc' : 'rgba(255,255,255,0.6)' }};">EN</a>
+                <a href="{{ switch_locale_url('ru') }}" style="color:{{ app()->getLocale()=='ru' ? '#c084fc' : 'rgba(255,255,255,0.6)' }};">РУС</a>
+                <a href="{{ switch_locale_url('kk') }}" style="color:{{ app()->getLocale()=='kk' ? '#c084fc' : 'rgba(255,255,255,0.6)' }};">ҚАЗ</a>
             </div>
         </div>
     </nav>

@@ -3,15 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="csrf-token" content="jq3t3zHDjQAO1LSHLcW5jYkSTEc9vlURi7vAEq5K">
+    <meta name="csrf-token" content="y0aRbiUovuNMAWN9502nZtaqxGm2hCJH5zPsTUgA">
+    <meta name="form-endpoint" content="">
     <title>Новости - DAEDALUS</title>
     
     <!-- Tailwind CSS CDN (временно для разработки) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
+        @font-face {
+            font-family: 'Involve';
+            src: url('/fonts/Involve-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Involve';
+            src: url('/fonts/Involve-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Involve';
+            src: url('/fonts/Involve-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+
         * {
             box-sizing: border-box;
+            font-family: 'Involve', sans-serif;
         }
 
         html, body {
@@ -19,6 +40,32 @@
             width: 100%;
             margin: 0;
             padding: 0;
+            font-family: 'Involve', sans-serif;
+            font-size: 16px;
+            background: #10022B;
+        }
+
+        /* === Глобальная типографика === */
+        h1 { font-size: 40px; line-height: 1.2; font-weight: 700; }
+        h2 { font-size: 30px; line-height: 1.25; font-weight: 700; }
+        h3 { font-size: 20px; line-height: 1.3; font-weight: 700; }
+        h4 { font-size: 16px; line-height: 1.4; font-weight: 600; }
+        p  { font-size: 14px; line-height: 1.6; font-weight: 400; }
+
+        @media (max-width: 968px) {
+            h1 { font-size: 32px; }
+            h2 { font-size: 26px; }
+            h3 { font-size: 20px; }
+            h4 { font-size: 16px; }
+            p  { font-size: 14px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+            h3 { font-size: 18px; }
+            h4 { font-size: 15px; }
+            p  { font-size: 13px; }
         }
 
         /* Custom styles */
@@ -136,6 +183,7 @@
         position: relative;
         overflow: hidden;
         background: rgba(0, 0, 0, 0.2);
+        border-radius: 0;
     }
 
     .news-image::before {
@@ -151,23 +199,23 @@
     }
 
     .news-card:nth-child(1) .news-image::before {
-        background: rgba(124, 58, 237, 0.6);
+        background: none;
     }
 
     .news-card:nth-child(2) .news-image::before {
-        background: rgba(168, 85, 247, 0.6);
+        background: none;
     }
 
     .news-card:nth-child(3) .news-image::before {
-        background: rgba(236, 72, 153, 0.6);
+        background: none;
     }
 
     .news-card:nth-child(4) .news-image::before {
-        background: rgba(59, 130, 246, 0.6);
+        background: none;
     }
 
     .news-card:nth-child(5) .news-image::before {
-        background: rgba(34, 211, 238, 0.6);
+        background: none;
     }
 
     .news-card:nth-child(6) .news-image::before {
@@ -250,6 +298,10 @@
             padding: 24px;
         }
 
+        .news-image {
+            border-radius: 16px;
+        }
+
         .news-title {
             font-size: 32px;
             line-height: 40px;
@@ -301,82 +353,126 @@
         }
     }
 </style>
-</head>
+    </head>
 <body class="antialiased">
     
-    <header class="bg-gray-900 text-white">
-    <nav class="container mx-auto px-4 py-4">
+    <style>
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+        background: rgba(129, 14, 199, 0.15);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    header nav a {
+        font-family: 'Involve', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: #F8F3FC;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    header nav a:hover {
+        color: #c084fc;
+    }
+
+    #mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #5a0a8c;
+        z-index: 99998;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 80px 32px 40px;
+    }
+
+    #mobile-menu.hidden { display: none !important; }
+    #mobile-menu:not(.hidden) { display: flex !important; }
+
+    #mobile-menu a {
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        color: #ffffff !important;
+        padding: 12px 0 !important;
+        text-align: left;
+        width: 100%;
+    }
+
+    .mobile-lang a {
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        padding: 0 !important;
+        width: auto !important;
+    }
+
+    #mobile-menu .flex {
+        margin-top: 32px;
+    }
+</style>
+
+<header>
+    <nav class="container mx-auto px-4 py-3">
         <div class="flex items-center justify-between">
             <!-- Logo -->
             <div class="flex items-center">
-                <a href="http://127.0.0.1:8000" class="text-2xl font-bold">
-                    DAEDALUS
+                <a href="/">
+                    <img src="/public/logo.png" alt="DAEDALUS" style="height: 24px; width: auto;">
                 </a>
             </div>
-            
+
             <!-- Desktop Navigation -->
             <div class="hidden md:flex space-x-6">
-                <a href="http://127.0.0.1:8000" class="hover:text-purple-400 transition ">
-                    Главная
-                </a>
-                <a href="http://127.0.0.1:8000/design" class="hover:text-purple-400 transition ">
-                    Проектирование
-                </a>
-                <a href="http://127.0.0.1:8000/automation" class="hover:text-purple-400 transition ">
-                    Автоматизация
-                </a>
-                <a href="http://127.0.0.1:8000/arvr" class="hover:text-purple-400 transition ">
-                    AR/VR обучение
-                </a>
-                <a href="http://127.0.0.1:8000/projects" class="hover:text-purple-400 transition ">
-                    Проекты
-                </a>
-                <a href="http://127.0.0.1:8000/services" class="hover:text-purple-400 transition ">
-                    Лицензии
-                </a>
-                <a href="http://127.0.0.1:8000/vacancies" class="hover:text-purple-400 transition ">
-                    Вакансии
-                </a>
-                <a href="http://127.0.0.1:8000/news" class="hover:text-purple-400 transition text-purple-400">
-                    Новости
-                </a>
-                <a href="http://127.0.0.1:8000/contacts" class="hover:text-purple-400 transition ">
-                    Контакты
-                </a>
+                <a href="/" class="">Главная</a>
+                <a href="/design" class="">Проектирование</a>
+                <a href="/automation" class="">BIM Внедрение</a>
+                <a href="/arvr" class="">AR/VR обучение</a>
+                <a href="/projects" class="">Проекты</a>
+                <a href="/vacancies" class="">Вакансии</a>
+                <a href="/news" class="text-purple-400">Новости</a>
+                <a href="/contacts" class="">Контакты</a>
             </div>
-            
+
             <!-- Language Switcher -->
             <div class="hidden md:flex space-x-2">
-                <a href="http://127.0.0.1:8000/language/en" class="px-3 py-1 rounded hover:bg-gray-800">EN</a>
-                <a href="http://127.0.0.1:8000/language/ru" class="px-3 py-1 rounded bg-purple-600">РУС</a>
-                <a href="http://127.0.0.1:8000/language/kk" class="px-3 py-1 rounded hover:bg-gray-800">ҚАЗ</a>
+                <a href="/en/news" class="px-3 py-1 rounded ">EN</a>
+                <a href="/news" class="px-3 py-1 rounded bg-purple-600">РУС</a>
+                <a href="/kk/news" class="px-3 py-1 rounded ">ҚАЗ</a>
             </div>
-            
+
             <!-- Mobile menu button -->
-            <button id="mobile-menu-button" class="md:hidden">
+            <button id="mobile-menu-button" class="md:hidden" style="color: #F8F3FC;">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                 </svg>
             </button>
         </div>
-        
+
         <!-- Mobile Navigation -->
-        <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2">
-            <a href="http://127.0.0.1:8000" class="block py-2 hover:text-purple-400">Главная</a>
-            <a href="http://127.0.0.1:8000/design" class="block py-2 hover:text-purple-400">Проектирование</a>
-            <a href="http://127.0.0.1:8000/automation" class="block py-2 hover:text-purple-400">Автоматизация</a>
-            <a href="http://127.0.0.1:8000/arvr" class="block py-2 hover:text-purple-400">AR/VR обучение</a>
-            <a href="http://127.0.0.1:8000/projects" class="block py-2 hover:text-purple-400">Проекты</a>
-            <a href="http://127.0.0.1:8000/services" class="block py-2 hover:text-purple-400">Лицензии</a>
-            <a href="http://127.0.0.1:8000/vacancies" class="block py-2 hover:text-purple-400">Вакансии</a>
-            <a href="http://127.0.0.1:8000/news" class="block py-2 hover:text-purple-400">Новости</a>
-            <a href="http://127.0.0.1:8000/contacts" class="block py-2 hover:text-purple-400">Контакты</a>
-            
-            <!-- Mobile Language Switcher -->
-            <div class="flex space-x-2 pt-4">
-                <a href="http://127.0.0.1:8000/language/en" class="px-3 py-1 rounded hover:bg-gray-800">EN</a>
-                <a href="http://127.0.0.1:8000/language/ru" class="px-3 py-1 rounded bg-purple-600">РУС</a>
-                <a href="http://127.0.0.1:8000/language/kk" class="px-3 py-1 rounded hover:bg-gray-800">ҚАЗ</a>
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="/" class="block">Главная</a>
+            <a href="/design" class="block">Проектирование</a>
+            <a href="/automation" class="block">BIM Внедрение</a>
+            <a href="/arvr" class="block">AR/VR обучение</a>
+            <a href="/projects" class="block">Проекты</a>
+            <a href="/vacancies" class="block">Вакансии</a>
+            <a href="/news" class="block">Новости</a>
+            <a href="/contacts" class="block">Контакты</a>
+
+            <!-- Language switcher -->
+            <div class="mobile-lang" style="display:flex; gap:24px; margin-top:32px; width:100%; justify-content:center;">
+                <a href="/en/news" style="color:rgba(255,255,255,0.6);">EN</a>
+                <a href="/news" style="color:#c084fc;">РУС</a>
+                <a href="/kk/news" style="color:rgba(255,255,255,0.6);">ҚАЗ</a>
             </div>
         </div>
     </nav>
@@ -391,141 +487,156 @@
         <h1 class="news-title">Новости компании</h1>
         
         <div class="news-grid">
-            <div class="news-card">
-                <div class="news-image"></div>
-                <div class="news-content">
-                    <p class="news-date">15 января 2026</p>
-                    <h3 class="news-heading">Завершение строительства промышленного комплекса</h3>
-                    <p class="news-description">Компания DAEDALUS успешно завершила строительство крупного промышленного комплекса площадью 50 000 кв.м.</p>
-                    <a href="#" class="news-link">Читать далее</a>
-                </div>
-            </div>
 
-            <div class="news-card">
-                <div class="news-image"></div>
+                        <div class="news-card">
+                <div class="news-image" style="background: url('/public/Dzhakishev_News.jpg') center 45%/cover no-repeat;"></div>
                 <div class="news-content">
-                    <p class="news-date">10 января 2026</p>
-                    <h3 class="news-heading">Новая система автоматизации для производства</h3>
-                    <p class="news-description">Внедрена инновационная АСУТП на одном из крупнейших предприятий региона, повысившая эффективность на 40%.</p>
-                    <a href="#" class="news-link">Читать далее</a>
-                </div>
+                                        <p class="news-date">23 февр. 2024 г.</p>
+                                        <h3 class="news-heading">Команда Daedalus реализовала проект для Мухтара Джакишева</h3>
+                    <p class="news-description">Команда Daedalus Mind Projects выполнила проектирование завода по производству никеля с применением уникальной казахстанской технологии гидрометаллургического передела, впервые разработанной и реализованной в Казахстане.</p>
+                                        <a href="https://www.youtube.com/watch?v=_ecIbW9Vu90" target="_blank" class="news-link">Смотреть</a>
+                                    </div>
             </div>
-
-            <div class="news-card">
-                <div class="news-image"></div>
+                        <div class="news-card">
+                <div class="news-image" style="background: url('/public/News_2.jpg') center/cover no-repeat;"></div>
                 <div class="news-content">
-                    <p class="news-date">5 января 2026</p>
-                    <h3 class="news-heading">Получен сертификат ISO 9001:2015</h3>
-                    <p class="news-description">DAEDALUS подтвердила соответствие международным стандартам качества в области проектирования и строительства.</p>
-                    <a href="#" class="news-link">Читать далее</a>
-                </div>
+                                        <h3 class="news-heading">Министр промышленности и новых технологий Таджикистана Шерали Олимович провел встречу с Daedalus Mind Projects</h3>
+                    <p class="news-description">В ходе встречи была достигнута договоренность о значительных инвестициях в горнорудный сектор страны. Наша компания, обладая значительным опытом в исследовании и разработке новых технологий переработки руд, намерена внести существенный вклад в развитие ГМК Таджикистана.</p>
+                                    </div>
             </div>
-
-            <div class="news-card">
-                <div class="news-image"></div>
+                        <div class="news-card">
+                <div class="news-image" style="background: url('/public/News_3.jpg') center/cover no-repeat;"></div>
                 <div class="news-content">
-                    <p class="news-date">28 декабря 2025</p>
-                    <h3 class="news-heading">Запуск программы AR/VR обучения персонала</h3>
-                    <p class="news-description">Компания представила новую платформу виртуального обучения для подготовки специалистов в области строительства.</p>
-                    <a href="#" class="news-link">Читать далее</a>
-                </div>
+                                        <h3 class="news-heading">Был подписан меморандум о сотрудничестве между Горно-Бадахшанской автономной областью Таджикистана и Daedalus Mind Projects</h3>
+                    <p class="news-description">Меморандум предусматривает совместные исследования и разработку месторождений редкоземельных металлов. Реализация этого соглашения позволит исследовать все стратегически важные месторождения страны, что станет значимым шагом в развитии данной отрасли.</p>
+                                    </div>
             </div>
-
-            <div class="news-card">
-                <div class="news-image"></div>
+                        <div class="news-card">
+                <div class="news-image" style="background: url('/public/News_4.jpg') center/cover no-repeat;"></div>
                 <div class="news-content">
-                    <p class="news-date">20 декабря 2025</p>
-                    <h3 class="news-heading">Расширение команды инженеров</h3>
-                    <p class="news-description">В связи с ростом количества проектов, компания DAEDALUS объявляет набор высококвалифицированных специалистов.</p>
-                    <a href="#" class="news-link">Читать далее</a>
-                </div>
+                                        <p class="news-date">3 февр. 2024 г.</p>
+                                        <h3 class="news-heading">Участие Daedalus Mind Projects на Международном цифровом форуме Digital Almaty 2024</h3>
+                    <p class="news-description">Команда на панельной сессии INDUSTRY X: ЦИФРОВАЯ ЭВОЛЮЦИЯ БУДУЩЕГО</p>
+                                        <a href="https://www.youtube.com/watch?v=k0ARcS-aI1s" target="_blank" class="news-link">Смотреть</a>
+                                    </div>
             </div>
-
-            <div class="news-card">
-                <div class="news-image"></div>
+                        <div class="news-card">
+                <div class="news-image" style="background: url('/public/News_5.jpg') center/cover no-repeat;"></div>
                 <div class="news-content">
-                    <p class="news-date">15 декабря 2025</p>
-                    <h3 class="news-heading">Участие в международной выставке BuildTech</h3>
-                    <p class="news-description">DAEDALUS представила свои решения в области проектирования и автоматизации на крупнейшей отраслевой выставке.</p>
-                    <a href="#" class="news-link">Читать далее</a>
-                </div>
+                                        <h3 class="news-heading">Almaty Hub (ex. Techgarden) у нас в гостях</h3>
+                    <p class="news-description">Первое знакомство с Daedalus Mind Projects, специализирующаяся в области технологий переработки полезных ископаемых и проектирования промышленных предприятий. Все подробности в этом Reels по кнопке ниже.</p>
+                                        <a href="https://www.instagram.com/p/C6iAmNbiOq4/" target="_blank" class="news-link">Смотреть</a>
+                                    </div>
             </div>
+            
         </div>
     </div>
 </div>
     </main>
     
-            <footer class="bg-gray-900 text-white py-12">
+    <style>
+    .footer-logo { height: 32px; width: auto; margin-bottom: 16px; }
+    @media (max-width: 768px) { .footer-logo { height: 22px; } }
+
+    .footer-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 14px;
+    }
+    .footer-contact-icon {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+    .footer-contact-text {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #F8F3FC;
+    }
+</style>
+<footer style="background: #5a0a8c; color: #F8F3FC;" class="py-12">
     <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
             <!-- Company Info -->
-            <div>
-                <h3 class="text-xl font-bold mb-4">DAEDALUS</h3>
-                <p class="text-gray-400 text-sm">
-                    Проектируем по вашим будущим сооружениям и производимых изделиям к каждой детали!
-                </p>
+            <div class="col-span-2 md:col-span-1">
+                <img src="/public/logo_futter.png" alt="DAEDALUS" class="footer-logo">
             </div>
-            
-            <!-- Quick Links -->
+
+            <!-- Navigation -->
             <div>
-                <h4 class="font-semibold mb-4">Главная</h4>
-                <ul class="space-y-2 text-sm text-gray-400">
-                    <li><a href="http://127.0.0.1:8000/vacancies" class="hover:text-purple-400">Открытые вакансии</a></li>
-                    <li><a href="http://127.0.0.1:8000/news" class="hover:text-purple-400">Новости</a></li>
-                    <li><a href="http://127.0.0.1:8000/contacts" class="hover:text-purple-400">Контакты</a></li>
+                <h4 class="font-bold mb-4">Страницы</h4>
+                <ul class="space-y-2 text-sm text-white">
+                    <li><a href="/" class="hover:text-purple-400">Главная</a></li>
+                    <li><a href="/projects" class="hover:text-purple-400">Проекты</a></li>
+                    <li><a href="/news" class="hover:text-purple-400">Новости</a></li>
+                    <li><a href="/vacancies" class="hover:text-purple-400">Вакансии</a></li>
+                    <li><a href="/contacts" class="hover:text-purple-400">Контакты</a></li>
                 </ul>
             </div>
-            
+
             <!-- Services -->
             <div>
-                <h4 class="font-semibold mb-4">Услуги</h4>
-                <ul class="space-y-2 text-sm text-gray-400">
-                    <li><a href="http://127.0.0.1:8000/design" class="hover:text-purple-400">Проектирование</a></li>
-                    <li><a href="http://127.0.0.1:8000/automation" class="hover:text-purple-400">Автоматизация</a></li>
-                    <li><a href="http://127.0.0.1:8000/arvr" class="hover:text-purple-400">AR/VR обучение</a></li>
+                <h4 class="font-bold mb-4">Услуги</h4>
+                <ul class="space-y-2 text-sm text-white">
+                    <li><a href="/design" class="hover:text-purple-400">Проектирование</a></li>
+                    <li><a href="/automation" class="hover:text-purple-400">BIM Внедрение</a></li>
+                    <li><a href="/arvr" class="hover:text-purple-400">AR/VR обучение</a></li>
                 </ul>
             </div>
-            
+
             <!-- Contact -->
-            <div>
-                <h4 class="font-semibold mb-4">Контакты</h4>
-                <ul class="space-y-2 text-sm text-gray-400">
-                    <li>8 (776) 623 11 77</li>
-                    <li>info@daedalus.kz</li>
-                    <li>г. Алматы, мкр. Достык, ул. Фарида Шарипова, д. 134А</li>
-                </ul>
-                
-                <!-- Social Icons -->
-                <div class="flex space-x-3 mt-4">
-                    <a href="#" class="hover:text-purple-400">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.14.18-.357.295-.6.295-.002 0-.003 0-.005 0l.213-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.64-.203-.658-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z"/></svg>
+            <div class="col-span-2 md:col-span-1">
+                <h4 class="font-bold mb-4">Контакты</h4>
+
+                <div class="footer-contact-item">
+                    <img src="/public/phone-icon.png" alt="Phone" class="footer-contact-icon">
+                    <a href="tel:+77766231177" class="footer-contact-text">8 (776) 623 11 77</a>
+                </div>
+
+                <div class="footer-contact-item">
+                    <img src="/public/mail-icon.png" alt="Email" class="footer-contact-icon">
+                    <a href="mailto:info@daedalus.kz" class="footer-contact-text">info@daedalus.kz</a>
+                </div>
+
+                <div class="footer-contact-item">
+                    <img src="/public/map-icon.png" alt="Location" class="footer-contact-icon">
+                    <a href="https://www.google.com/maps/place/43%C2%B012'48.8%22N+76%C2%B049'50.1%22E/@43.213543,76.829912,18z/data=!3m1!4b1!4m4!3m3!8m2!3d43.213543!4d76.830581?entry=ttu&g_ep=EgoyMDI2MDQwNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="footer-contact-text">
+                        г. Алматы, мкр. Достык,<br>ул. Фарида Шарипова, д. 134А
                     </a>
-                    <a href="#" class="hover:text-purple-400">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                </div>
+
+                <div style="display: flex; gap: 15px; margin-top: 20px;">
+                    <a href="https://www.instagram.com/daedalus.qaz/" target="_blank">
+                        <img src="/public/instagram_icon.png" alt="Instagram" style="width: 24px; height: 24px; object-fit: contain;">
                     </a>
-                    <a href="#" class="hover:text-purple-400">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+                    <a href="https://wa.me/77766231177" target="_blank">
+                        <img src="/public/whatsapp_icon.png" alt="WhatsApp" style="width: 24px; height: 24px; object-fit: contain;">
+                    </a>
+                    <a href="https://t.me/makhambet_s" target="_blank">
+                        <img src="/public/telegram_icon.png" alt="Telegram" style="width: 24px; height: 24px; object-fit: contain;">
                     </a>
                 </div>
             </div>
         </div>
-        
-        <!-- Language Switcher Mobile -->
-        <div class="flex justify-center space-x-4 mt-8 pt-8 border-t border-gray-800">
-            <button class="text-sm hover:text-purple-400">EN</button>
-            <button class="text-sm text-purple-400">РУС</button>
-            <button class="text-sm hover:text-purple-400">ҚАЗ</button>
+
+        <!-- Language Switcher -->
+        <div class="flex justify-center space-x-4 mt-8 pt-8">
+            <a href="/en/news" class="text-sm hover:text-purple-400">EN</a>
+            <a href="/news" class="text-sm text-purple-400">РУС</a>
+            <a href="/kk/news" class="text-sm hover:text-purple-400">ҚАЗ</a>
         </div>
     </div>
 </footer>
-        
+    
     <!-- Modal for success message -->
-    <div id="thankYouModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+    <div id="thankYouModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center" style="display:none;">
         <div class="bg-white rounded-lg p-8 max-w-md mx-4">
             <div class="text-center">
                 <h2 class="text-2xl font-bold mb-4">Спасибо!</h2>
                 <p class="mb-6">Ваш запрос был успешно отправлен. Мы свяжемся с вами в ближайшее время.</p>
-                <button onclick="closeModal()" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg">
+                <button type="button" data-close-modal class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg">
                     OK
                 </button>
             </div>
@@ -537,19 +648,11 @@
         document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         });
-        
-        // Close modal function
-        function closeModal() {
-            document.getElementById('thankYouModal').classList.add('hidden');
-        }
-        
-        // Close modal on outside click
-        document.getElementById('thankYouModal')?.addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
     </script>
-    
+
+    <!-- Обработчик форм заявок (отправка в Telegram) -->
+    <script src="/form-config.js?v=2"></script>
+    <script src="/index.js?v=2"></script>
+
     </body>
 </html>

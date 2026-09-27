@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="csrf-token" content="NPlumm7Ge6wRmRPL791JO8MiZ9m29PadUrjQOk7T">
+    <meta name="form-endpoint" content="">
+    <title>Жаңалықтар - DAEDALUS</title>
+    
+    <!-- Tailwind CSS CDN (временно для разработки) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @font-face {
+            font-family: 'Involve';
+            src: url('/fonts/Involve-Regular.woff2') format('woff2');
+            font-weight: 400;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Involve';
+            src: url('/fonts/Involve-SemiBold.woff2') format('woff2');
+            font-weight: 600;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Involve';
+            src: url('/fonts/Involve-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Involve', sans-serif;
+        }
+
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Involve', sans-serif;
+            font-size: 16px;
+            background: #10022B;
+        }
+
+        /* === Глобальная типографика === */
+        h1 { font-size: 40px; line-height: 1.2; font-weight: 700; }
+        h2 { font-size: 30px; line-height: 1.25; font-weight: 700; }
+        h3 { font-size: 20px; line-height: 1.3; font-weight: 700; }
+        h4 { font-size: 16px; line-height: 1.4; font-weight: 600; }
+        p  { font-size: 14px; line-height: 1.6; font-weight: 400; }
+
+        @media (max-width: 968px) {
+            h1 { font-size: 32px; }
+            h2 { font-size: 26px; }
+            h3 { font-size: 20px; }
+            h4 { font-size: 16px; }
+            p  { font-size: 14px; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 28px; }
+            h2 { font-size: 22px; }
+            h3 { font-size: 18px; }
+            h4 { font-size: 15px; }
+            p  { font-size: 13px; }
+        }
+
+        /* Custom styles */
+        .btn-primary {
+            background-color: #9333ea;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #7e22ce;
+        }
+    </style>
+    
+    <style>
+    @font-face {
+        font-family: 'Involve';
+        src: url('/fonts/Involve-Regular.woff2') format('woff2');
+        font-weight: 400;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Involve';
+        src: url('/fonts/Involve-SemiBold.woff2') format('woff2');
+        font-weight: 600;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'Involve';
+        src: url('/fonts/Involve-Bold.woff2') format('woff2');
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    .news-page {
+        font-family: 'Involve', sans-serif;
+        background: #10022B;
+        min-height: 100vh;
+        position: relative;
+        overflow-x: hidden;
+        padding: 120px 0 80px;
+    }
+    
+    /* Декоративные световые эффекты */
+    .glow-effect-1 {
+        position: absolute;
+        width: 389px;
+        height: 437px;
+        left: -60px;
+        top: 1358px;
+        background: #F8F3FC;
+        filter: blur(350px);
+        z-index: 0;
+    }
+    
+    .glow-effect-2 {
+        position: absolute;
+        width: 389px;
+        height: 437px;
+        right: 0;
+        top: 916px;
+        background: #F8F3FC;
+        filter: blur(350px);
+        z-index: 0;
+    }
+
+    .news-container {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        z-index: 2;
+    }
+
+    .news-title {
+        font-weight: 700;
+        font-size: 54px;
+        line-height: 72px;
+        color: #F8F3FC;
+        text-align: center;
+        margin-bottom: 80px;
+    }
+
+    .news-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        margin-bottom: 60px;
+    }
+
+    .news-card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .news-card:hover {
+        transform: translateY(-10px);
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(124, 58, 237, 0.5);
+        box-shadow: 0 20px 60px rgba(124, 58, 237, 0.3);
+    }
+
+    .news-image {
+        width: 100%;
+        height: 300px;
+        position: relative;
+        overflow: hidden;
+        background: rgba(0, 0, 0, 0.2);
+        border-radius: 0;
+    }
+
+    .news-image::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80%;
+        height: 80%;
+        border-radius: 50%;
+        filter: blur(80px);
+    }
+
+    .news-card:nth-child(1) .news-image::before {
+        background: none;
+    }
+
+    .news-card:nth-child(2) .news-image::before {
+        background: none;
+    }
+
+    .news-card:nth-child(3) .news-image::before {
+        background: none;
+    }
+
+    .news-card:nth-child(4) .news-image::before {
+        background: none;
+    }
+
+    .news-card:nth-child(5) .news-image::before {
+        background: none;
+    }
+
+    .news-card:nth-child(6) .news-image::before {
+        background: rgba(129, 14, 199, 0.6);
+    }
+
+    .news-content {
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        flex: 1;
+    }
+
+    .news-date {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        color: rgba(248, 243, 252, 0.6);
+    }
+
+    .news-heading {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 32px;
+        color: #F8F3FC;
+    }
+
+    .news-description {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: rgba(248, 243, 252, 0.8);
+        flex: 1;
+    }
+
+    .news-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 21px;
+        color: #7C3AED;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        margin-top: 10px;
+    }
+
+    .news-link:hover {
+        color: #9F67FF;
+        gap: 15px;
+    }
+
+    .news-link::after {
+        content: '→';
+        font-size: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .hero-section {
+            padding: 100px 20px 60px;
+        }
+
+        .hero-title {
+            font-size: 32px;
+            line-height: 40px;
+        }
+
+        .news-container {
+            padding: 40px 20px 80px;
+        }
+
+        .news-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .news-card {
+            padding: 24px;
+        }
+
+        .news-image {
+            border-radius: 16px;
+        }
+
+        .news-title {
+            font-size: 32px;
+            line-height: 40px;
+        }
+
+        .news-heading {
+            font-size: 18px;
+            line-height: 24px;
+            margin-bottom: 12px;
+        }
+
+        .news-date {
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        .news-description {
+            font-size: 13px;
+            line-height: 20px;
+            margin-bottom: 16px;
+        }
+
+        .read-more {
+            font-size: 13px;
+            padding: 10px 20px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hero-title {
+            font-size: 28px;
+            line-height: 36px;
+        }
+
+        .news-card {
+            padding: 20px;
+        }
+
+        .news-heading {
+            font-size: 16px;
+            line-height: 22px;
+        }
+
+        .news-description {
+            font-size: 12px;
+            line-height: 18px;
+        }
+    }
+        }
+    }
+</style>
+    </head>
+<body class="antialiased">
+    
+    <style>
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+        background: rgba(129, 14, 199, 0.15);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    header nav a {
+        font-family: 'Involve', sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        color: #F8F3FC;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    header nav a:hover {
+        color: #c084fc;
+    }
+
+    #mobile-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: #5a0a8c;
+        z-index: 99998;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 80px 32px 40px;
+    }
+
+    #mobile-menu.hidden { display: none !important; }
+    #mobile-menu:not(.hidden) { display: flex !important; }
+
+    #mobile-menu a {
+        font-size: 20px !important;
+        font-weight: 700 !important;
+        color: #ffffff !important;
+        padding: 12px 0 !important;
+        text-align: left;
+        width: 100%;
+    }
+
+    .mobile-lang a {
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        padding: 0 !important;
+        width: auto !important;
+    }
+
+    #mobile-menu .flex {
+        margin-top: 32px;
+    }
+</style>
+
+<header>
+    <nav class="container mx-auto px-4 py-3">
+        <div class="flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="/kk">
+                    <img src="/public/logo.png" alt="DAEDALUS" style="height: 24px; width: auto;">
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-6">
+                <a href="/kk" class="">Басты бет</a>
+                <a href="/kk/design" class="">Жобалау</a>
+                <a href="/kk/automation" class="">BIM Енгізу</a>
+                <a href="/kk/arvr" class="">AR/VR Оқыту</a>
+                <a href="/kk/projects" class="">Жобалар</a>
+                <a href="/kk/vacancies" class="">Бос орындар</a>
+                <a href="/kk/news" class="text-purple-400">Жаңалықтар</a>
+                <a href="/kk/contacts" class="">Байланыс</a>
+            </div>
+
+            <!-- Language Switcher -->
+            <div class="hidden md:flex space-x-2">
+                <a href="/en/news" class="px-3 py-1 rounded ">EN</a>
+                <a href="/news" class="px-3 py-1 rounded ">РУС</a>
+                <a href="/kk/news" class="px-3 py-1 rounded bg-purple-600">ҚАЗ</a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-button" class="md:hidden" style="color: #F8F3FC;">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden">
+            <a href="/kk" class="block">Басты бет</a>
+            <a href="/kk/design" class="block">Жобалау</a>
+            <a href="/kk/automation" class="block">BIM Енгізу</a>
+            <a href="/kk/arvr" class="block">AR/VR Оқыту</a>
+            <a href="/kk/projects" class="block">Жобалар</a>
+            <a href="/kk/vacancies" class="block">Бос орындар</a>
+            <a href="/kk/news" class="block">Жаңалықтар</a>
+            <a href="/kk/contacts" class="block">Байланыс</a>
+
+            <!-- Language switcher -->
+            <div class="mobile-lang" style="display:flex; gap:24px; margin-top:32px; width:100%; justify-content:center;">
+                <a href="/en/news" style="color:rgba(255,255,255,0.6);">EN</a>
+                <a href="/news" style="color:rgba(255,255,255,0.6);">РУС</a>
+                <a href="/kk/news" style="color:#c084fc;">ҚАЗ</a>
+            </div>
+        </div>
+    </nav>
+</header>
+    
+    <main>
+        <div class="news-page">
+    <div class="glow-effect-1"></div>
+    <div class="glow-effect-2"></div>
+    
+    <div class="news-container">
+        <h1 class="news-title">Компания жаңалықтары</h1>
+        
+        <div class="news-grid">
+
+                        <div class="news-card">
+                <div class="news-image" style="background: url('/public/Dzhakishev_News.jpg') center 45%/cover no-repeat;"></div>
+                <div class="news-content">
+                                        <p class="news-date">2024 жылғы 23 ақпан</p>
+                                        <h3 class="news-heading">Daedalus командасы Мұхтар Жәкішев үшін жобаны іске асырды</h3>
+                    <p class="news-description">Daedalus Mind Projects Қазақстанда алғаш рет әзірленген және іске асырылған бірегей қазақстандық гидрометаллургиялық өңдеу технологиясын қолдана отырып никель өндіру зауытын жобалауды аяқтады.</p>
+                                        <a href="https://www.youtube.com/watch?v=_ecIbW9Vu90" target="_blank" class="news-link">Қарау</a>
+                                    </div>
+            </div>
+                        <div class="news-card">
+                <div class="news-image" style="background: url('/public/News_2.jpg') center/cover no-repeat;"></div>
+                <div class="news-content">
+                                        <h3 class="news-heading">Тәжікстанның өнеркәсіп және жаңа технологиялар министрі Шерали Олимович Daedalus Mind Projects компаниясымен кездесу өткізді</h3>
+                    <p class="news-description">Кездесу барысында елдің тау-кен саласына айтарлықтай инвестиция тарту туралы келісімге қол жетті. Жаңа кен өңдеу технологияларын зерттеу мен әзірлеуде кең тәжірибесі бар компаниямыз Тәжікстанның ТКМ дамытуға елеулі үлес қосуды жоспарлайды.</p>
+                                    </div>
+            </div>
+                        <div class="news-card">
+                <div class="news-image" style="background: url('/public/News_3.jpg') center/cover no-repeat;"></div>
+                <div class="news-content">
+                                        <h3 class="news-heading">Тәжікстанның Тау-Бадахшан автономиялық облысы мен Daedalus Mind Projects арасында ынтымақтастық туралы меморандумға қол қойылды</h3>
+                    <p class="news-description">Меморандум сирек жер металдарының кен орындарын бірлесіп зерттеуді және игеруді қарастырады. Бұл келісімді іске асыру елдің стратегиялық маңызды барлық кен орындарын зерттеуге мүмкіндік береді, бұл сала дамуындағы маңызды қадам болмақ.</p>
+                                    </div>
+            </div>
+                        <div class="news-card">
+                <div class="news-image" style="background: url('/public/News_4.jpg') center/cover no-repeat;"></div>
+                <div class="news-content">
+                                        <p class="news-date">2024 жылғы 3 ақпан</p>
+                                        <h3 class="news-heading">Daedalus Mind Projects Digital Almaty 2024 Халықаралық цифрлық форумына қатысты</h3>
+                    <p class="news-description">Команда INDUSTRY X: БОЛАШАҚТЫҢ ЦИФРЛЫҚ ЭВОЛЮЦИЯСЫ атты панельдік сессияға қатысты.</p>
+                                        <a href="https://www.youtube.com/watch?v=k0ARcS-aI1s" target="_blank" class="news-link">Қарау</a>
+                                    </div>
+            </div>
+                        <div class="news-card">
+                <div class="news-image" style="background: url('/public/News_5.jpg') center/cover no-repeat;"></div>
+                <div class="news-content">
+                                        <h3 class="news-heading">Almaty Hub (бұр. Techgarden) бізде қонақта</h3>
+                    <p class="news-description">Пайдалы қазбаларды өңдеу технологиялары мен өнеркәсіптік нысандарды жобалауға маманданған Daedalus Mind Projects компаниясымен алғашқы танысу. Барлық толығырақ ақпарат төмендегі батырма арқылы Reels-те.</p>
+                                        <a href="https://www.instagram.com/p/C6iAmNbiOq4/" target="_blank" class="news-link">Қарау</a>
+                                    </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+    </main>
+    
+    <style>
+    .footer-logo { height: 32px; width: auto; margin-bottom: 16px; }
+    @media (max-width: 768px) { .footer-logo { height: 22px; } }
+
+    .footer-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 14px;
+    }
+    .footer-contact-icon {
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+    .footer-contact-text {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #F8F3FC;
+    }
+</style>
+<footer style="background: #5a0a8c; color: #F8F3FC;" class="py-12">
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- Company Info -->
+            <div class="col-span-2 md:col-span-1">
+                <img src="/public/logo_futter.png" alt="DAEDALUS" class="footer-logo">
+            </div>
+
+            <!-- Navigation -->
+            <div>
+                <h4 class="font-bold mb-4">Беттер</h4>
+                <ul class="space-y-2 text-sm text-white">
+                    <li><a href="/kk" class="hover:text-purple-400">Басты бет</a></li>
+                    <li><a href="/kk/projects" class="hover:text-purple-400">Жобалар</a></li>
+                    <li><a href="/kk/news" class="hover:text-purple-400">Жаңалықтар</a></li>
+                    <li><a href="/kk/vacancies" class="hover:text-purple-400">Бос орындар</a></li>
+                    <li><a href="/kk/contacts" class="hover:text-purple-400">Байланыс</a></li>
+                </ul>
+            </div>
+
+            <!-- Services -->
+            <div>
+                <h4 class="font-bold mb-4">Қызметтер</h4>
+                <ul class="space-y-2 text-sm text-white">
+                    <li><a href="/kk/design" class="hover:text-purple-400">Жобалау</a></li>
+                    <li><a href="/kk/automation" class="hover:text-purple-400">BIM Енгізу</a></li>
+                    <li><a href="/kk/arvr" class="hover:text-purple-400">AR/VR Оқыту</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="col-span-2 md:col-span-1">
+                <h4 class="font-bold mb-4">Байланыс</h4>
+
+                <div class="footer-contact-item">
+                    <img src="/public/phone-icon.png" alt="Phone" class="footer-contact-icon">
+                    <a href="tel:+77766231177" class="footer-contact-text">8 (776) 623 11 77</a>
+                </div>
+
+                <div class="footer-contact-item">
+                    <img src="/public/mail-icon.png" alt="Email" class="footer-contact-icon">
+                    <a href="mailto:info@daedalus.kz" class="footer-contact-text">info@daedalus.kz</a>
+                </div>
+
+                <div class="footer-contact-item">
+                    <img src="/public/map-icon.png" alt="Location" class="footer-contact-icon">
+                    <a href="https://www.google.com/maps/place/43%C2%B012'48.8%22N+76%C2%B049'50.1%22E/@43.213543,76.829912,18z/data=!3m1!4b1!4m4!3m3!8m2!3d43.213543!4d76.830581?entry=ttu&g_ep=EgoyMDI2MDQwNy4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="footer-contact-text">
+                        Алматы қ., Достық шағынауданы,<br>Фарид Шарипов к-сі, 134А үй
+                    </a>
+                </div>
+
+                <div style="display: flex; gap: 15px; margin-top: 20px;">
+                    <a href="https://www.instagram.com/daedalus.qaz/" target="_blank">
+                        <img src="/public/instagram_icon.png" alt="Instagram" style="width: 24px; height: 24px; object-fit: contain;">
+                    </a>
+                    <a href="https://wa.me/77766231177" target="_blank">
+                        <img src="/public/whatsapp_icon.png" alt="WhatsApp" style="width: 24px; height: 24px; object-fit: contain;">
+                    </a>
+                    <a href="https://t.me/makhambet_s" target="_blank">
+                        <img src="/public/telegram_icon.png" alt="Telegram" style="width: 24px; height: 24px; object-fit: contain;">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Language Switcher -->
+        <div class="flex justify-center space-x-4 mt-8 pt-8">
+            <a href="/en/news" class="text-sm hover:text-purple-400">EN</a>
+            <a href="/news" class="text-sm hover:text-purple-400">РУС</a>
+            <a href="/kk/news" class="text-sm text-purple-400">ҚАЗ</a>
+        </div>
+    </div>
+</footer>
+    
+    <!-- Modal for success message -->
+    <div id="thankYouModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center" style="display:none;">
+        <div class="bg-white rounded-lg p-8 max-w-md mx-4">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold mb-4">Спасибо!</h2>
+                <p class="mb-6">Ваш запрос был успешно отправлен. Мы свяжемся с вами в ближайшее время.</p>
+                <button type="button" data-close-modal class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg">
+                    OK
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button')?.addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+
+    <!-- Обработчик форм заявок (отправка в Telegram) -->
+    <script src="/form-config.js?v=2"></script>
+    <script src="/index.js?v=2"></script>
+
+    </body>
+</html>

@@ -1,36 +1,111 @@
 #!/bin/bash
+#
+# Выгрузка сайта в статические HTML-файлы для Vercel.
+#
+# Страницы рендерит локальный Laravel, результат складывается в static-export/:
+# русская версия — в корне, английская и казахская — в /en и /kk.
+# Приём заявок в выгрузку не входит: формы шлют их на адрес FORM_ENDPOINT
+# (см. backend-hosterkz/README.md).
+#
+# Запуск:
+#   FORM_ENDPOINT=https://api.daedalus.kz/submit.php ./export-static.sh
+#
+set -euo pipefail
 
-# Static HTML export script for Vercel
+# Язык теперь определяется адресом, а не сессией, поэтому сервер для выгрузки
+# может обойтись без хранилищ сессий и кэша — иначе на чистой машине
+# artisan serve падает из-за отсутствующих папок в storage/.
+export SESSION_DRIVER=array
+export CACHE_STORE=array
+export QUEUE_CONNECTION=sync
+
 OUTPUT="static-export"
-BASE_URL="http://127.0.0.1:8000"
+PORT="${PORT:-8123}"
+BASE_URL="http://127.0.0.1:${PORT}"
+PAGES=(design automation arvr vacancies projects news contacts)
+LOCALES=(en kk)          # ru — основной язык, лежит в корне
 
-mkdir -p $OUTPUT/projects
-mkdir -p $OUTPUT/services
-mkdir -p $OUTPUT/design
-mkdir -p $OUTPUT/automation
-mkdir -p $OUTPUT/arvr
-mkdir -p $OUTPUT/vacancies
-mkdir -p $OUTPUT/news
-mkdir -p $OUTPUT/contacts
+if [ -z "${FORM_ENDPOINT:-}" ]; then
+    echo "!! FORM_ENDPOINT не задан — формы будут слать заявки на сам сайт,"
+    echo "!! а в статике принимать их некому."
+    echo "!! Пример: FORM_ENDPOINT=https://api.daedalus.kz/submit.php ./export-static.sh"
+    echo
+fi
 
-echo "Exporting pages..."
+if ! command -v php >/dev/null 2>&1; then
+    echo "PHP не найден. Запустите экспорт в Docker:"
+    echo
+    echo "  docker run --rm -v \"\$PWD\":/app -w /app -e FORM_ENDPOINT=\"\$FORM_ENDPOINT\" \\"
+    echo "    php:8.2-cli sh -c 'apt-get update -qq && apt-get install -y -qq curl >/dev/null && ./export-static.sh'"
+    exit 1
+fi
 
-curl -s "$BASE_URL/" > $OUTPUT/index.html
-curl -s "$BASE_URL/projects" > $OUTPUT/projects/index.html
-curl -s "$BASE_URL/services" > $OUTPUT/services/index.html
-curl -s "$BASE_URL/design" > $OUTPUT/design/index.html
-curl -s "$BASE_URL/automation" > $OUTPUT/automation/index.html
-curl -s "$BASE_URL/arvr" > $OUTPUT/arvr/index.html
-curl -s "$BASE_URL/vacancies" > $OUTPUT/vacancies/index.html
-curl -s "$BASE_URL/news" > $OUTPUT/news/index.html
-curl -s "$BASE_URL/contacts" > $OUTPUT/contacts/index.html
+echo "Запускаю локальный сервер на порту ${PORT}…"
+php artisan serve --port="${PORT}" --no-reload >/dev/null 2>&1 &
+SERVER_PID=$!
+trap 'kill "${SERVER_PID}" 2>/dev/null || true' EXIT
 
-echo "Copying assets..."
-cp -r public/build $OUTPUT/build
-cp -r public/public $OUTPUT/public
-cp public/global.css $OUTPUT/global.css 2>/dev/null || true
-cp public/index.css $OUTPUT/index.css 2>/dev/null || true
-cp public/index.js $OUTPUT/index.js 2>/dev/null || true
-cp public/favicon.ico $OUTPUT/favicon.ico 2>/dev/null || true
+for _ in $(seq 1 40); do
+    curl -sf -o /dev/null "${BASE_URL}/up" && break
+    sleep 0.5
+done
 
-echo "Done! Static files in: $OUTPUT/"
+if ! curl -sf -o /dev/null "${BASE_URL}/up"; then
+    echo "Сервер не поднялся. Проверьте: php artisan serve --port=${PORT}"
+    exit 1
+fi
+
+echo "Очищаю ${OUTPUT}/…"
+rm -rf "${OUTPUT}"
+mkdir -p "${OUTPUT}"
+
+fetch() {   # fetch <путь на сайте> <файл на диске>
+    local url="$1" dest="$2"
+    mkdir -p "$(dirname "${dest}")"
+    if ! curl -sf "${BASE_URL}${url}" -o "${dest}"; then
+        echo "  ОШИБКА: ${url}"
+        return 1
+    fi
+    printf '  %-28s → %s\n' "${url:-/}" "${dest}"
+}
+
+echo "Выгружаю страницы…"
+fetch "/" "${OUTPUT}/index.html"
+for page in "${PAGES[@]}"; do
+    fetch "/${page}" "${OUTPUT}/${page}/index.html"
+done
+
+for locale in "${LOCALES[@]}"; do
+    fetch "/${locale}" "${OUTPUT}/${locale}/index.html"
+    for page in "${PAGES[@]}"; do
+        fetch "/${locale}/${page}" "${OUTPUT}/${locale}/${page}/index.html"
+    done
+done
+
+echo "Копирую статику…"
+cp -r public/build "${OUTPUT}/build"
+cp -r public/public "${OUTPUT}/public"
+for asset in global.css index.css index.js favicon.ico robots.txt; do
+    cp "public/${asset}" "${OUTPUT}/${asset}" 2>/dev/null || true
+done
+
+# Адрес приёма заявок вынесен отдельным файлом: его можно поправить прямо
+# на хостинге, не пересобирая сайт.
+cat > "${OUTPUT}/form-config.js" <<JS
+// Куда формы отправляют заявки. Поменяйте адрес — и всё заработает по-новому,
+// пересобирать сайт не нужно.
+window.FORM_ENDPOINT = "${FORM_ENDPOINT:-}";
+JS
+
+cat > "${OUTPUT}/vercel.json" <<'JSON'
+{
+  "outputDirectory": ".",
+  "cleanUrls": true,
+  "trailingSlash": false
+}
+JSON
+
+echo
+echo "Готово. Файлов: $(find "${OUTPUT}" -name '*.html' | wc -l | tr -d ' ') страниц в ${OUTPUT}/"
+echo "Проверьте адрес приёма заявок в выгруженном HTML:"
+echo "  grep -o 'form-endpoint[^>]*' ${OUTPUT}/index.html"

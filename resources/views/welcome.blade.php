@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="form-endpoint" content="{{ config('services.telegram.endpoint') }}">
     <title>{{ __('messages.home.title') }}</title>
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -1502,21 +1504,21 @@
                 <h2 class="directions-title">{{ __('messages.home.directions.title') }}</h2>
                 
                 <div class="directions-grid">
-                    <a href="/design" class="direction-card" style="background-image: linear-gradient(rgba(16,2,43,0.6), rgba(16,2,43,0.6)), url('/public/direction_design.jpg');">
+                    <a href="{{ locale_url('design') }}" class="direction-card" style="background-image: linear-gradient(rgba(16,2,43,0.6), rgba(16,2,43,0.6)), url('/public/direction_design.jpg');">
                         <h3 class="direction-card-title">{{ __('messages.home.direction.design.title') }}</h3>
                         <p class="direction-card-description">
                             {{ __('messages.home.direction.design.desc') }}
                         </p>
                     </a>
 
-                    <a href="/automation" class="direction-card" style="background-image: linear-gradient(rgba(16,2,43,0.6), rgba(16,2,43,0.6)), url('/public/direction_bim.jpg');">
+                    <a href="{{ locale_url('automation') }}" class="direction-card" style="background-image: linear-gradient(rgba(16,2,43,0.6), rgba(16,2,43,0.6)), url('/public/direction_bim.jpg');">
                         <h3 class="direction-card-title">{{ __('messages.home.direction.automation.title') }}</h3>
                         <p class="direction-card-description">
                             {{ __('messages.home.direction.automation.desc') }}
                         </p>
                     </a>
 
-                    <a href="/arvr" class="direction-card" style="background-image: linear-gradient(rgba(16,2,43,0.6), rgba(16,2,43,0.6)), url('/public/direction_arvr.jpg');">
+                    <a href="{{ locale_url('arvr') }}" class="direction-card" style="background-image: linear-gradient(rgba(16,2,43,0.6), rgba(16,2,43,0.6)), url('/public/direction_arvr.jpg');">
                         <h3 class="direction-card-title">{{ __('messages.home.direction.arvr.title') }}</h3>
                         <p class="direction-card-description">
                             {{ __('messages.home.direction.arvr.desc') }}
@@ -1652,7 +1654,7 @@
                 </div>
 
                 <div class="projects-btn-wrapper">
-                    <a href="/projects" class="projects-circle-btn" aria-label="Все проекты">
+                    <a href="{{ locale_url('projects') }}" class="projects-circle-btn" aria-label="Все проекты">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="5" y1="12" x2="19" y2="12"/>
                             <polyline points="12 5 19 12 12 19"/>
@@ -1670,11 +1672,13 @@
                     <h1 class="contact-main-title">{{ __('messages.home.contact.title') }}</h1>
                     <p class="contact-subtitle">{{ __('messages.home.contact.subtitle') }}</p>
 
-                    <form class="contact-form" id="contactForm">
-                        <input type="hidden" id="source" value="{{ __('messages.nav.home') }}">
+                    <form class="contact-form" id="contactForm" data-tg-form
+                          data-service="{{ __('messages.nav.home') }}"
+                          data-source="{{ __('messages.nav.home') }}">
                         <input type="text" id="input" name="name" class="form-input" placeholder="{{ __('messages.form.name') }}" required>
                         <input type="tel" id="input1" name="phone" class="form-input" placeholder="{{ __('messages.form.phone') }}" required>
-                        <button type="button" onclick="submitFeedback()" class="form-submit">{{ __('messages.form.submit') }}</button>
+                        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+                        <button type="submit" class="form-submit">{{ __('messages.form.submit') }}</button>
                     </form>
                 </div>
                 
@@ -1901,33 +1905,7 @@
         updateStage(0);
         startAutoPlay();
 
-        // Contact Form Submission
-        document.getElementById('contactForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const formData = new FormData(e.target);
-            const data = Object.fromEntries(formData);
-
-            try {
-                const response = await fetch('/api/submit', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                if (response.ok) {
-                    alert('Спасибо! Мы свяжемся с вами в ближайшее время.');
-                    e.target.reset();
-                } else {
-                    alert('Произошла ошибка. Пожалуйста, попробуйте позже.');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Произошла ошибка. Пожалуйста, попробуйте позже.');
-            }
-        });
+        // Отправка формы — см. /index.js (data-tg-form)
     </script>
 
     <script>
@@ -1994,5 +1972,9 @@
             }
         });
     </script>
+
+    <!-- Обработчик форм заявок (отправка в Telegram) -->
+    <script src="/form-config.js?v=2"></script>
+    <script src="/index.js?v=2"></script>
 </body>
 </html>
