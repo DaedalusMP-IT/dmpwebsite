@@ -1,5 +1,6 @@
+# Публикуется папка static-export (Root Directory в настройках проекта).
+# Её саму исключать нельзя — иначе сборка остаётся без файлов.
 node_modules
-static-export
 tests
 storage/logs
 storage/framework/cache
