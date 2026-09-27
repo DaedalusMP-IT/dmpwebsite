@@ -97,9 +97,10 @@ cat > "${OUTPUT}/form-config.js" <<JS
 window.FORM_ENDPOINT = "${FORM_ENDPOINT:-}";
 JS
 
+# outputDirectory здесь не указываем: он задаётся в настройках проекта Vercel
+# (Output Directory = "."), иначе две настройки конфликтуют между собой.
 cat > "${OUTPUT}/vercel.json" <<'JSON'
 {
-  "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false
 }
