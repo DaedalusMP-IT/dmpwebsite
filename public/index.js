@@ -68,7 +68,18 @@
     function endpoint() {
         var configured = typeof window.FORM_ENDPOINT === 'string' ? window.FORM_ENDPOINT.trim() : '';
 
-        return configured || meta('form-endpoint') || '/api/submit';
+        return upgradeToHttps(configured || meta('form-endpoint') || '/api/submit');
+    }
+
+    // Переход с http на https делается редиректом, а редирект теряет тело
+    // POST-запроса: заявка доходит пустой и отклоняется как «Укажите имя».
+    // Поэтому адрес повышаем сами, не полагаясь на сервер. Локальные адреса
+    // не трогаем — там https обычно нет.
+    function upgradeToHttps(url) {
+        if (!/^http:\/\//i.test(url)) return url;
+        if (/^http:\/\/(localhost|127\.0\.0\.1|\[::1\])([:/]|$)/i.test(url)) return url;
+
+        return url.replace(/^http:\/\//i, 'https://');
     }
 
     function isCrossOrigin(url) {
